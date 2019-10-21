@@ -27,7 +27,7 @@ namespace FlightApp.Backend.Migrations
 
                     b.Property<string>("Destination");
 
-                    b.Property<int>("FlightDuration");
+                    b.Property<double>("FlightDuration");
 
                     b.Property<string>("Origin");
 
@@ -52,13 +52,9 @@ namespace FlightApp.Backend.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("OrderId");
-
                     b.Property<string>("Type");
 
                     b.HasKey("FoodId");
-
-                    b.HasIndex("OrderId");
 
                     b.ToTable("Foods");
                 });
@@ -78,17 +74,28 @@ namespace FlightApp.Backend.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("FlightApp.Backend.Models.Domain.OrderFood", b =>
+                {
+                    b.Property<int>("OrderId");
+
+                    b.Property<int>("FoodId");
+
+                    b.HasKey("OrderId", "FoodId");
+
+                    b.HasIndex("FoodId");
+
+                    b.ToTable("OrderFood");
+                });
+
             modelBuilder.Entity("FlightApp.Backend.Models.Domain.PassengerFlight", b =>
                 {
                     b.Property<int>("FlightId");
 
-                    b.Property<string>("PassengerId");
-
-                    b.Property<int?>("PassengerUserId");
+                    b.Property<int>("PassengerId");
 
                     b.HasKey("FlightId", "PassengerId");
 
-                    b.HasIndex("PassengerUserId");
+                    b.HasIndex("PassengerId");
 
                     b.ToTable("PassengerFlights");
                 });
@@ -125,6 +132,19 @@ namespace FlightApp.Backend.Migrations
                     b.ToTable("Seats");
                 });
 
+            modelBuilder.Entity("FlightApp.Backend.Models.Domain.StaffFlight", b =>
+                {
+                    b.Property<int>("StaffId");
+
+                    b.Property<int>("FlightId");
+
+                    b.HasKey("StaffId", "FlightId");
+
+                    b.HasIndex("FlightId");
+
+                    b.ToTable("StaffFlight");
+                });
+
             modelBuilder.Entity("FlightApp.Backend.Models.Domain.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -154,6 +174,15 @@ namespace FlightApp.Backend.Migrations
                     b.HasDiscriminator().HasValue("Passenger");
                 });
 
+            modelBuilder.Entity("FlightApp.Backend.Models.Domain.Staff", b =>
+                {
+                    b.HasBaseType("FlightApp.Backend.Models.Domain.User");
+
+                    b.Property<int>("LoginCode");
+
+                    b.HasDiscriminator().HasValue("Staff");
+                });
+
             modelBuilder.Entity("FlightApp.Backend.Models.Domain.Flight", b =>
                 {
                     b.HasOne("FlightApp.Backend.Models.Domain.Plane")
@@ -161,18 +190,24 @@ namespace FlightApp.Backend.Migrations
                         .HasForeignKey("PlaneId");
                 });
 
-            modelBuilder.Entity("FlightApp.Backend.Models.Domain.Food", b =>
-                {
-                    b.HasOne("FlightApp.Backend.Models.Domain.Order")
-                        .WithMany("OrderedFood")
-                        .HasForeignKey("OrderId");
-                });
-
             modelBuilder.Entity("FlightApp.Backend.Models.Domain.Order", b =>
                 {
                     b.HasOne("FlightApp.Backend.Models.Domain.Passenger")
                         .WithMany("Orders")
                         .HasForeignKey("PassengerUserId");
+                });
+
+            modelBuilder.Entity("FlightApp.Backend.Models.Domain.OrderFood", b =>
+                {
+                    b.HasOne("FlightApp.Backend.Models.Domain.Food", "Food")
+                        .WithMany("FootOrders")
+                        .HasForeignKey("FoodId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("FlightApp.Backend.Models.Domain.Order", "Order")
+                        .WithMany("OrderFoods")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("FlightApp.Backend.Models.Domain.PassengerFlight", b =>
@@ -184,7 +219,8 @@ namespace FlightApp.Backend.Migrations
 
                     b.HasOne("FlightApp.Backend.Models.Domain.Passenger", "Passenger")
                         .WithMany("PassengerFlights")
-                        .HasForeignKey("PassengerUserId");
+                        .HasForeignKey("PassengerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("FlightApp.Backend.Models.Domain.Seat", b =>
@@ -192,6 +228,19 @@ namespace FlightApp.Backend.Migrations
                     b.HasOne("FlightApp.Backend.Models.Domain.Plane")
                         .WithMany("Seats")
                         .HasForeignKey("PlaneId");
+                });
+
+            modelBuilder.Entity("FlightApp.Backend.Models.Domain.StaffFlight", b =>
+                {
+                    b.HasOne("FlightApp.Backend.Models.Domain.Flight", "Flight")
+                        .WithMany("FlightStaff")
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("FlightApp.Backend.Models.Domain.Staff", "Staff")
+                        .WithMany("StaffFlights")
+                        .HasForeignKey("StaffId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("FlightApp.Backend.Models.Domain.Passenger", b =>

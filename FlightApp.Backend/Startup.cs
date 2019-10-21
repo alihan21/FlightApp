@@ -33,10 +33,12 @@ namespace FlightApp.Backend
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddScoped<FlightAppInit>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, FlightAppInit flightAppInit)
         {
             if (env.IsDevelopment())
             {
@@ -59,6 +61,8 @@ namespace FlightApp.Backend
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            flightAppInit.Init();
         }
     }
 }

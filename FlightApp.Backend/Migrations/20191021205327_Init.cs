@@ -4,10 +4,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FlightApp.Backend.Migrations
 {
-    public partial class Ini : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Foods",
+                columns: table => new
+                {
+                    FoodId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Type = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Foods", x => x.FoodId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Planes",
                 columns: table => new
@@ -30,7 +45,7 @@ namespace FlightApp.Backend.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Destination = table.Column<string>(nullable: true),
                     Origin = table.Column<string>(nullable: true),
-                    FlightDuration = table.Column<int>(nullable: false),
+                    FlightDuration = table.Column<double>(nullable: false),
                     TimeOfDepart = table.Column<DateTime>(nullable: false),
                     PlaneId = table.Column<int>(nullable: true)
                 },
@@ -73,7 +88,8 @@ namespace FlightApp.Backend.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
-                    SeatId = table.Column<int>(nullable: true)
+                    SeatId = table.Column<int>(nullable: true),
+                    LoginCode = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -109,9 +125,8 @@ namespace FlightApp.Backend.Migrations
                 name: "PassengerFlights",
                 columns: table => new
                 {
-                    PassengerId = table.Column<string>(nullable: false),
-                    FlightId = table.Column<int>(nullable: false),
-                    PassengerUserId = table.Column<int>(nullable: true)
+                    PassengerId = table.Column<int>(nullable: false),
+                    FlightId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -123,33 +138,59 @@ namespace FlightApp.Backend.Migrations
                         principalColumn: "FlightId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PassengerFlights_Users_PassengerUserId",
-                        column: x => x.PassengerUserId,
+                        name: "FK_PassengerFlights_Users_PassengerId",
+                        column: x => x.PassengerId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Foods",
+                name: "StaffFlight",
                 columns: table => new
                 {
-                    FoodId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Type = table.Column<string>(nullable: true),
-                    OrderId = table.Column<int>(nullable: true)
+                    FlightId = table.Column<int>(nullable: false),
+                    StaffId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Foods", x => x.FoodId);
+                    table.PrimaryKey("PK_StaffFlight", x => new { x.StaffId, x.FlightId });
                     table.ForeignKey(
-                        name: "FK_Foods_Orders_OrderId",
+                        name: "FK_StaffFlight_Flights_FlightId",
+                        column: x => x.FlightId,
+                        principalTable: "Flights",
+                        principalColumn: "FlightId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_StaffFlight_Users_StaffId",
+                        column: x => x.StaffId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderFood",
+                columns: table => new
+                {
+                    OrderId = table.Column<int>(nullable: false),
+                    FoodId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderFood", x => new { x.OrderId, x.FoodId });
+                    table.ForeignKey(
+                        name: "FK_OrderFood_Foods_FoodId",
+                        column: x => x.FoodId,
+                        principalTable: "Foods",
+                        principalColumn: "FoodId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderFood_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "OrderId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -158,9 +199,9 @@ namespace FlightApp.Backend.Migrations
                 column: "PlaneId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Foods_OrderId",
-                table: "Foods",
-                column: "OrderId");
+                name: "IX_OrderFood_FoodId",
+                table: "OrderFood",
+                column: "FoodId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_PassengerUserId",
@@ -168,14 +209,19 @@ namespace FlightApp.Backend.Migrations
                 column: "PassengerUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PassengerFlights_PassengerUserId",
+                name: "IX_PassengerFlights_PassengerId",
                 table: "PassengerFlights",
-                column: "PassengerUserId");
+                column: "PassengerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Seats_PlaneId",
                 table: "Seats",
                 column: "PlaneId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StaffFlight_FlightId",
+                table: "StaffFlight",
+                column: "FlightId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_SeatId",
@@ -186,10 +232,16 @@ namespace FlightApp.Backend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Foods");
+                name: "OrderFood");
 
             migrationBuilder.DropTable(
                 name: "PassengerFlights");
+
+            migrationBuilder.DropTable(
+                name: "StaffFlight");
+
+            migrationBuilder.DropTable(
+                name: "Foods");
 
             migrationBuilder.DropTable(
                 name: "Orders");

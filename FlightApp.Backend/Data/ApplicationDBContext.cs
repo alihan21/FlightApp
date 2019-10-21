@@ -13,8 +13,8 @@ namespace FlightApp.Backend.Data
         public DbSet<Plane> Planes { get; set; }
         public DbSet<Seat> Seats { get; set; }
         public DbSet<User> Users { get; set; }
-        //public DbSet<Passenger> Passengers { get; set; }
-        //public DbSet<FlightStaff> FlightStaff { get; set; }
+        public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Staff> FlightStaff { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -25,6 +25,8 @@ namespace FlightApp.Backend.Data
         {
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new PassengerFlightConfiguration());
+            builder.ApplyConfiguration(new StaffFlightConfiguration());
+            builder.ApplyConfiguration(new OrderFoodConfiguration());
         }
     }
 }
