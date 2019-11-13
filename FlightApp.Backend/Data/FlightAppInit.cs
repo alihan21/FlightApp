@@ -6,9 +6,9 @@ namespace FlightApp.Backend.Data
 {
     public class FlightAppInit
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly FlightAppContext _dbContext;
 
-        public FlightAppInit(ApplicationDbContext dbContext)
+        public FlightAppInit(FlightAppContext dbContext)
         {
             _dbContext = dbContext;
         }
