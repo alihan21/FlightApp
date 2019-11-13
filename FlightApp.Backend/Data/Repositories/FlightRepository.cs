@@ -25,7 +25,7 @@ namespace FlightApp.Backend.Data.Repositories
 
         public Flight GetBy(int id)
         {
-           return  _flights.Include(r => r.Passengers).SingleOrDefault(r => r.FlightId == id);
+           return  _flights.SingleOrDefault(r => r.FlightId == id);
         }
 
         public void SaveChanges()
