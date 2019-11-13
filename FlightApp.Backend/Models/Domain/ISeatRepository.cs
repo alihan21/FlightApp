@@ -7,5 +7,14 @@ namespace FlightApp.Backend.Models.Domain
 {
     public interface ISeatRepository
     {
+        Seat GetBy(int id);
+
+        IEnumerable<Seat> GetAll();
+
+        void Add(Seat seat);
+
+        void Update(Seat seat);
+
+        void SaveChanges();
     }
 }
