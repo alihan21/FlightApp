@@ -11,10 +11,6 @@ namespace FlightApp.Backend.Models.Domain
 
         IEnumerable<User> GetAll();
 
-        void Add(User user);
-
-        void Delete(User user);
-
         void Update(User user);
 
         void SaveChanges();

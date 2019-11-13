@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightApp.Backend.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class FlightAppContext : DbContext
     {
         public DbSet<Food> Foods { get; set; }
         public DbSet<Flight> Flights { get; set; }
@@ -16,7 +16,7 @@ namespace FlightApp.Backend.Data
         public DbSet<Passenger> Passengers { get; set; }
         public DbSet<Staff> FlightStaff { get; set; }
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        public FlightAppContext(DbContextOptions<FlightAppContext> options) : base(options)
         {
 
         }
