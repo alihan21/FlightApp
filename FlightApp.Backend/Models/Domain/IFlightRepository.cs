@@ -7,5 +7,14 @@ namespace FlightApp.Backend.Models.Domain
 {
     public interface IFlightRepository
     {
+        Flight GetBy(int id);
+
+        IEnumerable<Flight> GetAll();
+
+        void Add(Flight flight);
+
+        void Update(Flight flight);
+
+        void SaveChanges();
     }
 }
