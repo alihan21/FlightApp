@@ -11,10 +11,6 @@ namespace FlightApp.Backend.Models.Domain
 
         IEnumerable<Seat> GetAll();
 
-        void Add(Seat seat);
-
-        void Update(Seat seat);
-
         void SaveChanges();
     }
 }
