@@ -21,7 +21,7 @@ namespace FlightApp.Backend.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Seat> GetUsers()
+        public IEnumerable<Seat> GetSeats()
         {
             return _seatRepository.GetAll();
         }

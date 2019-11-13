@@ -2,15 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FlightApp.Backend.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlightApp.Backend.Controllers
 {
+
+    [Route("api/[controller]")]
+    [ApiController]
     public class PlaneController : Controller
     {
-        public IActionResult Index()
+        private readonly IPlaneRepository _planeRepository;
+
+
+        public PlaneController(IPlaneRepository context)
         {
-            return View();
+            _planeRepository = context;
+        }
+
+        [HttpGet]
+        public IEnumerable<Plane> GetPlanes()
+        {
+            return _planeRepository.GetAll();
+        }
+
+
+        [HttpGet("{id}")]
+        public ActionResult<Plane> GetPlane(int id)
+        {
+            Plane plane = _planeRepository.GetBy(id);
+            if (plane == null) return NotFound();
+            return plane;
         }
     }
 }
