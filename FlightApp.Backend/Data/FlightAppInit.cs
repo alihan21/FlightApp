@@ -16,6 +16,7 @@ namespace FlightApp.Backend.Data
         public void Init()
         {
             _dbContext.Database.EnsureDeleted();
+
             if (_dbContext.Database.EnsureCreated())
             {
                 #region Make Foods
@@ -25,7 +26,7 @@ namespace FlightApp.Backend.Data
                 Food veggieBurger = new Food() { Name = "Vegie burger", Type = "meal", Description = "burger for the vegetarians" };
                 Food soupWithMeatballs = new Food() { Name = "Soup", Type = "starter", Description = "soup with meatballs" };
 
-                _dbContext.Foods.AddRange(new List<Food>() { chips, steakWithMashPotatos, cola, veggieBurger, soupWithMeatballs });
+                _dbContext.Foods.AddRange(new List<Food>() { chips, steakWithMashPotatos, cola, veggieBurger, soupWithMeatballs});
                 #endregion
 
                 #region Make Orders
@@ -41,9 +42,9 @@ namespace FlightApp.Backend.Data
                 noahsOrder.OrderFoods.Add(new OrderFood() { Food = steakWithMashPotatos, FoodId = steakWithMashPotatos.FoodId, Order = noahsOrder, OrderId = noahsOrder.OrderId });
                 noahsOrder.OrderFoods.Add(new OrderFood() { Food = chips, FoodId = chips.FoodId, Order = noahsOrder, OrderId = noahsOrder.OrderId });
 
-                _dbContext.Orders.AddRange(new List<Order>() { mohamedsOrder, gabrielsOrder, victorsOrder, noahsOrder });
+                _dbContext.Orders.AddRange(new List<Order>() { mohamedsOrder, gabrielsOrder, victorsOrder, noahsOrder});
                 #endregion
-
+            
                 #region Make Seats
                 List<Seat> seatsForAirbusA333 = new List<Seat>();
                 seatsForAirbusA333.AddRange(FillPlaneWithSeats(seatsForAirbusA333, 20));
@@ -83,12 +84,27 @@ namespace FlightApp.Backend.Data
                 #endregion
 
                 #region Make Planes
-                Plane airbusA333 = new Plane() { Name = "Airbus A333-300", MaxSeats = 30, Seats = seatsForAirbusA333,
-                    PlaneFlights = new List<Flight>() { flightBelgiumBulgaria } };
-                Plane boeing777 = new Plane() { Name = "Boeing 777", MaxSeats = 30, Seats = seatsForBoeing777,
-                    PlaneFlights = new List<Flight>() { flightBrazilAntarctic } };
-                Plane deltaL1011 = new Plane() { Name = "Delta L-1011", MaxSeats = 30, Seats = seatsForDeltaL1011,
-                    PlaneFlights = new List<Flight>() { flightChinaUsa } };
+                Plane airbusA333 = new Plane()
+                {
+                    Name = "Airbus A333-300",
+                    MaxSeats = 30,
+                    Seats = seatsForAirbusA333,
+                    PlaneFlights = new List<Flight>() { flightBelgiumBulgaria }
+                };
+                Plane boeing777 = new Plane()
+                {
+                    Name = "Boeing 777",
+                    MaxSeats = 30,
+                    Seats = seatsForBoeing777,
+                    PlaneFlights = new List<Flight>() { flightBrazilAntarctic }
+                };
+                Plane deltaL1011 = new Plane()
+                {
+                    Name = "Delta L-1011",
+                    MaxSeats = 30,
+                    Seats = seatsForDeltaL1011,
+                    PlaneFlights = new List<Flight>() { flightChinaUsa }
+                };
 
                 _dbContext.Planes.AddRange(new List<Plane>() { airbusA333, boeing777, deltaL1011 });
                 #endregion
@@ -125,22 +141,22 @@ namespace FlightApp.Backend.Data
 
                 #region Make FlightPassengers (intermediate table)
                 //Flight from Belgium to Bulgaria
-                PassengerFlight arthurflightBelgiumBulgaria = FillPassengerInAFlight(arthur, flightBelgiumBulgaria);
-                PassengerFlight noahflightBelgiumBulgaria = FillPassengerInAFlight(noah, flightBelgiumBulgaria);
-                PassengerFlight adamflightBelgiumBulgaria = FillPassengerInAFlight(adam, flightBelgiumBulgaria);
+                UserFlight arthurflightBelgiumBulgaria = FillPassengerInAFlight(arthur, flightBelgiumBulgaria);
+                UserFlight noahflightBelgiumBulgaria = FillPassengerInAFlight(noah, flightBelgiumBulgaria);
+                UserFlight adamflightBelgiumBulgaria = FillPassengerInAFlight(adam, flightBelgiumBulgaria);
                 //Flight from Brazil to Antarctic
-                PassengerFlight louisflightBrazilAntarctic = FillPassengerInAFlight(louis, flightBrazilAntarctic);
-                PassengerFlight liamflightBrazilAntarctic = FillPassengerInAFlight(liam, flightBrazilAntarctic);
-                PassengerFlight lucasflightBrazilAntarctic = FillPassengerInAFlight(lucas, flightBrazilAntarctic);
-                PassengerFlight julesflightBrazilAntarctic = FillPassengerInAFlight(jules, flightBrazilAntarctic);
+                UserFlight louisflightBrazilAntarctic = FillPassengerInAFlight(louis, flightBrazilAntarctic);
+                UserFlight liamflightBrazilAntarctic = FillPassengerInAFlight(liam, flightBrazilAntarctic);
+                UserFlight lucasflightBrazilAntarctic = FillPassengerInAFlight(lucas, flightBrazilAntarctic);
+                UserFlight julesflightBrazilAntarctic = FillPassengerInAFlight(jules, flightBrazilAntarctic);
                 //Flight from China to USA
-                PassengerFlight victorflightChinaUsa = FillPassengerInAFlight(victor, flightChinaUsa);
-                PassengerFlight gabrielflightChinaUsa = FillPassengerInAFlight(gabriel, flightChinaUsa);
-                PassengerFlight mohamedflightChinaUsa = FillPassengerInAFlight(mohamed, flightChinaUsa);
+                UserFlight victorflightChinaUsa = FillPassengerInAFlight(victor, flightChinaUsa);
+                UserFlight gabrielflightChinaUsa = FillPassengerInAFlight(gabriel, flightChinaUsa);
+                UserFlight mohamedflightChinaUsa = FillPassengerInAFlight(mohamed, flightChinaUsa);
 
-                _dbContext.PassengerFlights.AddRange(new List<PassengerFlight>() { arthurflightBelgiumBulgaria, noahflightBelgiumBulgaria, adamflightBelgiumBulgaria,
-                        louisflightBrazilAntarctic, liamflightBrazilAntarctic, lucasflightBrazilAntarctic, julesflightBrazilAntarctic, victorflightChinaUsa,
-                        gabrielflightChinaUsa, mohamedflightChinaUsa});
+                _dbContext.PassengerFlights.AddRange(new List<UserFlight>() { arthurflightBelgiumBulgaria, noahflightBelgiumBulgaria, adamflightBelgiumBulgaria,
+                                louisflightBrazilAntarctic, liamflightBrazilAntarctic, lucasflightBrazilAntarctic, julesflightBrazilAntarctic, victorflightChinaUsa,
+                                gabrielflightChinaUsa, mohamedflightChinaUsa});
                 #endregion
 
                 #region Give passenger their seat
@@ -157,32 +173,32 @@ namespace FlightApp.Backend.Data
                 #endregion
 
                 #region Fill flights with passengers
-                flightBelgiumBulgaria.Passengers = new List<PassengerFlight>() { arthurflightBelgiumBulgaria, noahflightBelgiumBulgaria, adamflightBelgiumBulgaria };
-                flightBrazilAntarctic.Passengers = new List<PassengerFlight>() { louisflightBrazilAntarctic, liamflightBrazilAntarctic, lucasflightBrazilAntarctic, julesflightBrazilAntarctic };
-                flightChinaUsa.Passengers = new List<PassengerFlight>() { victorflightChinaUsa, gabrielflightChinaUsa, mohamedflightChinaUsa };
+                flightBelgiumBulgaria.UserFlights = new List<UserFlight>() { arthurflightBelgiumBulgaria, noahflightBelgiumBulgaria, adamflightBelgiumBulgaria };
+                flightBrazilAntarctic.UserFlights = new List<UserFlight>() { louisflightBrazilAntarctic, liamflightBrazilAntarctic, lucasflightBrazilAntarctic, julesflightBrazilAntarctic };
+                flightChinaUsa.UserFlights = new List<UserFlight>() { victorflightChinaUsa, gabrielflightChinaUsa, mohamedflightChinaUsa };
                 #endregion
 
                 #region Fill flights with staff
-                flightBelgiumBulgaria.FlightStaff = new List<StaffFlight>() { new StaffFlight {Flight = flightBelgiumBulgaria, FlightId = flightBelgiumBulgaria.FlightId, Staff = alihan, StaffId = alihan.UserId } };
-                flightBrazilAntarctic.FlightStaff = new List<StaffFlight>() { new StaffFlight { Flight = flightBrazilAntarctic, FlightId = flightBrazilAntarctic.FlightId, Staff = dean, StaffId = dean.UserId } };
-                flightChinaUsa.FlightStaff = new List<StaffFlight>() { new StaffFlight { Flight = flightChinaUsa, FlightId = flightChinaUsa.FlightId, Staff = boike, StaffId = boike.UserId } };
+                flightBelgiumBulgaria.UserFlights = new List<UserFlight>() { new UserFlight { Flight = flightBelgiumBulgaria, FlightId = flightBelgiumBulgaria.FlightId, User = alihan, UserId = alihan.UserId } };
+                flightBrazilAntarctic.UserFlights = new List<UserFlight>() { new UserFlight { Flight = flightBrazilAntarctic, FlightId = flightBrazilAntarctic.FlightId, User = dean, UserId = dean.UserId } };
+                flightChinaUsa.UserFlights = new List<UserFlight>() { new UserFlight { Flight = flightChinaUsa, FlightId = flightChinaUsa.FlightId, User = boike, UserId = boike.UserId } };
 
                 _dbContext.Flights.AddRange(new List<Flight>() { flightBelgiumBulgaria, flightBrazilAntarctic, flightChinaUsa });
                 #endregion
 
                 #region Fill passengers flights
-                arthur.PassengerFlights = new List<PassengerFlight>() { arthurflightBelgiumBulgaria};
-                noah.PassengerFlights = new List<PassengerFlight>() { noahflightBelgiumBulgaria};
-                adam.PassengerFlights = new List<PassengerFlight>() { adamflightBelgiumBulgaria};
-                louis.PassengerFlights = new List<PassengerFlight>() { louisflightBrazilAntarctic};
-                liam.PassengerFlights = new List<PassengerFlight>() { liamflightBrazilAntarctic};
-                lucas.PassengerFlights = new List<PassengerFlight>() { lucasflightBrazilAntarctic};
-                jules.PassengerFlights = new List<PassengerFlight>() { julesflightBrazilAntarctic};
-                victor.PassengerFlights = new List<PassengerFlight>() { victorflightChinaUsa};
-                gabriel.PassengerFlights = new List<PassengerFlight>() { gabrielflightChinaUsa};
-                mohamed.PassengerFlights = new List<PassengerFlight>() { mohamedflightChinaUsa};
+                arthur.UserFlights = new List<UserFlight>() { arthurflightBelgiumBulgaria };
+                noah.UserFlights = new List<UserFlight>() { noahflightBelgiumBulgaria };
+                adam.UserFlights = new List<UserFlight>() { adamflightBelgiumBulgaria };
+                louis.UserFlights = new List<UserFlight>() { louisflightBrazilAntarctic };
+                liam.UserFlights = new List<UserFlight>() { liamflightBrazilAntarctic };
+                lucas.UserFlights = new List<UserFlight>() { lucasflightBrazilAntarctic };
+                jules.UserFlights = new List<UserFlight>() { julesflightBrazilAntarctic };
+                victor.UserFlights = new List<UserFlight>() { victorflightChinaUsa };
+                gabriel.UserFlights = new List<UserFlight>() { gabrielflightChinaUsa };
+                mohamed.UserFlights = new List<UserFlight>() { mohamedflightChinaUsa };
 
-                _dbContext.Passengers.AddRange(new List<Passenger>() { arthur, noah, adam, louis, liam, lucas, jules, victor, gabriel, mohamed});
+                _dbContext.Passengers.AddRange(new List<Passenger>() { arthur, noah, adam, louis, liam, lucas, jules, victor, gabriel, mohamed });
                 #endregion
             }
 
@@ -224,13 +240,15 @@ namespace FlightApp.Backend.Data
 
             return seats;
         }
-        private PassengerFlight FillPassengerInAFlight(Passenger passenger, Flight flight)
+
+        private UserFlight FillPassengerInAFlight(User user, Flight flight)
         {
-            return new PassengerFlight() {
+            return new UserFlight()
+            {
                 Flight = flight,
                 FlightId = flight.FlightId,
-                Passenger = passenger,
-                PassengerId = passenger.UserId
+                User = user,
+                UserId = user.UserId
             };
         }
     }

@@ -6,6 +6,5 @@ namespace FlightApp.Backend.Models.Domain
     {
         public Seat Seat { get; set; }
         public List<Order> Orders { get; set; }
-        public List<PassengerFlight> PassengerFlights { get; set; }
     }
 }
