@@ -28,7 +28,7 @@ namespace FlightApp.Backend
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options => {
+            services.AddDbContext<FlightAppContext>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("DevConnection"));
             });
 

@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="FlightApp.Frontend.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FlightApp.Frontend"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Canvas>
+        <TextBlock HorizontalAlignment="Left" Margin="248,772,0,0" Text="Main page still in construction..." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="72" Width="1119"/>
+        <Image Source="Assets/underConstructionImage.jpeg" Height="527" Margin="361,142,361,0" VerticalAlignment="Top" Width="778"/>
+        <TextBlock Canvas.Left="1332" Canvas.Top="25" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+    </Canvas>
+</Page>

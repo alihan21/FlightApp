@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="FlightApp.Frontend.Pages.LoginStaff"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FlightApp.Frontend.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/loginBackgroundImgStaff.jpg"/>
+        </Grid.Background>
+        <TextBlock HorizontalAlignment="Left" Margin="74,180,0,0" Text="Enter your password:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Foreground="Black" FontWeight="Bold"/>
+        <TextBox PlaceholderText="password should be 4 symbols" HorizontalAlignment="Left" Margin="134,249,0,0" Text="" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="230,320,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+        <Button x:Name="btnPassenger" Content="Passenger" HorizontalAlignment="Left" Margin="1218,21,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontStyle="Italic" Foreground="White" Click="NavigateToPassengerPage" FocusVisualPrimaryBrush="Snow">
+            <Button.Background>
+                <AcrylicBrush Opacity="0"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Page>
