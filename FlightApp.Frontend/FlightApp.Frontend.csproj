@@ -119,14 +119,35 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Pages\Chat.xaml.cs">
+      <DependentUpon>Chat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Entertainment.xaml.cs">
+      <DependentUpon>Entertainment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FlightInfo.xaml.cs">
+      <DependentUpon>FlightInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPagePassenger.xaml.cs">
+      <DependentUpon>MainPagePassenger.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LoginPassenger.xaml.cs">
       <DependentUpon>LoginPassenger.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LoginStaff.xaml.cs">
       <DependentUpon>LoginStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPageStaff.xaml.cs">
+      <DependentUpon>MainPageStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OrderFood.xaml.cs">
+      <DependentUpon>OrderFood.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OrderHistory.xaml.cs">
+      <DependentUpon>OrderHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Weather.xaml.cs">
+      <DependentUpon>Weather.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -139,7 +160,7 @@
   <ItemGroup>
     <Content Include="Assets\loginBackgroundImgPassenger.jpg" />
     <Content Include="Assets\loginBackgroundImgStaff.jpg" />
-    <Content Include="Assets\underConstructionImage.jpeg" />
+    <Content Include="Assets\underConstructionImage.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -154,7 +175,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="Pages\Chat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Entertainment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FlightInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPagePassenger.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -163,6 +196,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\LoginStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPageStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OrderFood.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OrderHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Weather.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

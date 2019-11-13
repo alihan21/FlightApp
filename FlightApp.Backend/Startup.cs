@@ -62,7 +62,7 @@ namespace FlightApp.Backend
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            flightAppInit.Init();
+            //flightAppInit.Init();
         }
     }
 }
