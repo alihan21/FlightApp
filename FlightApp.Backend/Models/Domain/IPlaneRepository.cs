@@ -12,10 +12,6 @@ namespace FlightApp.Backend.Models.Domain
 
         IEnumerable<Plane> GetAll();
 
-        void Add(Plane plane);
-
-        void Update(Plane plane);
-
         void SaveChanges();
     }
 }
