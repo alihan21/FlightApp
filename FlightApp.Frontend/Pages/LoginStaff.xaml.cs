@@ -4,13 +4,13 @@ using Windows.UI.Xaml.Controls;
 namespace FlightApp.Frontend.Pages
 {
     /// <summary>
-    /// This is where a staffmember can login
+    /// Login page for a staff
     /// </summary>
     public sealed partial class LoginStaff : Page
     {
         public LoginStaff()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void NavigateToPassengerPage(object sender, RoutedEventArgs e)

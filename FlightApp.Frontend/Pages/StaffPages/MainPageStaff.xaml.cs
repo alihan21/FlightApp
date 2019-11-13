@@ -1,10 +1,10 @@
-﻿using Windows.UI.Xaml;
+﻿using System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-
-namespace FlightApp.Frontend.Pages
+namespace FlightApp.Frontend.Pages.StaffPages
 {
     /// <summary>
-    /// This is the main page of Staff
+    /// Main page for a staff member
     /// </summary>
     public sealed partial class MainPageStaff : Page
     {
@@ -15,22 +15,27 @@ namespace FlightApp.Frontend.Pages
 
         private void NavigateToMovePassenger(object sender, RoutedEventArgs e)
         {
-
+            NavigateToPage(typeof(MovePassenger));
         }
 
         private void NavigateToOrderOverview(object sender, RoutedEventArgs e)
         {
-
+            NavigateToPage(typeof(OrderOverview));
         }
 
         private void NavigateToCustomNotification(object sender, RoutedEventArgs e)
         {
-
+            NavigateToPage(typeof(CustomNotification));
         }
 
         private void NavigateToAdvertise(object sender, RoutedEventArgs e)
         {
+            NavigateToPage(typeof(MovePassenger));
+        }
 
+        private void NavigateToPage(Type type)
+        {
+            Frame.Navigate(type);
         }
     }
 }

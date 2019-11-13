@@ -8,10 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <Grid.Background>
+    <Canvas>
+        <Canvas.Background>
             <ImageBrush ImageSource="/Assets/loginBackgroundImgStaff.jpg"/>
-        </Grid.Background>
+        </Canvas.Background>
         <TextBlock HorizontalAlignment="Left" Margin="74,180,0,0" Text="Enter your password:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Foreground="Black" FontWeight="Bold"/>
         <TextBox PlaceholderText="password should be 4 symbols" HorizontalAlignment="Left" Margin="134,249,0,0" Text="" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
         <Button Content="Submit" HorizontalAlignment="Left" Margin="230,320,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
@@ -20,5 +20,5 @@
                 <AcrylicBrush Opacity="0"/>
             </Button.Background>
         </Button>
-    </Grid>
+    </Canvas>
 </Page>
