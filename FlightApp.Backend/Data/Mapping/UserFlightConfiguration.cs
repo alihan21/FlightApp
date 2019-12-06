@@ -5,11 +5,11 @@ using System;
 
 namespace FlightApp.Backend.Data.Mapping
 {
-    public class StaffFlightConfiguration : IEntityTypeConfiguration<StaffFlight>
+    public class UserFlightConfiguration : IEntityTypeConfiguration<UserFlight>
     {
-        public void Configure(EntityTypeBuilder<StaffFlight> builder)
+        public void Configure(EntityTypeBuilder<UserFlight> builder)
         {
-            builder.HasKey(b => new { b.StaffId, b.FlightId});
+            builder.HasKey(b => new { b.FlightId, b.UserId });
         }
     }
 }

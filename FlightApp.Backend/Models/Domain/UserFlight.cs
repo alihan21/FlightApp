@@ -1,9 +1,9 @@
 ﻿namespace FlightApp.Backend.Models.Domain
 {
-    public class PassengerFlight
+    public class UserFlight
     {
-        public int PassengerId { get; set; }
-        public Passenger Passenger { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
         public int FlightId { get; set; }
         public Flight Flight { get; set; }
     }
