@@ -119,14 +119,47 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\LoginPassenger.xaml.cs">
       <DependentUpon>LoginPassenger.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LoginStaff.xaml.cs">
       <DependentUpon>LoginStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PassengerPages\Chat.xaml.cs">
+      <DependentUpon>Chat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PassengerPages\Entertainment.xaml.cs">
+      <DependentUpon>Entertainment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PassengerPages\FlightInfo.xaml.cs">
+      <DependentUpon>FlightInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PassengerPages\MainPagePassenger.xaml.cs">
+      <DependentUpon>MainPagePassenger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PassengerPages\OrderFood.xaml.cs">
+      <DependentUpon>OrderFood.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PassengerPages\OrderHistory.xaml.cs">
+      <DependentUpon>OrderHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PassengerPages\Weather.xaml.cs">
+      <DependentUpon>Weather.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StaffPages\Advertise.xaml.cs">
+      <DependentUpon>Advertise.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StaffPages\CustomNotification.xaml.cs">
+      <DependentUpon>CustomNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StaffPages\MainPageStaff.xaml.cs">
+      <DependentUpon>MainPageStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StaffPages\MovePassenger.xaml.cs">
+      <DependentUpon>MovePassenger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StaffPages\OrderOverview.xaml.cs">
+      <DependentUpon>OrderOverview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -139,7 +172,7 @@
   <ItemGroup>
     <Content Include="Assets\loginBackgroundImgPassenger.jpg" />
     <Content Include="Assets\loginBackgroundImgStaff.jpg" />
-    <Content Include="Assets\underConstructionImage.jpeg" />
+    <Content Include="Assets\underConstructionImage.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -154,10 +187,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.7</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
     <Page Include="Pages\LoginPassenger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,12 +202,56 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PassengerPages\Chat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PassengerPages\Entertainment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PassengerPages\FlightInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PassengerPages\MainPagePassenger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PassengerPages\OrderFood.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PassengerPages\OrderHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PassengerPages\Weather.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StaffPages\Advertise.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StaffPages\CustomNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StaffPages\MainPageStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StaffPages\MovePassenger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StaffPages\OrderOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.7</Version>
-    </PackageReference>
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
