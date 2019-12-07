@@ -15,10 +15,6 @@ namespace FlightApp.Backend.Data
 
     public void Init()
     {
-      _dbContext.Database.EnsureDeleted();
-
-      if (_dbContext.Database.EnsureCreated())
-      {
         #region Make Foods
         Food chips = new Food("Chips", "paprika chips", "snack");
         Food steakWithMashPotatos = new Food("Steak", "fat steak with mash potatos", "main course");
@@ -193,7 +189,6 @@ namespace FlightApp.Backend.Data
 
         _dbContext.Passengers.AddRange(new List<Passenger>() { arthur, noah, adam, louis, liam, lucas, jules, victor, gabriel, mohamed });
         #endregion
-      }
 
       _dbContext.SaveChanges();
     }
