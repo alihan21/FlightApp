@@ -1,10 +1,10 @@
-﻿using FlightApp.Backend.Data.Mapping;
+using FlightApp.Backend.Data.Mapping;
 using FlightApp.Backend.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace FlightApp.Backend.Data
 {
-    public class FlightAppContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
         public DbSet<Food> Foods { get; set; }
         public DbSet<Flight> Flights { get; set; }
@@ -16,7 +16,7 @@ namespace FlightApp.Backend.Data
         public DbSet<Passenger> Passengers { get; set; }
         public DbSet<Staff> FlightStaff { get; set; }
 
-        public FlightAppContext(DbContextOptions<FlightAppContext> options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
         }

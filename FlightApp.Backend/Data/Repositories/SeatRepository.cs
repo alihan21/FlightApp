@@ -10,10 +10,10 @@ namespace FlightApp.Backend.Data.Repositories
     public class SeatRepository : ISeatRepository
     {
 
-        private readonly FlightAppContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly DbSet<Seat> _seats;
 
-        public SeatRepository(FlightAppContext dbContext)
+        public SeatRepository(ApplicationDbContext dbContext)
         {
             _context = dbContext;
             _seats = dbContext.Seats;

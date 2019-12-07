@@ -22,7 +22,7 @@ namespace FlightApp.Backend
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<FlightAppContext>(options => {
+            services.AddDbContext<ApplicationDbContext>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("DevConnection"));
             });
 

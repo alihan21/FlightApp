@@ -9,10 +9,10 @@ namespace FlightApp.Backend.Data.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly FlightAppContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly DbSet<User> _users;
 
-        public UserRepository(FlightAppContext dbContext)
+        public UserRepository(ApplicationDbContext dbContext)
         {
             _context = dbContext;
             _users = dbContext.Users;
