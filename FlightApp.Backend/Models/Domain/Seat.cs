@@ -1,8 +1,18 @@
-﻿namespace FlightApp.Backend.Models.Domain
+namespace FlightApp.Backend.Models.Domain
 {
-    public class Seat
+  public class Seat
+  {
+    public int SeatId { get; set; }
+    public string SeatNumber { get; set; }
+
+    public Seat(string seatNumber)
     {
-        public int SeatId { get; set; }
-        public string Seatnumber { get; set; }
+      SeatNumber = seatNumber;
     }
+
+    protected Seat()
+    {
+
+    }
+  }
 }
