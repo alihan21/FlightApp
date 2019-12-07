@@ -1,13 +1,21 @@
-﻿using System.Collections.Generic;
-
 namespace FlightApp.Backend.Models.Domain
 {
-    public class Staff : User
+  public class Staff : User
+  {
+    public int LoginCode { get; set; }
+
+    public Staff(int loginCode, string name) : base(name)
     {
-        public int LoginCode { get; set; }
-        public void MovePassengerToAnotherSeat(Passenger passenger, Seat seat)
-        {
-            passenger.Seat = seat;
-        }
+      LoginCode = loginCode;
     }
+
+    protected Staff()
+    {
+    }
+
+    public void MovePassengerToAnotherSeat(Passenger passenger, Seat seat)
+    {
+      passenger.Seat = seat;
+    }
+  }
 }

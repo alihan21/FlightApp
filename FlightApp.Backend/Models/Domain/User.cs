@@ -1,12 +1,32 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace FlightApp.Backend.Models.Domain
 {
-    public class User
-    {
-        public int UserId { get; set; }
-        public string Name { get; set; }
-        public List<UserFlight> UserFlights { get; set; }
+  public class User
+  {
+    public int UserId { get; set; }
+    public string Name { get; set; }
+    public List<UserFlight> UserFlights { get; set; }
 
+    public User(string name)
+    {
+      Name = name;
+      UserFlights = new List<UserFlight>();
     }
+
+    protected User()
+    {
+      UserFlights = new List<UserFlight>();
+    }
+
+    public void AddToFlight(UserFlight userFlight)
+    {
+      UserFlights.Add(userFlight);
+    }
+
+    public void RemoveToFlight(UserFlight userFlight)
+    {
+      UserFlights.Remove(userFlight);
+    }
+  }
 }
