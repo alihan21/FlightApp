@@ -119,6 +119,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Domain\Flight.cs" />
+    <Compile Include="Domain\Plane.cs" />
+    <Compile Include="Domain\Seat.cs" />
+    <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\UserFlight.cs" />
     <Compile Include="Pages\LoginPassenger.xaml.cs">
       <DependentUpon>LoginPassenger.xaml</DependentUpon>
     </Compile>
