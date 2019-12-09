@@ -73,7 +73,7 @@ namespace FlightApp.Backend
       app.UseSwaggerUi3();
       app.UseSwagger();
 
-      flightAppInit.Init();
+      //flightAppInit.Init();
     }
   }
 }

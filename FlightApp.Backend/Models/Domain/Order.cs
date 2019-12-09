@@ -1,15 +1,25 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace FlightApp.Backend.Models.Domain
 {
-    public class Order
-    {
-        public int OrderId { get; set; }
-        public List<OrderFood> OrderFoods { get; set; }
+  public class Order
+  {
+    public int OrderId { get; set; }
+    public List<OrderFood> Orders { get; set; }
 
-        public Order()
-        {
-            OrderFoods = new List<OrderFood>();
-        }
+    public Order()
+    {
+      Orders = new List<OrderFood>();
     }
+
+    public void AddOrder(OrderFood order)
+    {
+      Orders.Add(order);
+    }
+
+    public void RemoveOrder(OrderFood order)
+    {
+      Orders.Remove(order);
+    }
+  }
 }
