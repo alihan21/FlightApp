@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FlightApp.Backend.Data.Repositories;
+using FlightApp.Backend.Data.Repositories.Interfaces;
 using FlightApp.Backend.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +17,7 @@ namespace FlightApp.Backend.Controllers
         private readonly IFlightRepository _flightRepository;
 
 
-        public FlightController(FlightRepository context)
+        public FlightController(IFlightRepository context)
         {
             _flightRepository = context;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace FlightApp.Backend.Models.Domain
@@ -11,6 +12,7 @@ namespace FlightApp.Backend.Models.Domain
         public double FlightDuration { get; set; }
         public DateTime TimeOfDepart { get; set; }
         public List<UserFlight> UserFlights { get; set; }
+        [JsonIgnore]
         public Plane Plane { get; set; }
     }
 }
