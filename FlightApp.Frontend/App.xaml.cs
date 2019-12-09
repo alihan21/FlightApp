@@ -1,4 +1,5 @@
-﻿using FlightApp.Frontend.Pages;
+using FlightApp.Frontend.Pages;
+using FlightApp.Frontend.Pages.PassengerPages;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -62,7 +63,7 @@ namespace FlightApp.Frontend
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(LoginPassenger), e.Arguments);
+                    rootFrame.Navigate(typeof(MainPagePassenger), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

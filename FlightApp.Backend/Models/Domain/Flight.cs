@@ -11,7 +11,7 @@ namespace FlightApp.Backend.Models.Domain
     public string Origin { get; set; }
     public double FlightDuration { get; set; }
     public DateTime TimeOfDepart { get; set; }
-    public List<UserFlight> UserFlights { get; set; }
+    public List<UserFlight> Attendances { get; set; }
     public Plane Plane { get; set; }
 
     public Flight(string destination, string origin, double flightDuration, DateTime timeOfDepart, Plane plane)
