@@ -1,11 +1,12 @@
-﻿using FlightApp.Backend.Models.Domain;
+using FlightApp.Backend.Data.Repositories.Interfaces;
+using FlightApp.Backend.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FlightApp.Backend.Data.Repositories
+namespace FlightApp.Backend.Data.Repositories.Concrete
 {
     public class PlaneRepository : IPlaneRepository
     {
@@ -21,7 +22,7 @@ namespace FlightApp.Backend.Data.Repositories
 
         public IEnumerable<Plane> GetAll()
         {
-            return _planes.Include(r => r.Seats);
+            return _planes.Include(p => p.PlaneFlights).Include(r => r.Seats);
         }
 
         public Plane GetBy(int id)
