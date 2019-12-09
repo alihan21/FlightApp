@@ -1,11 +1,12 @@
-﻿using FlightApp.Backend.Models.Domain;
+using FlightApp.Backend.Data.Repositories.Interfaces;
+using FlightApp.Backend.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FlightApp.Backend.Data.Repositories
+namespace FlightApp.Backend.Data.Repositories.Concrete
 {
     public class SeatRepository : ISeatRepository
     {
