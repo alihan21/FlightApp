@@ -35,5 +35,21 @@ namespace FlightApp.Backend.Controllers
             if (seat == null) return NotFound();
             return seat;
         }
+
+        [HttpGet]
+        [Route("plane/{planeId}")]
+        public ActionResult<Seat> GetSeatByPlane(int planeId)
+        {
+
+            IEnumerable<Seat> seats = _seatRepository.GetByPlaneId(planeId);
+            if (seats == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(seats);
+            }
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace FlightApp.Backend.Data.Repositories.Interfaces
     {
         Seat GetBy(int id);
 
+        IEnumerable<Seat> GetByPlaneId(int planeId);
+
         IEnumerable<Seat> GetAll();
 
         void SaveChanges();
