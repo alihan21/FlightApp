@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace FlightApp.Backend.Models.Domain
+namespace FlightApp.Frontend.Models
 {
   public class Passenger : User
   {
