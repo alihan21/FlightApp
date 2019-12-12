@@ -1,4 +1,5 @@
-﻿using FlightApp.Frontend.Pages;
+using FlightApp.Frontend.Pages;
+using FlightApp.Frontend.Pages.PassengerPages;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;

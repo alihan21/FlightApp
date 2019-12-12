@@ -11,10 +11,10 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
     public class PlaneRepository : IPlaneRepository
     {
 
-        private readonly FlightAppContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly DbSet<Plane> _planes;
 
-        public PlaneRepository(FlightAppContext dbContext)
+        public PlaneRepository(ApplicationDbContext dbContext)
         {
             _context = dbContext;
             _planes = dbContext.Planes;

@@ -1,19 +1,35 @@
-﻿<Page
+<Page
     x:Class="FlightApp.Frontend.Pages.PassengerPages.FlightInfo"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FlightApp.Frontend.Pages.PassengerPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
+    xmlns:converters="using:FlightApp.Frontend.Converters"
+  mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+  <Page.Resources>
+    <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
+  </Page.Resources>
 
-    <Canvas>
-        <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Flight information" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Image Height="542" Canvas.Left="278" Canvas.Top="306" Width="883" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image.FocusVisualPrimaryBrush>
-                <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
-            </Image.FocusVisualPrimaryBrush>
-        </Image>
-    </Canvas>
+  <Canvas>
+    <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Flight information" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    <Image Height="542" Canvas.Left="278" Canvas.Top="306" Width="883" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+      <Image.FocusVisualPrimaryBrush>
+        <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
+      </Image.FocusVisualPrimaryBrush>
+    </Image>
+    <ListView x:Name="lv">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <StackPanel>
+            <TextBlock Text="{Binding Destination, Converter={StaticResource StringConverter}, ConverterParameter='Destination: '}"/>
+            <TextBlock Text="{Binding Origin, Converter={StaticResource StringConverter}, ConverterParameter='Origin: '}"/>
+            <TextBlock Text="{Binding FlightDuration, Converter={StaticResource StringConverter}, ConverterParameter='Duration: '}"/>
+            <TextBlock Text="{Binding TimeOfDepart, Converter={StaticResource StringConverter}, ConverterParameter='Time and date: '}"/>
+          </StackPanel>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </Canvas>
 </Page>

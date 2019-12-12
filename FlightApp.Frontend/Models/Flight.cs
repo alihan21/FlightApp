@@ -1,8 +1,10 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace FlightApp.Backend.Models.Domain
+namespace FlightApp.Frontend.Models
 {
   public class Flight
   {
@@ -26,16 +28,6 @@ namespace FlightApp.Backend.Models.Domain
     protected Flight()
     {
       Attendances = new List<UserFlight>();
-    }
-
-    public void AddUserToFlight(UserFlight user)
-    {
-      Attendances.Add(user);
-    }
-
-    public void RemoveUserFromFlight(UserFlight user)
-    {
-      Attendances.Remove(user);
     }
   }
 }

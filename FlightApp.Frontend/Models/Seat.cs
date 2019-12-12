@@ -1,13 +1,15 @@
-using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace FlightApp.Backend.Models.Domain
+namespace FlightApp.Frontend.Models
 {
   public class Seat
   {
     public int SeatId { get; set; }
     public string SeatNumber { get; set; }
-    [JsonIgnore]
-    public Plane Plane { get; set; }
 
     public Seat(string seatNumber)
     {

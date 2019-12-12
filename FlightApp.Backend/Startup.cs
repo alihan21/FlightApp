@@ -23,7 +23,7 @@ namespace FlightApp.Backend
     public void ConfigureServices(IServiceCollection services)
     {
 
-      services.AddDbContext<FlightAppContext>(options =>
+      services.AddDbContext<ApplicationDbContext>(options =>
       {
         options.UseSqlServer(Configuration.GetConnectionString("DevConnection"));
       });
@@ -35,6 +35,7 @@ namespace FlightApp.Backend
       services.AddScoped<IPlaneRepository, PlaneRepository>();
       services.AddScoped<ISeatRepository, SeatRepository>();
       services.AddScoped<IUserRepository, UserRepository>();
+      services.AddScoped<IStaffRepository, StaffRepository>();
 
       services.AddOpenApiDocument(c =>
       {

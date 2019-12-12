@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FlightApp.Backend.Migrations
 {
-    [DbContext(typeof(FlightAppContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20191021205327_Init")]
     partial class Init
     {

@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="FlightApp.Frontend.Pages.StaffPages.MainPageStaff"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,13 +6,20 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:viewModels="using:FlightApp.Frontend.ViewModels"
+    xmlns:converters="using:FlightApp.Frontend.Converters"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Canvas>
-        <TextBlock Canvas.Left="265" Canvas.Top="61" Text="Here comes the name of staff" TextWrapping="Wrap" FontSize="72" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Normal" FontStyle="Normal"/>
-        <Button x:Name="btnNavigateToMovePassenger" Content="Verplaats passagier" HorizontalAlignment="Left" Canvas.Left="267" Canvas.Top="331" VerticalAlignment="Center" Height="71" Width="330" FontSize="36" Click="NavigateToMovePassenger"/>
-        <Button x:Name="btnNavigateToOrderOverview" Content="Overzicht van bestellingen" HorizontalAlignment="Left" Canvas.Left="796" Canvas.Top="338" VerticalAlignment="Top" Height="71" Width="457" FontSize="36" Click="NavigateToOrderOverview"/>
-        <Button x:Name="btnNavigateToCustomNotification" Content="Custom melding" HorizontalAlignment="Left" Canvas.Left="281" Canvas.Top="560" VerticalAlignment="Top" Height="71" Width="330" FontSize="36" Click="NavigateToCustomNotification"/>
-        <Button x:Name="btnNavigateToAdvertise" Content="Adverteren" HorizontalAlignment="Left" Canvas.Left="793" Canvas.Top="561" VerticalAlignment="Top" Height="71" Width="330" FontSize="36" Click="NavigateToAdvertise"/>
-    </Canvas>
+  <Page.Resources>
+    <viewModels:PassengerViewModel x:Key="passengerViewModel"></viewModels:PassengerViewModel>
+    <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
+  </Page.Resources>
+  
+  <Canvas>
+    <TextBlock x:Name="tbStaffName" Canvas.Left="265" Canvas.Top="61" Text="{Binding Name, Converter={StaticResource StringConverter}, ConverterParameter='Welcome, '}" TextWrapping="Wrap" FontSize="72" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Normal" FontStyle="Normal"/>
+    <Button x:Name="btnNavigateToMovePassenger" Content="Verplaats passagier" HorizontalAlignment="Left" Canvas.Left="267" Canvas.Top="331" VerticalAlignment="Center" Height="71" Width="330" FontSize="36" Click="NavigateToMovePassenger"/>
+    <Button x:Name="btnNavigateToOrderOverview" Content="Overzicht van bestellingen" HorizontalAlignment="Left" Canvas.Left="796" Canvas.Top="338" VerticalAlignment="Top" Height="71" Width="457" FontSize="36" Click="NavigateToOrderOverview"/>
+    <Button x:Name="btnNavigateToCustomNotification" Content="Custom melding" HorizontalAlignment="Left" Canvas.Left="281" Canvas.Top="560" VerticalAlignment="Top" Height="71" Width="330" FontSize="36" Click="NavigateToCustomNotification"/>
+    <Button x:Name="btnNavigateToAdvertise" Content="Adverteren" HorizontalAlignment="Left" Canvas.Left="793" Canvas.Top="561" VerticalAlignment="Top" Height="71" Width="330" FontSize="36" Click="NavigateToAdvertise"/>
+  </Canvas>
 </Page>

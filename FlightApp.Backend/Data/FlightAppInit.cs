@@ -136,7 +136,7 @@ namespace FlightApp.Backend.Data
         UserFlight gabrielflightChinaUsa = new UserFlight(gabriel, flightChinaUsa);
         UserFlight mohamedflightChinaUsa = new UserFlight(mohamed, flightChinaUsa);
 
-        _dbContext.PassengerFlights.AddRange(new List<UserFlight>() { arthurflightBelgiumBulgaria, noahflightBelgiumBulgaria, adamflightBelgiumBulgaria,
+        _dbContext.UserFlights.AddRange(new List<UserFlight>() { arthurflightBelgiumBulgaria, noahflightBelgiumBulgaria, adamflightBelgiumBulgaria,
                                 louisflightBrazilAntarctic, liamflightBrazilAntarctic, lucasflightBrazilAntarctic, julesflightBrazilAntarctic, victorflightChinaUsa,
                                 gabrielflightChinaUsa, mohamedflightChinaUsa});
         #endregion
