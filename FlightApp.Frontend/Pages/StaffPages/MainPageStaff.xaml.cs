@@ -23,8 +23,8 @@ namespace FlightApp.Frontend.Pages.StaffPages
     {
       base.OnNavigatedTo(e);
 
-      LoggedStaff = new StaffViewModel((Staff)e.Parameter);
-      tbStaffName.DataContext = LoggedStaff;
+      //LoggedStaff = new StaffViewModel((Staff)e.Parameter);
+      //tbStaffName.DataContext = LoggedStaff;
     }
 
     private void NavigateToMovePassenger(object sender, RoutedEventArgs e)
