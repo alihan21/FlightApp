@@ -15,5 +15,14 @@
                 <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
             </Image.FocusVisualPrimaryBrush>
         </Image>
+        <ListView x:Name="lv" Height="100" Canvas.Left="333" Canvas.Top="473" Width="100">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding SeatNumber}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Canvas>
 </Page>

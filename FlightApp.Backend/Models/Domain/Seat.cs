@@ -2,21 +2,22 @@ using Newtonsoft.Json;
 
 namespace FlightApp.Backend.Models.Domain
 {
-  public class Seat
-  {
-    public int SeatId { get; set; }
-    public string SeatNumber { get; set; }
-    [JsonIgnore]
-    public Plane Plane { get; set; }
-
-    public Seat(string seatNumber)
+    public class Seat
     {
-      SeatNumber = seatNumber;
-    }
+        public int SeatId { get; set; }
+        public string SeatNumber { get; set; }
+        public bool IsReserverd { get; set; }
+        [JsonIgnore]
+        public Plane Plane { get; set; }
 
-    protected Seat()
-    {
+        public Seat(string seatNumber)
+        {
+            SeatNumber = seatNumber;
+        }
 
+        protected Seat()
+        {
+
+        }
     }
-  }
 }
