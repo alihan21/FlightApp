@@ -12,6 +12,7 @@ namespace FlightApp.Frontend.ViewModels
     public PassengerViewModel(Passenger passenger)
     {
       Name = passenger.Name;
+      Id = passenger.UserId;
     }
   }
 }
