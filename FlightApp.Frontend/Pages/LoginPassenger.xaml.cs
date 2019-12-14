@@ -18,7 +18,7 @@ namespace FlightApp.Frontend.Pages
       this.InitializeComponent();
     }
 
-    private void navigateToStaffmemberPage(object sender, RoutedEventArgs e)
+    private void NavigateToStaffmemberPage(object sender, RoutedEventArgs e)
     {
       Frame.Navigate(typeof(LoginStaff));
     }
@@ -30,7 +30,7 @@ namespace FlightApp.Frontend.Pages
       if (!string.IsNullOrEmpty(password))
       {
         HttpClient client = new HttpClient();
-        var json = await client.GetStringAsync(new Uri($"http://localhost:49926/api/User/plane/7/seat/{password}"));
+        var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/User/plane/2/seat/{password}"));
         var loggedInPassenger = JsonConvert.DeserializeObject<Passenger>(json);
 
         if (loggedInPassenger != null)

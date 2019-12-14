@@ -9,7 +9,7 @@ namespace FlightApp.Backend.Data.Mapping
     public void Configure(EntityTypeBuilder<UserFlight> builder)
     {
       builder.HasKey(b => new { b.FlightId, b.UserId });
-      builder.ToTable("UserFlight");
+      builder.ToTable("UserFlights");
     }
   }
 }

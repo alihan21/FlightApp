@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:FlightApp.Frontend.Converters"
+    xmlns:viewModels="using:FlightApp.Frontend.ViewModels"
   mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
   <Page.Resources>
@@ -14,22 +15,13 @@
 
   <Canvas>
     <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Flight information" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-    <Image Height="542" Canvas.Left="278" Canvas.Top="306" Width="883" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-      <Image.FocusVisualPrimaryBrush>
-        <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
-      </Image.FocusVisualPrimaryBrush>
-    </Image>
-    <ListView x:Name="lv">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <StackPanel>
-            <TextBlock Text="{Binding Destination, Converter={StaticResource StringConverter}, ConverterParameter='Destination: '}"/>
-            <TextBlock Text="{Binding Origin, Converter={StaticResource StringConverter}, ConverterParameter='Origin: '}"/>
-            <TextBlock Text="{Binding FlightDuration, Converter={StaticResource StringConverter}, ConverterParameter='Duration: '}"/>
-            <TextBlock Text="{Binding TimeOfDepart, Converter={StaticResource StringConverter}, ConverterParameter='Time and date: '}"/>
-          </StackPanel>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
+    <StackPanel Canvas.Left="333" Canvas.Top="258" HorizontalAlignment="Stretch" Height="203" VerticalAlignment="Stretch" Width="588">
+      <TextBlock Text="{x:Bind Path=FlightViewModel.Origin, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Origin: '}"/>
+      <TextBlock Text="{x:Bind Path=FlightViewModel.Destination, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Destination: '}"/>
+      <TextBlock Text="{x:Bind Path=FlightViewModel.Duration, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Duration: '}"/>
+      <TextBlock Text="{x:Bind Path=FlightViewModel.PlaneMaxSeats, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Max seats on this plane: '}"/>
+      <TextBlock Text="{x:Bind Path=FlightViewModel.PlaneName, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Name of plane: '}"/>
+      <TextBlock Text="{x:Bind Path=FlightViewModel.TimeOfDepart, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Time and date: '}"/>
+    </StackPanel>
   </Canvas>
 </Page>

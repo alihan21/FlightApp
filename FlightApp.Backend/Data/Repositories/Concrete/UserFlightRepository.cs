@@ -19,6 +19,7 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
     public UserFlight GetUserFlightByUserId(int userId)
     {
       return _userFlights
+        .Include(uf => uf.User)
         .Include(uf => uf.Flight)
         .ThenInclude(f => f.Plane)
         .Where(uf => uf.UserId == userId).LastOrDefault();
