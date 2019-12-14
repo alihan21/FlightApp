@@ -32,7 +32,7 @@ namespace FlightApp.Frontend.Pages
         int loginCode = Int16.Parse(password);
 
         HttpClient client = new HttpClient();
-        var json = await client.GetStringAsync(new Uri($"http://localhost:49926/api/User/staff/loginCode/{loginCode}"));
+        var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/User/staff/loginCode/{loginCode}"));
         var loggedInStaff = JsonConvert.DeserializeObject<Staff>(json);
 
         if (loggedInStaff != null)

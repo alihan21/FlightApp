@@ -20,6 +20,6 @@
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" Text="AliDean Airlines" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="100" Foreground="#FFAB0505" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" Canvas.Left="21" Canvas.Top="9"/>
-    </Canvas>
+    <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" Text="AliDean Airlines" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="100" Foreground="#FFAB0505" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" Canvas.Left="21" Canvas.Top="9"/>
+  </Canvas>
 </Page>

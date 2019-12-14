@@ -6,7 +6,7 @@ namespace FlightApp.Backend.Models.Domain
     {
         public int SeatId { get; set; }
         public string SeatNumber { get; set; }
-        public bool IsReserverd { get; set; }
+        //public bool IsReserverd { get; set; }
         [JsonIgnore]
         public Plane Plane { get; set; }
 
