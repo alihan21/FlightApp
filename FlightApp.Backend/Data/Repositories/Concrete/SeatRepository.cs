@@ -25,6 +25,11 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
             return _seats;
         }
 
+        public IEnumerable<Seat> GetByPlaneId(int planeId)
+        {
+            return _seats.Where(r => r.Plane.PlaneId == planeId).ToList();
+        }
+
         public Seat GetBy(int id)
         {
             return _seats.SingleOrDefault(r => r.SeatId == id);
