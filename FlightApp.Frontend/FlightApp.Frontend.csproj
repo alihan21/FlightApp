@@ -175,6 +175,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
+    <Compile Include="ViewModels\OrderFoodViewModel.cs" />
     <Compile Include="ViewModels\PassengerViewModel.cs" />
     <Compile Include="ViewModels\SeatViewModel.cs" />
     <Compile Include="ViewModels\StaffViewModel.cs" />

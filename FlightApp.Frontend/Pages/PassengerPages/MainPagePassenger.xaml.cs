@@ -44,7 +44,10 @@ namespace FlightApp.Frontend.Pages.PassengerPages
 
     private void NavigateToOrderHistory(object sender, RoutedEventArgs e)
     {
-      NavigateToPage(typeof(OrderHistory));
+      if (LoggedPassenger != null)
+      {
+        Frame.Navigate(typeof(OrderHistory), LoggedPassenger.Id);
+      }
     }
 
     private void NavigateToEntertainment(object sender, RoutedEventArgs e)

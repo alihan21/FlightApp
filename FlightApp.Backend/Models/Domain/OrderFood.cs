@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace FlightApp.Backend.Models.Domain
 {
   public class OrderFood
