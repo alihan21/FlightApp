@@ -1,43 +1,44 @@
+using FlightApp.Frontend.Models;
 using FlightApp.Frontend.Pages.PassengerPages;
+using Newtonsoft.Json;
+using System;
+using System.Net.Http;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using System;
-using FlightApp.Frontend.Models;
-using Newtonsoft.Json;
-using System.Net.Http;
 
 namespace FlightApp.Frontend.Pages
 {
-  /// <summary>
-  /// Login page for a passenger
-  /// </summary>
-  public sealed partial class LoginPassenger : Page
-  {
-    public LoginPassenger()
+    /// <summary>
+    /// Login page for a passenger
+    /// </summary>
+    public sealed partial class LoginPassenger : Page
     {
-      this.InitializeComponent();
-    }
-
-    private void NavigateToStaffmemberPage(object sender, RoutedEventArgs e)
-    {
-      Frame.Navigate(typeof(LoginStaff));
-    }
-
-    private async void Login(object sender, RoutedEventArgs e)
-    {
-      string password = tbPassword.Text;
-
-      if (!string.IsNullOrEmpty(password))
-      {
-        HttpClient client = new HttpClient();
-        var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/User/plane/4/seat/{password}"));
-        var loggedInPassenger = JsonConvert.DeserializeObject<Passenger>(json);
-
-        if (loggedInPassenger != null)
+        public LoginPassenger()
         {
-          Frame.Navigate(typeof(MainPagePassenger), loggedInPassenger);
+            this.InitializeComponent();
         }
-      }
+
+        private void navigateToStaffmemberPage(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(LoginStaff));
+        }
+
+        private async void Login(object sender, RoutedEventArgs e)
+        {
+            string password = tbPassword.Text;
+            string flightId = tbFlightId.Text;
+
+            if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(flightId))
+            {
+                HttpClient client = new HttpClient();
+                var json = await client.GetStringAsync(new Uri($"http://localhost:57435/api/User/flight/{flightId}/seat/{password}"));
+                var loggedInPassenger = JsonConvert.DeserializeObject<Passenger>(json);
+
+                if (loggedInPassenger != null)
+                {
+                    Frame.Navigate(typeof(MainPagePassenger), loggedInPassenger);
+                }
+            }
+        }
     }
-  }
 }

@@ -12,14 +12,12 @@
         <Canvas.Background>
             <ImageBrush ImageSource="/Assets/loginBackgroundImgPassenger.jpg"/>
         </Canvas.Background>
-        <Button Content="Submit" HorizontalAlignment="Left" Canvas.Left="282" Canvas.Top="297" VerticalAlignment="Top" Foreground="Black" FontSize="36" FontWeight="Bold" Click="Login"/>
-        <TextBlock Canvas.Left="116" Canvas.Top="156" Text="Enter your seatnumber:" TextWrapping="Wrap" Foreground="Black" FontSize="48" FontWeight="Bold" FontFamily="Segoe UI" Margin="0,0,0,0"/>
-        <TextBox x:Name="tbPassword" PlaceholderForeground="Black" PlaceholderText="begins with a letter followed by 2 number" Canvas.Left="146" Canvas.Top="230" Text="" FontSize="22" SelectionHighlightColor="Black" FontWeight="Bold" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="btnNavigateToStaffmember" Content="Staffmember" HorizontalAlignment="Left" Canvas.Left="1183" Canvas.Top="26" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontStyle="Italic" FocusVisualPrimaryBrush="Black" Click="NavigateToStaffmemberPage">
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
-        </Button>
-    <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" Text="AliDean Airlines" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="100" Foreground="#FFAB0505" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" Canvas.Left="21" Canvas.Top="9"/>
-  </Canvas>
+        <Button Content="Submit" HorizontalAlignment="Left" Canvas.Left="612" Canvas.Top="406" VerticalAlignment="Top" Foreground="Black" FontSize="36" FontWeight="Bold" Click="Login"/>
+        <TextBlock Canvas.Left="160" Canvas.Top="200" Text="Enter your seatnumber:" TextWrapping="Wrap" Foreground="Black" FontSize="48" FontWeight="Bold" FontFamily="Segoe UI" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBox x:Name="tbPassword" PlaceholderForeground="Black" PlaceholderText="begins with a letter followed by 2 numbers" Canvas.Left="197" Canvas.Top="270" Text="" FontSize="22" SelectionHighlightColor="Black" FontWeight="Bold" Margin="0,0,0,0"/>
+        <TextBlock Canvas.Left="777" Canvas.Top="200" Text="Enter your flightnumber:" TextWrapping="Wrap" Foreground="Black" FontSize="48" FontWeight="Bold" FontFamily="Segoe UI" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBox x:Name="tbFlightId" PlaceholderForeground="Black" PlaceholderText="couple of numbers" Canvas.Left="946" Canvas.Top="272" Text="" FontSize="22" SelectionHighlightColor="Black" FontWeight="Bold" Margin="0,0,0,0"/>
+        <Button x:Name="btnNavigateToStaffmember" Content="Staffmember" HorizontalAlignment="Left" Canvas.Left="1183" Canvas.Top="26" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontStyle="Italic" FocusVisualPrimaryBrush="Black" Click="navigateToStaffmemberPage"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" Text="AliDean Airlines" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="100" Foreground="#FFAB0505" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" Canvas.Left="21" Canvas.Top="9"/>
+    </Canvas>
 </Page>
