@@ -13,12 +13,12 @@ namespace FlightApp.Frontend.Converters
     {
       string textToShowBeforeValue = parameter as string;
 
-      if (!string.IsNullOrEmpty(textToShowBeforeValue))
+      if (!string.IsNullOrEmpty(textToShowBeforeValue) && value != null)
       {
         return textToShowBeforeValue + value.ToString();
       }
 
-      return value.ToString();
+      return "";
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, string language)

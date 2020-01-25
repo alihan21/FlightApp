@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace FlightApp.Backend.Models.Domain
@@ -8,6 +9,7 @@ namespace FlightApp.Backend.Models.Domain
     public string Name { get; set; }
     public string Description { get; set; }
     public string Type { get; set; }
+    [JsonIgnore]
     public List<OrderFood> FoodHistory { get; set; }
 
     public Food(string name, string description, string type)

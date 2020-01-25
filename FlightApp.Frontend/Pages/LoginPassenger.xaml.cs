@@ -28,7 +28,6 @@ namespace FlightApp.Frontend.Pages
             string password = tbPassword.Text;
             string flightId = tbFlightId.Text;
 
-
             if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(flightId))
             {
                 HttpClient client = new HttpClient();

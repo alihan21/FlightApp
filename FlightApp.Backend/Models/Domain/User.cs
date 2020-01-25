@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace FlightApp.Backend.Models.Domain
@@ -6,6 +7,7 @@ namespace FlightApp.Backend.Models.Domain
   {
     public int UserId { get; set; }
     public string Name { get; set; }
+    [JsonIgnore]
     public List<UserFlight> UserFlights { get; set; }
     public Seat Seat { get; set; }
 

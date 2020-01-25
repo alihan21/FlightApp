@@ -1,6 +1,8 @@
 using FlightApp.Frontend.Models;
 using FlightApp.Frontend.ViewModels;
+using Newtonsoft.Json;
 using System;
+using System.Net.Http;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -29,7 +31,10 @@ namespace FlightApp.Frontend.Pages.PassengerPages
 
     private void NavigateToFlightInfo(object sender, RoutedEventArgs e)
     {
-      NavigateToPage(typeof(FlightInfo));
+      if(LoggedPassenger != null)
+      {
+        Frame.Navigate(typeof(FlightInfo), LoggedPassenger.Id);
+      }
     }
 
     private void NavigateToOrderFood(object sender, RoutedEventArgs e)
@@ -39,7 +44,10 @@ namespace FlightApp.Frontend.Pages.PassengerPages
 
     private void NavigateToOrderHistory(object sender, RoutedEventArgs e)
     {
-      NavigateToPage(typeof(OrderHistory));
+      if (LoggedPassenger != null)
+      {
+        Frame.Navigate(typeof(OrderHistory), LoggedPassenger.Id);
+      }
     }
 
     private void NavigateToEntertainment(object sender, RoutedEventArgs e)

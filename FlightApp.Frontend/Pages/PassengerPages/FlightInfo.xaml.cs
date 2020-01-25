@@ -1,8 +1,4 @@
-using FlightApp.Frontend.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections.ObjectModel;
-using System.Net.Http;
+using FlightApp.Frontend.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -13,17 +9,24 @@ namespace FlightApp.Frontend.Pages.PassengerPages
   /// </summary>
   public sealed partial class FlightInfo : Page
   {
+    public FlightViewModel FlightViewModel { get; set; }
+
     public FlightInfo()
     {
       this.InitializeComponent();
     }
 
-    protected override async void OnNavigatedTo(NavigationEventArgs e) {
+    protected override void OnNavigatedTo(NavigationEventArgs e)
+    {
       base.OnNavigatedTo(e);
-      HttpClient client = new HttpClient();
-      var json = await client.GetStringAsync(new Uri("http://localhost:57435/api/Flight"));
-      var lst = JsonConvert.DeserializeObject<ObservableCollection<Flight>>(json);
-      lv.ItemsSource = lst; }
+      int passengerId = 0;
 
+      if (e.Parameter != null)
+      {
+        passengerId = (int)e.Parameter;
+
+        FlightViewModel = new FlightViewModel(passengerId);
+      }
+    }
   }
 }

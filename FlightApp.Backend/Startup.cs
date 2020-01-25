@@ -37,6 +37,7 @@ namespace FlightApp.Backend
       services.AddScoped<IUserRepository, UserRepository>();
       services.AddScoped<IStaffRepository, StaffRepository>();
       services.AddScoped<IUserFlightRepository, UserFlightRepository>();
+      services.AddScoped<IOrderFoodRepository, OrderFoodRepository>();
 
       services.AddOpenApiDocument(c =>
       {
