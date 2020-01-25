@@ -21,7 +21,7 @@ namespace FlightApp.Frontend.Pages.PassengerPages
     protected override async void OnNavigatedTo(NavigationEventArgs e) {
       base.OnNavigatedTo(e);
       HttpClient client = new HttpClient();
-      var json = await client.GetStringAsync(new Uri("http://localhost:56013/api/Flight"));
+      var json = await client.GetStringAsync(new Uri("http://localhost:57435/api/Flight"));
       var lst = JsonConvert.DeserializeObject<ObservableCollection<Flight>>(json);
       lv.ItemsSource = lst; }
 
