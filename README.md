@@ -18,8 +18,8 @@ This flight app is made by Dean and Alihan
 
 ### Alihan Fevziev
 
-- [ ] 
+- [ ] Enter task here
 
 ### Dean Van Damme
-- [ ] 
+- [ ] Enter task here
 
