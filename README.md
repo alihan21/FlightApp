@@ -21,5 +21,8 @@ This flight app is made by Dean and Alihan
 - [ ] Enter task here
 
 ### Dean Van Damme
-- [ ] Enter task here
-
+- [x] Flight Information (ETA, origin, destination, etc.)
+- [x] Order a snack
+- [x] consult order history
+- [ ] watch a movie / series & more
+- [x] weather forecast
