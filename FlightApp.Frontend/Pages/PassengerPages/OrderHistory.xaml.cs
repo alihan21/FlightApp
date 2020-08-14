@@ -21,7 +21,7 @@ namespace FlightApp.Frontend.Pages.PassengerPages
 
             base.OnNavigatedTo(e);
             OrderFoodViewModels = new OrderFoodViewModel();
-            OrderFoodViewModels.loadOrderHistoryAsync((int)e.Parameter);
+            //OrderFoodViewModels.loadOrderHistoryAsync((int)e.Parameter);
             MyFoodHistory.ItemsSource = OrderFoodViewModels.OrderHistory;
         }
     }

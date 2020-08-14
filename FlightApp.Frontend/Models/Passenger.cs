@@ -2,19 +2,21 @@ using System.Collections.Generic;
 
 namespace FlightApp.Frontend.Models
 {
-  public class Passenger : User
-  {
-    public List<Order> Orders { get; set; }
-
-    public Passenger(Seat seat, string name) : base(name)
+    public class Passenger : User
     {
-      Seat = seat;
-      Orders = new List<Order>();
-    }
+        public int ChannelId { get; set; }
 
-    protected Passenger()
-    {
-      Orders = new List<Order>();
+        public List<Order> Orders { get; set; }
+
+        public Passenger(Seat seat, string name) : base(name)
+        {
+            Seat = seat;
+            Orders = new List<Order>();
+        }
+
+        public Passenger()
+        {
+            Orders = new List<Order>();
+        }
     }
-  }
 }

@@ -20,6 +20,7 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
             _context = dbContext;
             _users = dbContext.Users;
             _userFlights = dbContext.UserFlights;
+            _passengers = dbContext.Passengers;
         }
 
         public IEnumerable<User> GetAll()

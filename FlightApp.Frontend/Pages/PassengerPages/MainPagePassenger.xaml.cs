@@ -13,8 +13,6 @@ namespace FlightApp.Frontend.Pages.PassengerPages
     public sealed partial class MainPagePassenger : Page
     {
         public PassengerViewModel LoggedPassenger { get; set; }
-        public Passenger CurrentPassenger { get; set; }
-
 
         public MainPagePassenger()
         {
@@ -24,13 +22,13 @@ namespace FlightApp.Frontend.Pages.PassengerPages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            CurrentPassenger = ((Passenger)e.Parameter);
-            if (CurrentPassenger.ChannelId == 0)
+            LoggedPassenger = (PassengerViewModel)e.Parameter;
+            tbPassengerName.DataContext = LoggedPassenger;
+
+            if (LoggedPassenger.ChannelId == 0)
             {
                 btnNavigateToChat.Visibility = Visibility.Collapsed;
             }
-            LoggedPassenger = (PassengerViewModel)e.Parameter;
-            tbPassengerName.DataContext = LoggedPassenger;
         }
 
         private void NavigateToFlightInfo(object sender, RoutedEventArgs e)
@@ -74,7 +72,7 @@ namespace FlightApp.Frontend.Pages.PassengerPages
         {
             if (LoggedPassenger != null)
             {
-                Frame.Navigate(typeof(Chat), CurrentPassenger);
+                Frame.Navigate(typeof(Chat), LoggedPassenger);
             }
         }
 

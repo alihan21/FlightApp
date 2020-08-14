@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FlightApp.Frontend.Models
+﻿namespace FlightApp.Frontend.Models
 {
     public class Message
     {
         public int MessageId { get; set; }
         public string Text { get; set; }
         public int ChannelId { get; set; }
+        public int PassengerId { get; set; }
         public Passenger Passenger { get; set; }
 
         public Message()
@@ -18,12 +13,20 @@ namespace FlightApp.Frontend.Models
 
         }
 
-        public Message(Passenger passenger, string text)
+        public Message(int passengerId, string text)
         {
             Text = text;
-            Passenger = passenger;
-            ChannelId = passenger.ChannelId;
+            PassengerId = passengerId;
         }
+
+        public Message(int passengerId, string passengerName, string text)
+        {
+            Passenger = new Passenger();
+            PassengerId = passengerId;
+            Passenger.Name = passengerName;
+            Text = text;
+        }
+
     }
 
 }
