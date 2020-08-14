@@ -124,6 +124,7 @@
     <Compile Include="Converters\StringConverter.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\Food.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderFood.cs" />
     <Compile Include="Models\OrderLine.cs" />
@@ -133,6 +134,13 @@
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserFlight.cs" />
+    <Compile Include="Models\Weather\Cloud.cs" />
+    <Compile Include="Models\Weather\Coord.cs" />
+    <Compile Include="Models\Weather\Main.cs" />
+    <Compile Include="Models\Weather\Root.cs" />
+    <Compile Include="Models\Weather\Sys.cs" />
+    <Compile Include="Models\Weather\Weather.cs" />
+    <Compile Include="Models\Weather\Wind.cs" />
     <Compile Include="Pages\LoginPassenger.xaml.cs">
       <DependentUpon>LoginPassenger.xaml</DependentUpon>
     </Compile>
@@ -177,6 +185,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AllOrdersViewModel.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
     <Compile Include="ViewModels\FoodViewModel.cs" />
     <Compile Include="ViewModels\OrderFoodViewModel.cs" />
@@ -186,6 +195,7 @@
     <Compile Include="ViewModels\SeatViewModel.cs" />
     <Compile Include="ViewModels\StaffViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\WeatherViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

@@ -6,6 +6,7 @@ namespace FlightApp.Frontend.ViewModels
     {
         public string FlightId { get; set; }
         public string SeatNumber { get; set; }
+        public int ChannelId { get; set; }
 
         public PassengerViewModel()
         {
@@ -24,6 +25,7 @@ namespace FlightApp.Frontend.ViewModels
             Id = passenger.UserId;
             FlightId = flightId;
             SeatNumber = seatNumber;
+            ChannelId = passenger.ChannelId;
         }
     }
 }

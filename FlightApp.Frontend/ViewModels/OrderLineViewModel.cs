@@ -1,5 +1,6 @@
 ﻿using FlightApp.Frontend.Common;
 using FlightApp.Frontend.Models;
+using Newtonsoft.Json;
 
 namespace FlightApp.Frontend.ViewModels
 {
@@ -33,7 +34,7 @@ namespace FlightApp.Frontend.ViewModels
         }
 
         private decimal _subtotal;
-
+        [JsonIgnore]
         public decimal Subtotal {
             get { return _subtotal; }
             set {

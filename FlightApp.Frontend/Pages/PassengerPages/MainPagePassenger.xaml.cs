@@ -22,9 +22,13 @@ namespace FlightApp.Frontend.Pages.PassengerPages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
             LoggedPassenger = (PassengerViewModel)e.Parameter;
             tbPassengerName.DataContext = LoggedPassenger;
+
+            if (LoggedPassenger.ChannelId == 0)
+            {
+                btnNavigateToChat.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void NavigateToFlightInfo(object sender, RoutedEventArgs e)
@@ -58,12 +62,18 @@ namespace FlightApp.Frontend.Pages.PassengerPages
 
         private void NavigateToWeather(object sender, RoutedEventArgs e)
         {
-            NavigateToPage(typeof(Weather));
+            if (LoggedPassenger != null)
+            {
+                Frame.Navigate(typeof(Weather), LoggedPassenger.Id);
+            }
         }
 
         private void NavigateToChat(object sender, RoutedEventArgs e)
         {
-            NavigateToPage(typeof(Chat));
+            if (LoggedPassenger != null)
+            {
+                Frame.Navigate(typeof(Chat), LoggedPassenger);
+            }
         }
 
         private void NavigateToPage(Type type)

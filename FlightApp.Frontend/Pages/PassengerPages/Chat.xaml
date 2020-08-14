@@ -8,12 +8,29 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Canvas>
-        <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Chat" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Image Height="542" Canvas.Left="278" Canvas.Top="306" Width="883" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image.FocusVisualPrimaryBrush>
-                <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
-            </Image.FocusVisualPrimaryBrush>
-        </Image>
-    </Canvas>
+    <StackPanel Width="500" >
+        <ScrollViewer>
+            <ListView x:Name="MyMessages" Height="500">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="450" Margin="10,10,10,10">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Passenger.Name}" Margin="0,0,5,0"></TextBlock>
+                            </StackPanel>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Text}" FontWeight="Bold"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        <Grid Width="500" BorderThickness="0,1,0,0" BorderBrush="Gray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column ="0" x:Name="Input" />
+            <Button Grid.Column ="1" Click="Button_Click" Height="32">
+            </Button>
+        </Grid>
+    </StackPanel>
 </Page>

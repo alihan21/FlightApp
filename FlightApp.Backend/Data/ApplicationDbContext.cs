@@ -16,6 +16,9 @@ namespace FlightApp.Backend.Data
         public DbSet<Passenger> Passengers { get; set; }
         public DbSet<Staff> FlightStaff { get; set; }
         public DbSet<OrderHistory> OrderHistories { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Channel> Channels { get; set; }
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

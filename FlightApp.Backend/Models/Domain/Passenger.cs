@@ -4,6 +4,7 @@ namespace FlightApp.Backend.Models.Domain
 {
     public class Passenger : User
     {
+        public int ChannelId { get; set; }
         public List<Order> Orders { get; set; }
 
         public Passenger(Seat seat, string name) : base(name)

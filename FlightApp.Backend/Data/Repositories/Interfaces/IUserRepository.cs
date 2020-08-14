@@ -6,6 +6,7 @@ namespace FlightApp.Backend.Data.Repositories.Interfaces
     public interface IUserRepository
     {
         User GetPassengerById(int id);
+        Passenger GetPassengerByIdWithChannel(int id);
         User GetStaffById(int id);
         User GetBySeatNumber(string flightId, string seatNumber);
         IEnumerable<User> GetAll();
