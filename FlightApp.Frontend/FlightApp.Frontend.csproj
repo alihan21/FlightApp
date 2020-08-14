@@ -133,6 +133,13 @@
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserFlight.cs" />
+    <Compile Include="Models\Weather\Cloud.cs" />
+    <Compile Include="Models\Weather\Coord.cs" />
+    <Compile Include="Models\Weather\Main.cs" />
+    <Compile Include="Models\Weather\Root.cs" />
+    <Compile Include="Models\Weather\Sys.cs" />
+    <Compile Include="Models\Weather\Weather.cs" />
+    <Compile Include="Models\Weather\Wind.cs" />
     <Compile Include="Pages\LoginPassenger.xaml.cs">
       <DependentUpon>LoginPassenger.xaml</DependentUpon>
     </Compile>
