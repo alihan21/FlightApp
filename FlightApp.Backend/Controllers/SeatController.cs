@@ -11,7 +11,7 @@ namespace FlightApp.Backend.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class SeatController : Controller
+    public class SeatController : ControllerBase
     {
         private readonly ISeatRepository _seatRepository;
 

@@ -8,17 +8,15 @@ namespace FlightApp.Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : Controller
+    public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
         private readonly IStaffRepository _staffRepository;
-        private readonly IFlightRepository _flightRepository;
 
-        public UserController(IUserRepository userRepository, IStaffRepository staffRepository, IFlightRepository flightRepository)
+        public UserController(IUserRepository userRepository, IStaffRepository staffRepository)
         {
             _userRepository = userRepository;
             _staffRepository = staffRepository;
-            _flightRepository = flightRepository;
         }
 
 
@@ -97,27 +95,13 @@ namespace FlightApp.Backend.Controllers
         }
 
         /// <summary>
-        /// Finds a user by his seatnumber and plane id
+        /// Finds a user by his seatnumber and flight id
         /// </summary>
         [HttpGet]
         [Route("flight/{flightId}/seat/{seatNumber}")]
-        public ActionResult GetUserBySeatNumber(int flightId, string seatNumber)
+        public ActionResult<User> GetUserBySeatNumber(string flightId, string seatNumber)
         {
-            var currentFlight = _flightRepository.GetBy(flightId);
-
-            if (currentFlight == null)
-            {
-                return NotFound();
-            }
-
-            var seat = currentFlight.Plane.Seats.SingleOrDefault(s => s.SeatNumber == seatNumber);
-
-            if (seat == null)
-            {
-                return NotFound();
-            }
-
-            var user = _userRepository.GetBySeatNumber(seatNumber, seat.Plane.PlaneId);
+            var user = _userRepository.GetBySeatNumber(flightId, seatNumber);
 
             if (user == null)
             {
