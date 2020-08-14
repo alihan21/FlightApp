@@ -11,16 +11,17 @@
 
     <Canvas>
         <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Order history" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <ListBox x:Name="lbOrderHistory" ItemsSource="{Binding}" Height="404" Width="460" Canvas.Left="46" Canvas.Top="302" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <ListBox x:Name="lbTest" ItemsSource="{Binding}" Height="358" Margin="0,0,0,0" Width="463" Canvas.Left="952" Canvas.Top="325">
-            <ListBox.ItemTemplate>
+        <ListView x:Name="MyFoodHistory">
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding OrderId}"/>
-                        <TextBlock Text="{Binding Food.Name}"/>
-                    </StackPanel>
+                    <Grid>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Food.Name}"></TextBlock>
+                            <TextBlock Text="{Binding Food.Type}"/>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </ListView.ItemTemplate>
+        </ListView>
     </Canvas>
 </Page>

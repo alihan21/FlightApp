@@ -78,6 +78,12 @@ namespace FlightApp.Backend.Data
             _dbContext.Seats.AddRange(seatsForDeltaL1011);*/
             #endregion
 
+            #region Make Channel
+            Channel firstChannel = new Channel();
+            _dbContext.Channels.Add(firstChannel);
+
+            #endregion
+
             #region Make Planes
             Plane airbusA333 = new Plane("Airbus A333-300", 30)
             {
@@ -127,9 +133,9 @@ namespace FlightApp.Backend.Data
 
             Passenger liam = new Passenger(boeing777.Seats[1], "Liam");
 
-            Passenger lucas = new Passenger(boeing777.Seats[3], "Lucas");
+            Passenger lucas = new Passenger(boeing777.Seats[3], "Lucas") { ChannelId = 1 };
 
-            Passenger jules = new Passenger(boeing777.Seats[5], "Jules");
+            Passenger jules = new Passenger(boeing777.Seats[5], "Jules") { ChannelId = 1 };
 
             Passenger victor = new Passenger(deltaL1011.Seats[10], "Victor");
             //victor.PlaceOrder(victorsOrder);
@@ -147,6 +153,11 @@ namespace FlightApp.Backend.Data
             Staff boike = new Staff(1111, "BOI'KE");
 
             _dbContext.FlightStaff.AddRange(new List<Staff>() { alihan, dean, boike });
+
+            firstChannel.addMessage(lucas, "Hey, what you doin?");
+            firstChannel.addMessage(jules, "Nothin much, you?");
+
+            _dbContext.Channels.Add(firstChannel);
             #endregion
 
             #region Make FlightPassengers (intermediate table)
