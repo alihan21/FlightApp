@@ -1,73 +1,74 @@
 using FlightApp.Frontend.Models;
 using FlightApp.Frontend.ViewModels;
-using Newtonsoft.Json;
 using System;
-using System.Net.Http;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace FlightApp.Frontend.Pages.PassengerPages
 {
-  /// <summary>
-  /// Main page for a passenger
-  /// </summary>
-  public sealed partial class MainPagePassenger : Page
-  {
-    public PassengerViewModel LoggedPassenger { get; set; }
-
-    public MainPagePassenger()
+    /// <summary>
+    /// Main page for a passenger
+    /// </summary>
+    public sealed partial class MainPagePassenger : Page
     {
-      this.InitializeComponent();
-    }
+        public PassengerViewModel LoggedPassenger { get; set; }
 
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-      base.OnNavigatedTo(e);
+        public MainPagePassenger()
+        {
+            this.InitializeComponent();
+        }
 
-      LoggedPassenger = new PassengerViewModel((Passenger)e.Parameter);
-      tbPassengerName.DataContext = LoggedPassenger;
-    }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
 
-    private void NavigateToFlightInfo(object sender, RoutedEventArgs e)
-    {
-      if(LoggedPassenger != null)
-      {
-        Frame.Navigate(typeof(FlightInfo), LoggedPassenger.Id);
-      }
-    }
+            LoggedPassenger = (PassengerViewModel)e.Parameter;
+            tbPassengerName.DataContext = LoggedPassenger;
+        }
 
-    private void NavigateToOrderFood(object sender, RoutedEventArgs e)
-    {
-      NavigateToPage(typeof(OrderFood));
-    }
+        private void NavigateToFlightInfo(object sender, RoutedEventArgs e)
+        {
+            if (LoggedPassenger != null)
+            {
+                Frame.Navigate(typeof(FlightInfo), LoggedPassenger.Id);
+            }
+        }
 
-    private void NavigateToOrderHistory(object sender, RoutedEventArgs e)
-    {
-      if (LoggedPassenger != null)
-      {
-        Frame.Navigate(typeof(OrderHistory), LoggedPassenger.Id);
-      }
-    }
+        private void NavigateToOrderFood(object sender, RoutedEventArgs e)
+        {
+            if(LoggedPassenger != null)
+            {
+                Frame.Navigate(typeof(OrderFood), LoggedPassenger);
+            }
+        }
 
-    private void NavigateToEntertainment(object sender, RoutedEventArgs e)
-    {
-      NavigateToPage(typeof(Entertainment));
-    }
+        private void NavigateToOrderHistory(object sender, RoutedEventArgs e)
+        {
+            if (LoggedPassenger != null)
+            {
+                Frame.Navigate(typeof(OrderHistory), LoggedPassenger.Id);
+            }
+        }
 
-    private void NavigateToWeather(object sender, RoutedEventArgs e)
-    {
-      NavigateToPage(typeof(Weather));
-    }
+        private void NavigateToEntertainment(object sender, RoutedEventArgs e)
+        {
+            NavigateToPage(typeof(Entertainment));
+        }
 
-    private void NavigateToChat(object sender, RoutedEventArgs e)
-    {
-      NavigateToPage(typeof(Chat));
-    }
+        private void NavigateToWeather(object sender, RoutedEventArgs e)
+        {
+            NavigateToPage(typeof(Weather));
+        }
 
-    private void NavigateToPage(Type type)
-    {
-      Frame.Navigate(type);
+        private void NavigateToChat(object sender, RoutedEventArgs e)
+        {
+            NavigateToPage(typeof(Chat));
+        }
+
+        private void NavigateToPage(Type type)
+        {
+            Frame.Navigate(type);
+        }
     }
-  }
 }

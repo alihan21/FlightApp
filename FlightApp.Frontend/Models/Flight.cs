@@ -10,7 +10,7 @@ namespace FlightApp.Frontend.Models
 {
   public class Flight
   {
-    public int FlightId { get; set; }
+    public string FlightId { get; set; }
     public string Destination { get; set; }
     public string Origin { get; set; }
     public double FlightDuration { get; set; }

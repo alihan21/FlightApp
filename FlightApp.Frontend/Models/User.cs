@@ -24,12 +24,12 @@ namespace FlightApp.Frontend.Models
       UserFlights = new List<UserFlight>();
     }
 
-    public void AddToFlight(UserFlight userFlight)
+    public void AddFlight(UserFlight userFlight)
     {
       UserFlights.Add(userFlight);
     }
 
-    public void RemoveToFlight(UserFlight userFlight)
+    public void RemoveFlight(UserFlight userFlight)
     {
       UserFlights.Remove(userFlight);
     }

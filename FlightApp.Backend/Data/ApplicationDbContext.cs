@@ -15,6 +15,7 @@ namespace FlightApp.Backend.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
         public DbSet<Staff> FlightStaff { get; set; }
+        public DbSet<OrderHistory> OrderHistories { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -25,7 +26,9 @@ namespace FlightApp.Backend.Data
         {
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new UserFlightConfiguration());
-            builder.ApplyConfiguration(new OrderFoodConfiguration());
+            builder.ApplyConfiguration(new OrderConfiguration());
+            builder.ApplyConfiguration(new OrderLineConfiguration());
+            builder.ApplyConfiguration(new OrderHistoryConfiguration());
         }
     }
 }

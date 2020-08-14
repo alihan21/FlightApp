@@ -1,4 +1,6 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using FlightApp.Frontend.ViewModels;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 
 namespace FlightApp.Frontend.Pages.StaffPages
 {
@@ -7,9 +9,13 @@ namespace FlightApp.Frontend.Pages.StaffPages
     /// </summary>
     public sealed partial class OrderOverview : Page
     {
+        public AllOrdersViewModel AllOrdersViewModel { get; set; }
+
         public OrderOverview()
         {
+            AllOrdersViewModel = new AllOrdersViewModel();
             this.InitializeComponent();
+            LayoutRoot.DataContext = new CollectionViewSource { Source = AllOrdersViewModel.OrdersViewModel };
         }
     }
 }

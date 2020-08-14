@@ -1,7 +1,6 @@
 using FlightApp.Frontend.ViewModels;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 using Windows.UI.Xaml.Controls;
@@ -9,49 +8,46 @@ using Windows.UI.Xaml.Navigation;
 
 namespace FlightApp.Frontend.Pages.PassengerPages
 {
-  /// <summary>
-  /// Page where a passenger can see his history of orders
-  /// </summary>
-  public sealed partial class OrderHistory : Page
-  {
-    ObservableCollection<OrderFoodViewModel> OrderHistoryCollection { get; set; }
-
-    public OrderHistory()
+    /// <summary>
+    /// Page where a passenger can see his history of orders
+    /// </summary>
+    public sealed partial class OrderHistory : Page
     {
-      this.InitializeComponent();
-    }
+        ObservableCollection<OrderFoodViewModel> OrderHistoryCollection { get; set; }
 
-    protected override async void OnNavigatedTo(NavigationEventArgs e)
-    {
-      base.OnNavigatedTo(e);
-      int passengerId = 0;
-
-      if (e.Parameter != null)
-      {
-        passengerId = (int)e.Parameter;
-
-        HttpClient client = new HttpClient();
-        try
+        public OrderHistory()
         {
-          var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/OrderFood/user/{passengerId}"));
+            this.InitializeComponent();
+        }
 
-          var orderHistoryOfPassenger = JsonConvert.DeserializeObject<ObservableCollection<OrderFoodViewModel>>(json);
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            int passengerId = 0;
 
-          if (orderHistoryOfPassenger != null)
-          {
-            OrderHistoryCollection = new ObservableCollection<OrderFoodViewModel>();
-            OrderHistoryCollection = orderHistoryOfPassenger;
-            /*foreach (var order in orderHistoryOfPassenger)
+            if (e.Parameter != null)
             {
-              OrderHistoryCollection.Add(new OrderFoodViewModel(order));
-            }*/
-          }
+                passengerId = (int)e.Parameter;
+
+                HttpClient client = new HttpClient();
+                try
+                {
+                    var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/OrderFood/user/{passengerId}"));
+
+                    var orderHistoryOfPassenger = JsonConvert.DeserializeObject<ObservableCollection<OrderFoodViewModel>>(json);
+
+                    if (orderHistoryOfPassenger != null)
+                    {
+                        OrderHistoryCollection = orderHistoryOfPassenger;
+                        lbOrderHistory.DataContext = OrderHistoryCollection;
+                        lbTest.DataContext = OrderHistoryCollection;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
         }
-        catch (Exception ex)
-        {
-          Console.WriteLine(ex);
-        }
-      }
     }
-  }
 }

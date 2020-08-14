@@ -8,14 +8,14 @@ namespace FlightApp.Backend.Controllers
 
   [Route("api/[controller]")]
   [ApiController]
-  public class FlightController : Controller
+  public class FlightController : ControllerBase
   {
     private readonly IFlightRepository _flightRepository;
 
 
-    public FlightController(IFlightRepository context)
+    public FlightController(IFlightRepository flightRepository)
     {
-      _flightRepository = context;
+      _flightRepository = flightRepository;
     }
    
     /// <summary>
@@ -34,7 +34,7 @@ namespace FlightApp.Backend.Controllers
     /// <param name="id">the id of the flight</param>
     /// <returns></returns>
     [HttpGet("{id}")]
-    public ActionResult<Flight> GetFlight(int id)
+    public ActionResult<Flight> GetFlight(string id)
     {
       Flight flight = _flightRepository.GetBy(id);
       if (flight == null)

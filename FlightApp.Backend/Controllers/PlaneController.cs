@@ -8,7 +8,7 @@ namespace FlightApp.Backend.Controllers
 
   [Route("api/[controller]")]
   [ApiController]
-  public class PlaneController : Controller
+  public class PlaneController : ControllerBase
   {
     private readonly IPlaneRepository _planeRepository;
 
