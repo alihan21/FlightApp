@@ -12,6 +12,8 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
         private readonly ApplicationDbContext _context;
         private readonly DbSet<User> _users;
         private readonly DbSet<UserFlight> _userFlights;
+        private readonly DbSet<Passenger> _passengers;
+
 
         public UserRepository(ApplicationDbContext dbContext)
         {
@@ -43,6 +45,11 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
               .Where(u => !(u is Staff))
               .Include(u => u.UserFlights)
               .SingleOrDefault(u => u.UserId == id);
+        }
+
+        public Passenger GetPassengerByIdWithChannel(int id)
+        {
+            return _passengers.SingleOrDefault(u => u.UserId == id);
         }
 
         public User GetStaffById(int id)

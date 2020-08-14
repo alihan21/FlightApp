@@ -39,6 +39,7 @@ namespace FlightApp.Backend
             services.AddScoped<IPassengerRepository, PassengerRepository>();
             services.AddScoped<IUserFlightRepository, UserFlightRepository>();
             services.AddScoped<IFoodRepository, FoodRepository>();
+            services.AddScoped<IChannelRepository, ChannelRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderHistoryRepository, OrderHistoryRepository>();
 
