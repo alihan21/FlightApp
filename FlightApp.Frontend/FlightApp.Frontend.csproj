@@ -124,6 +124,7 @@
     <Compile Include="Converters\StringConverter.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\Food.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderFood.cs" />
     <Compile Include="Models\OrderLine.cs" />
