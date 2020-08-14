@@ -27,7 +27,7 @@ namespace FlightApp.Frontend.ViewModels
                 if (value != _quantity)
                 {
                     _quantity = value;
-                    Subtotal = _food.Price * _quantity;
+                    Subtotal = decimal.Multiply(_food.Price,(decimal)_quantity);
                     RaisePropertyChanged();
                 }
             }

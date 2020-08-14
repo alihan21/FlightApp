@@ -171,6 +171,12 @@ namespace FlightApp.Backend.Migrations
                 {
                     table.PrimaryKey("PK_OrderLine", x => new { x.OrderId, x.FoodId });
                     table.ForeignKey(
+                        name: "FK_OrderLine_Foods_FoodId",
+                        column: x => x.FoodId,
+                        principalTable: "Foods",
+                        principalColumn: "FoodId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_OrderLine_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
@@ -182,6 +188,11 @@ namespace FlightApp.Backend.Migrations
                 name: "IX_Flights_PlaneId",
                 table: "Flights",
                 column: "PlaneId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderLine_FoodId",
+                table: "OrderLine",
+                column: "FoodId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_PassengerUserId",
@@ -207,9 +218,6 @@ namespace FlightApp.Backend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Foods");
-
-            migrationBuilder.DropTable(
                 name: "OrderHistories");
 
             migrationBuilder.DropTable(
@@ -217,6 +225,9 @@ namespace FlightApp.Backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserFlights");
+
+            migrationBuilder.DropTable(
+                name: "Foods");
 
             migrationBuilder.DropTable(
                 name: "Orders");

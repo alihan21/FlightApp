@@ -8,6 +8,11 @@ namespace FlightApp.Backend.Models.DTO_s
         public Food Food { get; set; }
         public int Quantity { get; set; }
 
+        public OrderLineDTO()
+        {
+
+        }
+
         public OrderLineDTO(OrderLine orderLine)
         {
             OrderId = orderLine.OrderId;

@@ -1,8 +1,5 @@
 ﻿using FlightApp.Backend.Models.Domain;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FlightApp.Backend.Models.DTO_s
 {
@@ -20,7 +17,7 @@ namespace FlightApp.Backend.Models.DTO_s
 
             OrderId = order.OrderId;
             Passenger = new PassengerDTO(order.Passenger);
-            foreach(OrderLine orderLine in order.OrderLines)
+            foreach (OrderLine orderLine in order.OrderLines)
             {
                 OrderLineDTO orderLineDTO = new OrderLineDTO(orderLine);
                 OrderLines.Add(orderLineDTO);
