@@ -22,9 +22,12 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
             return _flights;
         }
 
-        public Flight GetBy(string id)
+        public Flight GetById(string id)
         {
-            return _flights.Include(f => f.Plane).ThenInclude(p => p.Seats).SingleOrDefault(r => r.FlightId == id);
+            return _flights
+                .Include(f => f.Plane)
+                .ThenInclude(p => p.Seats)
+                .SingleOrDefault(r => r.FlightId == id);
         }
 
         public void SaveChanges()

@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FlightApp.Backend.Data.Repositories.Interfaces;
 using FlightApp.Backend.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FlightApp.Backend.Controllers
 {
@@ -14,11 +12,14 @@ namespace FlightApp.Backend.Controllers
     public class SeatController : ControllerBase
     {
         private readonly ISeatRepository _seatRepository;
+        private readonly IFlightRepository _flightRepository;
+        private readonly IUserFlightRepository _userFlightRepository;
 
-
-        public SeatController(ISeatRepository context)
+        public SeatController(ISeatRepository seatRepository, IFlightRepository flightRepository, IUserFlightRepository userFlightRepository)
         {
-            _seatRepository = context;
+            _seatRepository = seatRepository;
+            _flightRepository = flightRepository;
+            _userFlightRepository = userFlightRepository;
         }
 
         [HttpGet]
@@ -32,24 +33,54 @@ namespace FlightApp.Backend.Controllers
         public ActionResult<Seat> GetSeat(int id)
         {
             Seat seat = _seatRepository.GetBy(id);
-            if (seat == null) return NotFound();
+
+            if (seat == null)
+            {
+                return NotFound();
+            }
+
             return seat;
         }
 
         [HttpGet]
-        [Route("plane/{planeId}")]
-        public ActionResult<Seat> GetSeatByPlane(int planeId)
+        [Route("flight/{flightId}/allSeats")]
+        public ActionResult<Seat> GetSeatByPlane(string flightId)
         {
+            List<Seat> seats = GetAllSeats(flightId);
 
-            IEnumerable<Seat> seats = _seatRepository.GetByPlaneId(planeId);
-            if (seats == null)
+            if(seats == null)
             {
-                return NotFound();
+                return NotFound("Flight not found");
             }
-            else
+
+            return Ok(seats);
+        }
+
+        [HttpGet]
+        [Route("flight/{flightId}/availableSeats")]
+        public ActionResult<Seat> GetAvailableSeats(string flightId)
+        {
+            List<Seat> seats = GetAllSeats(flightId);
+
+            var passengers = _userFlightRepository.GetAllPassengersByFlightId(flightId).ToList();
+
+            List<int> passengerSeatIds = passengers.Select(p => p.Seat.SeatId).ToList();
+
+            seats.RemoveAll(s => passengerSeatIds.Contains(s.SeatId));
+
+            return Ok(seats);
+        }
+
+        private List<Seat> GetAllSeats(string flightId)
+        {
+            var flight = _flightRepository.GetById(flightId);
+
+            if (flight == null)
             {
-                return Ok(seats);
+                return null;
             }
+
+            return _seatRepository.GetByPlaneId(flight.Plane.PlaneId).ToList();
         }
     }
 }
