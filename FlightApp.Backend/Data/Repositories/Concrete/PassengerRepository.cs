@@ -1,6 +1,7 @@
 ﻿using FlightApp.Backend.Data.Repositories.Interfaces;
 using FlightApp.Backend.Models.Domain;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FlightApp.Backend.Data.Repositories.Concrete
@@ -18,6 +19,12 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
             _userFlights = dbContext.UserFlights;
         }
 
+        public IEnumerable<Passenger> GetAll()
+        {
+            return _passengers
+                .Include(p => p.Notification);
+        }
+
         public Passenger GetByFlightIdAndSeatNumber(string flightId, string seatNumber)
         {
             var currentFlight = _userFlights
@@ -26,6 +33,12 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
                 .SingleOrDefault(uf => uf.FlightId == flightId && uf.User.Seat.SeatNumber == seatNumber);
 
             return (Passenger)currentFlight?.User;
+        }
+
+        public Passenger GetById(int passengerId)
+        {
+            return _passengers
+                .SingleOrDefault(p => p.UserId == passengerId);
         }
 
         public Passenger GetByName(string name)

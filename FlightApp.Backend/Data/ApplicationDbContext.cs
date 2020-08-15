@@ -18,6 +18,7 @@ namespace FlightApp.Backend.Data
         public DbSet<OrderHistory> OrderHistories { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Channel> Channels { get; set; }
+        public DbSet<Notification> Notification { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
