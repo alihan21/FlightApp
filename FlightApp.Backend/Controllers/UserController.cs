@@ -63,7 +63,7 @@ namespace FlightApp.Backend.Controllers
             return Ok(user);
         }
 
-        [HttpGet("staff/loginCode/{loginCode}")]
+        [HttpGet("staff/login/{loginCode}")]
         public ActionResult<Staff> GetStaffByLoginCode(int loginCode)
         {
             Staff staff = _staffRepository.GetByLoginCode(loginCode);
