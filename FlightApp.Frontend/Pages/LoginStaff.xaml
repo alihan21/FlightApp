@@ -14,7 +14,9 @@
         </Canvas.Background>
         <TextBlock HorizontalAlignment="Left" Margin="74,180,0,0" Text="Enter your password:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Foreground="Black" FontWeight="Bold"/>
         <TextBox x:Name="tbPassword"  PlaceholderText="password should be 4 symbols" HorizontalAlignment="Left" Margin="134,249,0,0" Text="" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-        <Button Content="Submit" HorizontalAlignment="Left" Margin="230,320,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Click="Login"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Foreground="Black" FontWeight="Bold" Canvas.Left="658" Canvas.Top="160"><Run FontWeight="Bold" Text="Enter flight id:"/></TextBlock>
+        <TextBox x:Name="tbFlightId"  PlaceholderText="flightId" HorizontalAlignment="Center" Margin="0,0,0,0" Text="" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Canvas.Left="768" Canvas.Top="239"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Click="Login" Canvas.Left="542" Canvas.Top="339"/>
         <Button x:Name="btnPassenger" Content="Passenger" HorizontalAlignment="Left" Margin="1218,21,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontStyle="Italic" Foreground="White" Click="NavigateToPassengerPage" FocusVisualPrimaryBrush="Snow">
             <Button.Background>
                 <AcrylicBrush Opacity="0"/>

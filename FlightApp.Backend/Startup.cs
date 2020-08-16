@@ -42,6 +42,7 @@ namespace FlightApp.Backend
             services.AddScoped<IChannelRepository, ChannelRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderHistoryRepository, OrderHistoryRepository>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
 
             services.AddOpenApiDocument(c =>
             {

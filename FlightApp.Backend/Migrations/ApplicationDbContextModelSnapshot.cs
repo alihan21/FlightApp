@@ -19,6 +19,17 @@ namespace FlightApp.Backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("FlightApp.Backend.Models.Domain.Channel", b =>
+                {
+                    b.Property<int>("ChannelId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("ChannelId");
+
+                    b.ToTable("Channels");
+                });
+
             modelBuilder.Entity("FlightApp.Backend.Models.Domain.Flight", b =>
                 {
                     b.Property<string>("FlightId")
@@ -58,6 +69,42 @@ namespace FlightApp.Backend.Migrations
                     b.HasKey("FoodId");
 
                     b.ToTable("Foods");
+                });
+
+            modelBuilder.Entity("FlightApp.Backend.Models.Domain.Message", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ChannelId");
+
+                    b.Property<int?>("PassengerUserId");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("MessageId");
+
+                    b.HasIndex("ChannelId");
+
+                    b.HasIndex("PassengerUserId");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("FlightApp.Backend.Models.Domain.Notification", b =>
+                {
+                    b.Property<int>("NotificationId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Text");
+
+                    b.Property<string>("Type");
+
+                    b.HasKey("NotificationId");
+
+                    b.ToTable("Notification");
                 });
 
             modelBuilder.Entity("FlightApp.Backend.Models.Domain.Order", b =>
@@ -176,6 +223,14 @@ namespace FlightApp.Backend.Migrations
                 {
                     b.HasBaseType("FlightApp.Backend.Models.Domain.User");
 
+                    b.Property<int>("ChannelId");
+
+                    b.Property<bool>("IsNotificationRead");
+
+                    b.Property<int?>("NotificationId");
+
+                    b.HasIndex("NotificationId");
+
                     b.HasDiscriminator().HasValue("Passenger");
                 });
 
@@ -193,6 +248,18 @@ namespace FlightApp.Backend.Migrations
                     b.HasOne("FlightApp.Backend.Models.Domain.Plane", "Plane")
                         .WithMany("PlaneFlights")
                         .HasForeignKey("PlaneId");
+                });
+
+            modelBuilder.Entity("FlightApp.Backend.Models.Domain.Message", b =>
+                {
+                    b.HasOne("FlightApp.Backend.Models.Domain.Channel")
+                        .WithMany("Messages")
+                        .HasForeignKey("ChannelId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("FlightApp.Backend.Models.Domain.Passenger", "Passenger")
+                        .WithMany()
+                        .HasForeignKey("PassengerUserId");
                 });
 
             modelBuilder.Entity("FlightApp.Backend.Models.Domain.Order", b =>
@@ -240,6 +307,13 @@ namespace FlightApp.Backend.Migrations
                         .WithMany("UserFlights")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("FlightApp.Backend.Models.Domain.Passenger", b =>
+                {
+                    b.HasOne("FlightApp.Backend.Models.Domain.Notification", "Notification")
+                        .WithMany()
+                        .HasForeignKey("NotificationId");
                 });
 #pragma warning restore 612, 618
         }

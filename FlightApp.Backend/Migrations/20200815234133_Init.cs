@@ -9,6 +9,18 @@ namespace FlightApp.Backend.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Channels",
+                columns: table => new
+                {
+                    ChannelId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Channels", x => x.ChannelId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Foods",
                 columns: table => new
                 {
@@ -22,6 +34,20 @@ namespace FlightApp.Backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Foods", x => x.FoodId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notification",
+                columns: table => new
+                {
+                    NotificationId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Text = table.Column<string>(nullable: true),
+                    Type = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notification", x => x.NotificationId);
                 });
 
             migrationBuilder.CreateTable(
@@ -103,16 +129,52 @@ namespace FlightApp.Backend.Migrations
                     Name = table.Column<string>(nullable: true),
                     SeatId = table.Column<int>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
+                    ChannelId = table.Column<int>(nullable: true),
+                    NotificationId = table.Column<int>(nullable: true),
+                    IsNotificationRead = table.Column<bool>(nullable: true),
                     LoginCode = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserId);
                     table.ForeignKey(
+                        name: "FK_Users_Notification_NotificationId",
+                        column: x => x.NotificationId,
+                        principalTable: "Notification",
+                        principalColumn: "NotificationId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Users_Seats_SeatId",
                         column: x => x.SeatId,
                         principalTable: "Seats",
                         principalColumn: "SeatId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Messages",
+                columns: table => new
+                {
+                    MessageId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Text = table.Column<string>(nullable: true),
+                    ChannelId = table.Column<int>(nullable: false),
+                    PassengerUserId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messages", x => x.MessageId);
+                    table.ForeignKey(
+                        name: "FK_Messages_Channels_ChannelId",
+                        column: x => x.ChannelId,
+                        principalTable: "Channels",
+                        principalColumn: "ChannelId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Messages_Users_PassengerUserId",
+                        column: x => x.PassengerUserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -190,6 +252,16 @@ namespace FlightApp.Backend.Migrations
                 column: "PlaneId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Messages_ChannelId",
+                table: "Messages",
+                column: "ChannelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messages_PassengerUserId",
+                table: "Messages",
+                column: "PassengerUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OrderLine_FoodId",
                 table: "OrderLine",
                 column: "FoodId");
@@ -210,6 +282,11 @@ namespace FlightApp.Backend.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_NotificationId",
+                table: "Users",
+                column: "NotificationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_SeatId",
                 table: "Users",
                 column: "SeatId");
@@ -218,6 +295,9 @@ namespace FlightApp.Backend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Messages");
+
+            migrationBuilder.DropTable(
                 name: "OrderHistories");
 
             migrationBuilder.DropTable(
@@ -225,6 +305,9 @@ namespace FlightApp.Backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserFlights");
+
+            migrationBuilder.DropTable(
+                name: "Channels");
 
             migrationBuilder.DropTable(
                 name: "Foods");
@@ -237,6 +320,9 @@ namespace FlightApp.Backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Notification");
 
             migrationBuilder.DropTable(
                 name: "Seats");
