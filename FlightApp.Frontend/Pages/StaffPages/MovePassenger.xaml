@@ -11,10 +11,16 @@
     <Page.Resources>
         <local:SeatViewModel x:Key="SeatViewModel"/>
     </Page.Resources>
-    
+
     <Canvas>
         <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Move passenger" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-        <ComboBox ItemsSource="{x:Bind SeatViewModel.Seats}" SelectedItem="{x:Bind SeatViewModel.ChosenSeat}" DisplayMemberPath="SeatNumber" HorizontalAlignment="Left" Canvas.Left="79" Canvas.Top="328" VerticalAlignment="Top"/>
+        <ComboBox ItemsSource="{x:Bind SeatViewModel.Seats}" SelectedItem="{x:Bind SeatViewModel.SelectedSeat}" DisplayMemberPath="SeatNumber" HorizontalAlignment="Left" Canvas.Left="562" Canvas.Top="367" VerticalAlignment="Top" SelectionChanged="SelectSeat"/>
+        <TextBlock Canvas.Left="579" Canvas.Top="343" Text="Available seats:" TextWrapping="Wrap"/>
+        <TextBlock Canvas.Left="278" Canvas.Top="346" Text="Current seat:" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBox x:Name="tbOldSeatNumber" Canvas.Left="274" Canvas.Top="382" PlaceholderText="Fill seatnumber" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button HorizontalAlignment="Left" Canvas.Left="974" Canvas.Top="382" VerticalAlignment="Top">
+            <Button Content="Move passenger to new seat" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Click="ChangePassengerSeat"/>
+        </Button>
     </Canvas>
 </Page>

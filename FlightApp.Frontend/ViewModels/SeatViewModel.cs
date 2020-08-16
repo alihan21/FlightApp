@@ -14,12 +14,26 @@ namespace FlightApp.Frontend.ViewModels
     {
         public ObservableCollection<Seat> Seats { get; }
 
-        public Seat ChosenSeat { get; set; }
+        public Seat SelectedSeat { get; set; }
 
         public SeatViewModel(string flightId)
         {
             Seats = new ObservableCollection<Seat>();
             LoadDataAsync(flightId);
+        }
+
+        public SeatViewModel()
+        {
+
+        }
+
+        public async void MovePassenger(string flightId, string oldSeatNumber)
+        {
+            if(SelectedSeat != null)
+            {
+                HttpClient client = new HttpClient();
+                var json = await client.PostAsync(new Uri($"http://localhost:60177/api/Seat/flight/{flightId}/seats/change/{oldSeatNumber}/{SelectedSeat.SeatNumber}"), null);
+            }
         }
 
         private async void LoadDataAsync(string flightId)
@@ -33,6 +47,5 @@ namespace FlightApp.Frontend.ViewModels
                 Seats.Add(seat);
             }
         }
-
     }
 }

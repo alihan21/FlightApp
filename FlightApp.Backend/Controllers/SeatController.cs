@@ -14,12 +14,14 @@ namespace FlightApp.Backend.Controllers
         private readonly ISeatRepository _seatRepository;
         private readonly IFlightRepository _flightRepository;
         private readonly IUserFlightRepository _userFlightRepository;
+        private readonly IPassengerRepository _passengerRepository;
 
-        public SeatController(ISeatRepository seatRepository, IFlightRepository flightRepository, IUserFlightRepository userFlightRepository)
+        public SeatController(ISeatRepository seatRepository, IFlightRepository flightRepository, IUserFlightRepository userFlightRepository, IPassengerRepository passengerRepository)
         {
             _seatRepository = seatRepository;
             _flightRepository = flightRepository;
             _userFlightRepository = userFlightRepository;
+            _passengerRepository = passengerRepository;
         }
 
         [HttpGet]
@@ -69,6 +71,47 @@ namespace FlightApp.Backend.Controllers
             seats.RemoveAll(s => passengerSeatIds.Contains(s.SeatId));
 
             return Ok(seats);
+        }
+
+        [HttpPost]
+        [Route("flight/{flightId}/seats/change/{oldSeatNumber}/{newSeatNumber}")]
+        public ActionResult MovePassengerToAnotherSeat(string flightId, string oldSeatNumber, string newSeatNumber)
+        {
+            var passengers = _userFlightRepository.GetAllPassengersByFlightId(flightId);
+
+            if (passengers == null)
+            {
+                return NotFound("Flight not found");
+            }
+
+            var seats = GetAllSeats(flightId);
+
+            if(seats == null)
+            {
+                return NotFound("Flight not found");
+            }
+
+            var passenger = passengers
+                .SingleOrDefault(p => p.Seat.SeatNumber == oldSeatNumber);
+
+            if (passenger == null)
+            {
+                return NotFound("Old seat not found");
+            }
+
+            var newSeat = seats
+                .SingleOrDefault(s => s.SeatNumber == newSeatNumber);
+
+            if(newSeat == null)
+            {
+                return NotFound("New seat not found");
+            }
+
+            passenger.Seat = newSeat;
+
+            _passengerRepository.SaveChanges();
+
+            return Ok();
         }
 
         private List<Seat> GetAllSeats(string flightId)
