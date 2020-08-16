@@ -14,17 +14,20 @@ namespace FlightApp.Frontend.ViewModels
     {
         public ObservableCollection<Seat> Seats { get; }
 
-        public SeatViewModel()
+        public Seat ChosenSeat { get; set; }
+
+        public SeatViewModel(string flightId)
         {
             Seats = new ObservableCollection<Seat>();
-            loadDataAsync();
+            LoadDataAsync(flightId);
         }
 
-        private async void loadDataAsync()
+        private async void LoadDataAsync(string flightId)
         {
             HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(new Uri("http://http://localhost:62382/api/seats/plane/{planeId}"));
+            var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/Seat/flight/{flightId}/availableSeats"));
             var seatList = JsonConvert.DeserializeObject<IList<Seat>>(json);
+
             foreach (var seat in seatList)
             {
                 Seats.Add(seat);
