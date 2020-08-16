@@ -7,49 +7,51 @@ using Windows.UI.Xaml.Navigation;
 
 namespace FlightApp.Frontend.Pages.StaffPages
 {
-  /// <summary>
-  /// Main page for a staff member
-  /// </summary>
-  public sealed partial class MainPageStaff : Page
-  {
-    public StaffViewModel LoggedStaff { get; set; }
-
-    public MainPageStaff()
+    /// <summary>
+    /// Main page for a staff member
+    /// </summary>
+    public sealed partial class MainPageStaff : Page
     {
-      this.InitializeComponent();
-    }
-     
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-      base.OnNavigatedTo(e);
+        public StaffViewModel LoggedStaff { get; set; }
 
-      //LoggedStaff = new StaffViewModel((Staff)e.Parameter);
-      //tbStaffName.DataContext = LoggedStaff;
-    }
+        public MainPageStaff()
+        {
+            this.InitializeComponent();
+        }
 
-    private void NavigateToMovePassenger(object sender, RoutedEventArgs e)
-    {
-      NavigateToPage(typeof(MovePassenger));
-    }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
 
-    private void NavigateToOrderOverview(object sender, RoutedEventArgs e)
-    {
-      NavigateToPage(typeof(OrderOverview));
-    }
+            LoggedStaff = (StaffViewModel)e.Parameter;
+        }
 
-    private void NavigateToCustomNotification(object sender, RoutedEventArgs e)
-    {
-      NavigateToPage(typeof(CustomNotification));
-    }
+        private void NavigateToMovePassenger(object sender, RoutedEventArgs e)
+        {
+            NavigateToPage(typeof(MovePassenger));
+        }
 
-    private void NavigateToAdvertise(object sender, RoutedEventArgs e)
-    {
-      NavigateToPage(typeof(MovePassenger));
-    }
+        private void NavigateToOrderOverview(object sender, RoutedEventArgs e)
+        {
+            NavigateToPage(typeof(OrderOverview));
+        }
 
-    private void NavigateToPage(Type type)
-    {
-      Frame.Navigate(type);
+        private void NavigateToCustomNotification(object sender, RoutedEventArgs e)
+        {
+            NavigateToPage(typeof(CustomNotification));
+        }
+
+        private void NavigateToAdvertise(object sender, RoutedEventArgs e)
+        {
+            if (LoggedStaff != null)
+            {
+                Frame.Navigate(typeof(Advertise), LoggedStaff);
+            }
+        }
+
+        private void NavigateToPage(Type type)
+        {
+            Frame.Navigate(type);
+        }
     }
-  }
 }

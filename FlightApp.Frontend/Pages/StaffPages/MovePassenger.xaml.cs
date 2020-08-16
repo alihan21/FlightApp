@@ -13,6 +13,7 @@ namespace FlightApp.Frontend.Pages.StaffPages
   /// </summary>
   public sealed partial class MovePassenger : Page
   {
+
     public MovePassenger()
     {
       this.InitializeComponent();
