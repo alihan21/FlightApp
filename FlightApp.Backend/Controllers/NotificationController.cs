@@ -2,6 +2,8 @@
 using FlightApp.Backend.Models.Domain;
 using FlightApp.Backend.Models.DTO_s;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FlightApp.Backend.Controllers
 {
@@ -26,13 +28,13 @@ namespace FlightApp.Backend.Controllers
             Notification notification = new Notification(model.Text, model.Type);
             _notificiationRepository.Add(notification);
 
-            var passengers = _userFlightRepository.GetPassengersByFlightId(flightId);
+            List<Passenger> passengers = _userFlightRepository.GetAllPassengersByFlightId(flightId).ToList();
 
             if (passengers == null)
             {
                 return NotFound("Flight not found");
             }
-
+        
             foreach (Passenger passenger in passengers)
             {
                 passenger.Notification = notification;

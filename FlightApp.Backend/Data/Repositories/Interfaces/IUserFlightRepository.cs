@@ -6,6 +6,6 @@ namespace FlightApp.Backend.Data.Repositories.Interfaces
     public interface IUserFlightRepository
     {
         UserFlight GetUserFlightByUserId(int userId);
-        IEnumerable<Passenger> GetPassengersByFlightId(string flightId);
+        IEnumerable<Passenger> GetAllPassengersByFlightId(string flightId);
     }
 }

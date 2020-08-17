@@ -17,10 +17,11 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
             _userFlights = dbContext.UserFlights;
         }
 
-        public IEnumerable<Passenger> GetPassengersByFlightId(string flightId)
+        public IEnumerable<Passenger> GetAllPassengersByFlightId(string flightId)
         {
             return _userFlights
                 .Include(uf => uf.User)
+                .ThenInclude(u => u.Seat)
                 .Where(uf => uf.FlightId == flightId && uf.User is Passenger)
                 .Select(uf => (Passenger)uf.User);
         }
@@ -33,7 +34,5 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
               .ThenInclude(f => f.Plane)
               .Where(uf => uf.UserId == userId).LastOrDefault();
         }
-
-
     }
 }
