@@ -1,31 +1,47 @@
 using FlightApp.Frontend.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections.ObjectModel;
-using System.Net.Http;
+using FlightApp.Frontend.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace FlightApp.Frontend.Pages.StaffPages
 {
-  /// <summary>
-  /// Page where a staff member can move a passenger to another seat
-  /// </summary>
-  public sealed partial class MovePassenger : Page
-  {
-
-    public MovePassenger()
+    /// <summary>
+    /// Page where a staff member can move a passenger to another seat
+    /// </summary>
+    public sealed partial class MovePassenger : Page
     {
-      this.InitializeComponent();
-    }
+        public StaffViewModel LoggedStaff { get; set; }
 
-    protected override async void OnNavigatedTo(NavigationEventArgs e)
-    {
-      base.OnNavigatedTo(e);
-      HttpClient client = new HttpClient();
-      var json = await client.GetStringAsync(new Uri("http://localhost:62382/api/Seat/plane/1"));
-      var seatList = JsonConvert.DeserializeObject<ObservableCollection<Seat>>(json);
-      lv.ItemsSource = seatList;
+        public SeatViewModel SeatViewModel { get; set; }
+
+        public MovePassenger()
+        {
+            this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            LoggedStaff = (StaffViewModel)e.Parameter;
+            SeatViewModel = new SeatViewModel(LoggedStaff.FlightId);
+        }
+
+        private void ChangePassengerSeat(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            SeatViewModel.MovePassenger(LoggedStaff.FlightId, tbOldSeatNumber.Text);
+            tbOldSeatNumber.Text = "";
+        }
+
+        private void SelectSeat(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            Seat seat = (Seat)comboBox.SelectedItem;
+
+            if(seat != null)
+            {
+                SeatViewModel.SelectedSeat = seat;
+            }
+        }
     }
-  }
 }

@@ -8,7 +8,7 @@ namespace FlightApp.Backend.Data.Repositories.Interfaces
 {
     public interface IFlightRepository
     {
-        Flight GetBy(string id);
+        Flight GetById(string id);
 
         IEnumerable<Flight> GetAll();
 

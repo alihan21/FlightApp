@@ -28,7 +28,10 @@ namespace FlightApp.Frontend.Pages.StaffPages
 
         private void NavigateToMovePassenger(object sender, RoutedEventArgs e)
         {
-            NavigateToPage(typeof(MovePassenger));
+            if (LoggedStaff != null)
+            {
+                Frame.Navigate(typeof(MovePassenger), LoggedStaff);
+            }
         }
 
         private void NavigateToOrderOverview(object sender, RoutedEventArgs e)

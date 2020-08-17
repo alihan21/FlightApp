@@ -36,7 +36,7 @@ namespace FlightApp.Backend.Controllers
     [HttpGet("{id}")]
     public ActionResult<Flight> GetFlight(string id)
     {
-      Flight flight = _flightRepository.GetBy(id);
+      Flight flight = _flightRepository.GetById(id);
       if (flight == null)
       {
         return NotFound();
