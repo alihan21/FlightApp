@@ -19,7 +19,7 @@ namespace FlightApp.Frontend.ViewModels
 
             var notificationJson = JsonConvert.SerializeObject(this);
 
-            var res = await httpClient.PostAsync($"http://localhost:60177/api/Notification/flight/{flightId}/passengers/notification/add", new StringContent(notificationJson,
+            var res = await httpClient.PostAsync($"http://localhost:60177/api/Notification/flight/{flightId}/passengers/all/notification/add", new StringContent(notificationJson,
                 Encoding.UTF8, "application/json"));
         }
     }

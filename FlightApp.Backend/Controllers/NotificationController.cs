@@ -20,8 +20,8 @@ namespace FlightApp.Backend.Controllers
             _passengerRepository = passengerRepository;
         }
 
-        [HttpPost("flight/{flightId}/passengers/notification/add")]
-        public ActionResult<Notification> AddNotification(string flightId, NotificationDTO model)
+        [HttpPost("flight/{flightId}/passengers/all/notification/add")]
+        public ActionResult<Notification> AddNotificationAllPassengers(string flightId, NotificationDTO model)
         {
             Notification notification = new Notification(model.Text, model.Type);
             _notificiationRepository.Add(notification);
@@ -46,7 +46,7 @@ namespace FlightApp.Backend.Controllers
         }
 
         [HttpPost("flight/passengers/{passengerId}/notification/add")]
-        public ActionResult<Notification> AddNotification(int passengerId, NotificationDTO model)
+        public ActionResult<Notification> AddNotificationSpecificPassenger(int passengerId, NotificationDTO model)
         {
             Notification notification = new Notification(model.Text, model.Type);
             _notificiationRepository.Add(notification);

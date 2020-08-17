@@ -32,6 +32,7 @@ namespace FlightApp.Frontend.Pages.StaffPages
             };
 
             notificationViewModel.AddNotificationAsync(LoggedStaff.FlightId);
+            tbMessage.Text = "";
         }
     }
 }
