@@ -31,6 +31,7 @@ namespace FlightApp.Frontend.Pages.StaffPages
         {
             SeatViewModel.MovePassenger(LoggedStaff.FlightId, tbOldSeatNumber.Text);
             tbOldSeatNumber.Text = "";
+            cbSeats.SelectedIndex = -1;
         }
 
         private void SelectSeat(object sender, SelectionChangedEventArgs e)

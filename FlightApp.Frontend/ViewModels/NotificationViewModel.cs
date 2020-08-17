@@ -22,5 +22,15 @@ namespace FlightApp.Frontend.ViewModels
             var res = await httpClient.PostAsync($"http://localhost:60177/api/Notification/flight/{flightId}/passengers/all/notification/add", new StringContent(notificationJson,
                 Encoding.UTF8, "application/json"));
         }
+
+        public async void AddNotificianToPassengerAsync(int passengerId)
+        {
+            HttpClient httpClient = new HttpClient();
+
+            var notificationJson = JsonConvert.SerializeObject(this);
+
+            var res = await httpClient.PostAsync($"http://localhost:60177/api/Notification/flight/passengers/{passengerId}/notification/add", new StringContent(notificationJson,
+                Encoding.UTF8, "application/json"));
+        }
     }
 }
