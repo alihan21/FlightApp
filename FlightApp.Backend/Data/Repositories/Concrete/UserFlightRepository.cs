@@ -30,7 +30,7 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
         {
             return _userFlights
               .Include(uf => uf.User)
-              .Include(uf => uf.Flight)
+              .Include(u => u.Flight)
               .ThenInclude(f => f.Plane)
               .Where(uf => uf.UserId == userId).LastOrDefault();
         }

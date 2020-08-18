@@ -13,5 +13,7 @@
         <TextBlock Canvas.Left="444" Canvas.Top="219" Text="Message:" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
         <TextBox x:Name="tbMessage" Canvas.Left="517" Canvas.Top="213" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <Button x:Name="btnAdvertise" Content="Adverteer" HorizontalAlignment="Left" Canvas.Left="533" Canvas.Top="313" VerticalAlignment="Top" Click="BeginAdvertise"/>
+        <CheckBox x:Name="cbIsAllPassengersSelected" Content="All passengers" HorizontalAlignment="Left" Canvas.Left="653" Canvas.Top="210" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbPassengers" ItemsSource="{x:Bind AllPassengersViewModel.Passengers}" SelectedItem="{x:Bind AllPassengersViewModel.SelectedPassenger}" DisplayMemberPath="Name" HorizontalAlignment="Left" Canvas.Left="847" Canvas.Top="205" VerticalAlignment="Top" SelectionChanged="SelectPassenger"/>
     </Canvas>
 </Page>

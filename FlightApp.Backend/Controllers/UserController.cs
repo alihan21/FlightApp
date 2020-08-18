@@ -12,11 +12,13 @@ namespace FlightApp.Backend.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IStaffRepository _staffRepository;
+        private readonly IUserFlightRepository _userFlightRepository;
 
-        public UserController(IUserRepository userRepository, IStaffRepository staffRepository)
+        public UserController(IUserRepository userRepository, IStaffRepository staffRepository, IUserFlightRepository userFlightRepository)
         {
             _userRepository = userRepository;
             _staffRepository = staffRepository;
+            _userFlightRepository = userFlightRepository;
         }
 
 
@@ -48,6 +50,19 @@ namespace FlightApp.Backend.Controllers
             }
 
             return Ok(user);
+        }
+
+        [HttpGet("flights/{flightId}/passengers/all")]
+        public ActionResult<List<Passenger>> GetPassengerById(string flightId)
+        {
+            var passengers = _userFlightRepository.GetAllPassengersByFlightId(flightId);
+
+            if(passengers == null)
+            {
+                return NotFound("Passengers not found");
+            }
+
+            return Ok(passengers);
         }
 
         [HttpGet("staff/id/{id}")]

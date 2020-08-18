@@ -10,10 +10,8 @@
 
     <Canvas>
         <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Cusstom melding" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Image Height="542" Canvas.Left="278" Canvas.Top="306" Width="883" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image.FocusVisualPrimaryBrush>
-                <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
-            </Image.FocusVisualPrimaryBrush>
-        </Image>
+        <TextBlock x:Name="tbCustomNotification" Text="Aangepaste melding:" Canvas.Left="460" Canvas.Top="482" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBox Canvas.Left="611" Canvas.Top="475"/>
+        <Button x:Name="btnSendNotification" Content="Verstuur" HorizontalAlignment="Left" Canvas.Left="604" Canvas.Top="573" VerticalAlignment="Top" Click="SendNotification"/>
     </Canvas>
 </Page>
