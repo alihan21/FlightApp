@@ -2,18 +2,27 @@
     x:Class="FlightApp.Frontend.Pages.PassengerPages.Entertainment"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:FlightApp.Frontend.Pages.PassengerPages"
+    xmlns:viewModels="using:FlightApp.Frontend.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Canvas>
-        <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Entertainment" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Image Height="542" Canvas.Left="278" Canvas.Top="306" Width="883" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image.FocusVisualPrimaryBrush>
-                <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
-            </Image.FocusVisualPrimaryBrush>
-        </Image>
+    <Canvas x:Name="LayoutRoot">
+        <ListBox ItemsSource="{Binding}" Height="717" Canvas.Left="2" Canvas.Top="1" Width="640" Margin="0,0,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="viewModels:EntertainmentViewModel">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Title}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListView Height="716" Canvas.Left="644" Canvas.Top="1" Width="633" Margin="0,0,0,0">
+            <TextBlock Text="{Binding Plot}"/>
+            <TextBlock Text="{Binding Released}"/>
+            <TextBlock Text="{Binding Actors}"/>
+            <Image Source="{Binding Poster}" />
+        </ListView>
     </Canvas>
 </Page>
