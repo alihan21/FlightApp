@@ -27,7 +27,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListView x:Name="lvOrderDetails" Height="715" Width="632" Canvas.Left="643" Canvas.Top="3" Margin="0,0,0,0">
+        <ListView Height="715" Width="632" Canvas.Left="643" Canvas.Top="3" Margin="0,0,0,0">
             <TextBlock Text="{Binding OrderLinesString}"/>
         </ListView>
     </Canvas>

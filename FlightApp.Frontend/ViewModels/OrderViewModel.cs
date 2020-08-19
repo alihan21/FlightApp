@@ -1,6 +1,8 @@
 ﻿using FlightApp.Frontend.Common;
 using FlightApp.Frontend.Models;
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using System.Net.Http;
 
 namespace FlightApp.Frontend.ViewModels
 {
@@ -60,6 +62,21 @@ namespace FlightApp.Frontend.ViewModels
         public OrderViewModel()
         {
 
+        }
+
+        public async void FinalizeOrder(string flightId, string seatNumber)
+        {
+            HttpClient httpClient = new HttpClient();
+
+            var orderLinesJson = JsonConvert.SerializeObject(OrderLines);
+
+            var res = await httpClient.PostAsync($"http://localhost:60177/api/Order/{flightId}/{seatNumber}/placeOrder", new StringContent(orderLinesJson,
+                System.Text.Encoding.UTF8, "application/json"));
+
+            if (res.IsSuccessStatusCode)
+            {
+                OrderLines.Clear();
+            }
         }
     }
 }

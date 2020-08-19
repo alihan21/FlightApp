@@ -122,6 +122,7 @@
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Converters\OrderLinesConverter.cs" />
     <Compile Include="Converters\StringConverter.cs" />
+    <Compile Include="Models\Entertainment.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\Message.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Models\OrderLine.cs" />
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Models\Plane.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Seat.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\User.cs" />
@@ -188,8 +190,10 @@
     <Compile Include="ViewModels\AllOrdersViewModel.cs" />
     <Compile Include="ViewModels\AllPassengersViewModel.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
+    <Compile Include="ViewModels\EntertainmentViewModel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
     <Compile Include="ViewModels\FoodViewModel.cs" />
+    <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\NotificationViewModel.cs" />
     <Compile Include="ViewModels\OrderFoodViewModel.cs" />
     <Compile Include="ViewModels\OrderLineViewModel.cs" />

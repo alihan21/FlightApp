@@ -95,23 +95,8 @@ namespace FlightApp.Frontend.Pages.PassengerPages
         {
             if (PassengerViewModel.FlightId.Length > 0 && PassengerViewModel.SeatNumber.Length > 0)
             {
-                FinalizeOrder(PassengerViewModel.FlightId, PassengerViewModel.SeatNumber);
+                OrderViewModel.FinalizeOrder(PassengerViewModel.FlightId, PassengerViewModel.SeatNumber);
                 OrderViewModel.Total = Math.Round(0m, 1);
-            }
-        }
-
-        private async void FinalizeOrder(string flightId, string seatNumber)
-        {
-            HttpClient httpClient = new HttpClient();
-
-            var orderLinesJson = JsonConvert.SerializeObject(OrderViewModel.OrderLines);
-
-            var res = await httpClient.PostAsync($"http://localhost:60177/api/Order/{flightId}/{seatNumber}/placeOrder", new StringContent(orderLinesJson,
-                System.Text.Encoding.UTF8, "application/json"));
-
-            if (res.IsSuccessStatusCode)
-            {
-                OrderViewModel.OrderLines.Clear();
             }
         }
     }
