@@ -51,20 +51,6 @@ namespace FlightApp.Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderHistories",
-                columns: table => new
-                {
-                    OrderId = table.Column<int>(nullable: false),
-                    FoodId = table.Column<int>(nullable: false),
-                    PassengerId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderHistories", x => new { x.OrderId, x.FoodId });
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Planes",
                 columns: table => new
                 {
@@ -184,7 +170,8 @@ namespace FlightApp.Backend.Migrations
                 {
                     OrderId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    PassengerUserId = table.Column<int>(nullable: true)
+                    PassengerUserId = table.Column<int>(nullable: true),
+                    IsCompleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -296,9 +283,6 @@ namespace FlightApp.Backend.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Messages");
-
-            migrationBuilder.DropTable(
-                name: "OrderHistories");
 
             migrationBuilder.DropTable(
                 name: "OrderLine");

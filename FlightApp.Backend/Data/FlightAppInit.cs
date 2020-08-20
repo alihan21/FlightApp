@@ -31,7 +31,7 @@ namespace FlightApp.Backend.Data
                 Food tiramisu = new Food("Tiramisu", "Lovely homemade tiramisu", "Dessert", 1.5m);
                 Food chickenTikiMasala = new Food("Chicken Tiki Masala", "Spicy chicken with rice", "Main Course", 3.1m);
                 Food doubleCheeseBurger = new Food("Double Cheese Burger", "2 delicious pigburgers and a lot of cheese", "Main Course", 2.6m);
-                Food tomatoSoup = new Food("Tomato Soup", "Homemade tomato soup", "starter", 1.0m);
+                Food tomatoSoup = new Food("Tomato Soup", "Homemade tomato soup", "starter", 0.8m);
 
                 Food snickers = new Food("Snickers", "You're not you when you're hungry", "Snack", 0.70m);
                 Food fanta = new Food("Fanta Lemon", "Nice and cold fanta with lemon", "Drink", 0.6m);
@@ -104,19 +104,19 @@ namespace FlightApp.Backend.Data
                 };
 
                 #region Make Flights
-                Flight flightBelgiumBulgaria = new Flight("Bulgaria", "Belgium", 2.5, new DateTime(2019, 10, 22, 8, 0, 0), airbusA333)
+                Flight flightBelgiumBulgaria = new Flight("Sofia", "Brussels", 2.5, new DateTime(2019, 10, 22, 8, 0, 0), airbusA333)
                 {
                     FlightId = "BG0800"
                 };
                 airbusA333.AddPlaneFlight(flightBelgiumBulgaria);
 
-                Flight flightBrazilAntarctic = new Flight("Antarctic", "Brazil", 99, new DateTime(2019, 10, 23, 10, 0, 0), boeing777)
+                Flight flightBrazilAntarctic = new Flight("Ushuaia", "Rio de Janeiro", 99, new DateTime(2019, 10, 23, 10, 0, 0), boeing777)
                 {
                     FlightId = "AT1000"
                 };
                 boeing777.AddPlaneFlight(flightBrazilAntarctic);
 
-                Flight flightChinaUsa = new Flight("USA", "China", 0.1, new DateTime(2019, 10, 24, 9, 0, 0), deltaL1011)
+                Flight flightChinaUsa = new Flight("Texas", "Beijing", 0.1, new DateTime(2019, 10, 24, 9, 0, 0), deltaL1011)
                 {
                     FlightId = "US0900"
                 };

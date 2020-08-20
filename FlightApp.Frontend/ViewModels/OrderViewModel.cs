@@ -38,9 +38,23 @@ namespace FlightApp.Frontend.ViewModels
             }
         }
 
+        private int _orderId;
+
+        public int OrderId {
+            get { return _orderId; }
+            set {
+                if (value != _orderId)
+                {
+                    _orderId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         public OrderViewModel(Order order)
         {
             Passenger = order.Passenger;
+            OrderId = order.OrderId;
             foreach (OrderLine orderLine in order.OrderLines)
             {
                 OrderLineViewModel orderLineViewModel = new OrderLineViewModel(orderLine);
@@ -64,6 +78,8 @@ namespace FlightApp.Frontend.ViewModels
 
         }
 
+        // This method is used by the Passenger. When this method is called this means 
+        // the passenger is ready to place his/her order
         public async void FinalizeOrder(string flightId, string seatNumber)
         {
             HttpClient httpClient = new HttpClient();

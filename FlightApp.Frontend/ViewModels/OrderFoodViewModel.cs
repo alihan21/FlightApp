@@ -1,4 +1,4 @@
-using FlightApp.Frontend.Common;
+﻿using FlightApp.Frontend.Common;
 using FlightApp.Frontend.Models;
 using Newtonsoft.Json;
 using System;
@@ -11,26 +11,20 @@ namespace FlightApp.Frontend.ViewModels
 {
     public class OrderFoodViewModel : BindableBase
     {
-
         public ObservableCollection<Food> Foods { get; set; }
-        public ObservableCollection<OrderFood> OrderHistory { get; set; }
-
+        public ObservableCollection<OrderViewModel> OrderHistory { get; set; }
 
         public Order CurrentOrder { get; set; }
-
-        public ObservableCollection<Food> ShoppingCart { get; set; }
-
 
         public OrderFoodViewModel()
         {
             Foods = new ObservableCollection<Food>();
-            OrderHistory = new ObservableCollection<OrderFood>();
+            OrderHistory = new ObservableCollection<OrderViewModel>();
             CurrentOrder = new Order();
-            ShoppingCart = new ObservableCollection<Food>();
-            loadDataAsync();
+            LoadDataAsync();
         }
 
-        private async void loadDataAsync()
+        private async void LoadDataAsync()
         {
             HttpClient client = new HttpClient();
             var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/Food"));
@@ -41,25 +35,17 @@ namespace FlightApp.Frontend.ViewModels
             }
         }
 
-        /*public async void loadOrderHistoryAsync(int passengerId)
+        public async void LoadOrderHistoryAsync(int passengerId)
         {
             HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/OrderFood/user/{passengerId}"));
-            var orderFoodList = JsonConvert.DeserializeObject<IList<OrderFood>>(json);
-            foreach (var orderFood in orderFoodList)
+            var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/Order/passengers/{passengerId}/orderHistory"));
+
+            var orders = JsonConvert.DeserializeObject<List<Order>>(json);
+            foreach (Order order in orders)
             {
-                OrderHistory.Add(orderFood);
+                OrderViewModel orderViewModel = new OrderViewModel(order);
+                OrderHistory.Add(orderViewModel);
             }
         }
-
-        public async Task AddPassengerOrderAsync(int passengerId)
-        {
-            // TODO: Find another serializer for Order object
-            var currentOrder = JsonConvert.SerializeObject(CurrentOrder.Orders);
-
-            HttpClient client = new HttpClient();
-            var res = await client.PostAsync(new Uri($"http://localhost:60177/api/OrderFood/passenger/{passengerId}/Order/"), new HttpStringContent(currentOrder, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
-
-        }*/
     }
 }
