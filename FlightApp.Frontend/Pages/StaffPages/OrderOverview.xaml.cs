@@ -17,5 +17,15 @@ namespace FlightApp.Frontend.Pages.StaffPages
             this.InitializeComponent();
             LayoutRoot.DataContext = new CollectionViewSource { Source = AllOrdersViewModel.OrdersViewModel };
         }
+
+        private void CompleteOrder(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            OrderViewModel orderViewModel = (OrderViewModel)lbOrders.SelectedItem;
+
+            if(orderViewModel != null)
+            {
+                AllOrdersViewModel.CompleteOrder(orderViewModel);
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 using FlightApp.Frontend.ViewModels;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Navigation;
 
 namespace FlightApp.Frontend.Pages.PassengerPages
@@ -9,7 +10,8 @@ namespace FlightApp.Frontend.Pages.PassengerPages
     /// </summary>
     public sealed partial class OrderHistory : Page
     {
-        public OrderFoodViewModel OrderFoodViewModels { get; set; }
+        public PassengerViewModel PassengerViewModel { get; set; }
+        public OrderFoodViewModel OrderFoodViewModel { get; set; }
 
         public OrderHistory()
         {
@@ -18,11 +20,11 @@ namespace FlightApp.Frontend.Pages.PassengerPages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-
             base.OnNavigatedTo(e);
-            OrderFoodViewModels = new OrderFoodViewModel();
-            //OrderFoodViewModels.loadOrderHistoryAsync((int)e.Parameter);
-            MyFoodHistory.ItemsSource = OrderFoodViewModels.OrderHistory;
+            PassengerViewModel = (PassengerViewModel)e.Parameter;
+            OrderFoodViewModel = new OrderFoodViewModel();
+            OrderFoodViewModel.LoadOrderHistoryAsync(PassengerViewModel.Id);
+            LayoutRoot.DataContext = new CollectionViewSource { Source = OrderFoodViewModel.OrderHistory };
         }
     }
 }

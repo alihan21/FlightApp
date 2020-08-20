@@ -37,7 +37,7 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
                 .ThenInclude(u => u.Seat)
                 .SingleOrDefault(uf => uf.FlightId == flightId && uf.User.Seat.SeatNumber == seatNumber);
 
-            return currentFlight.User;
+            return currentFlight?.User;
         }
 
         public User GetPassengerById(int id)

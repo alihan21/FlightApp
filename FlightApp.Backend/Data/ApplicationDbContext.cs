@@ -15,7 +15,6 @@ namespace FlightApp.Backend.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
         public DbSet<Staff> FlightStaff { get; set; }
-        public DbSet<OrderHistory> OrderHistories { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Channel> Channels { get; set; }
         public DbSet<Notification> Notification { get; set; }
@@ -32,7 +31,6 @@ namespace FlightApp.Backend.Data
             builder.ApplyConfiguration(new UserFlightConfiguration());
             builder.ApplyConfiguration(new OrderConfiguration());
             builder.ApplyConfiguration(new OrderLineConfiguration());
-            builder.ApplyConfiguration(new OrderHistoryConfiguration());
         }
     }
 }

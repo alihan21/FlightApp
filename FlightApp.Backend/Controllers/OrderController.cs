@@ -13,14 +13,12 @@ namespace FlightApp.Backend.Controllers
     {
         private readonly IFoodRepository _foodRepository;
         private readonly IPassengerRepository _passengerRepository;
-        private readonly IOrderHistoryRepository _orderHistoryRepository;
         private readonly IOrderRepository _orderRepository;
 
-        public OrderController(IFoodRepository foodRepository, IPassengerRepository passengerRepository, IOrderHistoryRepository orderHistoryRepository, IOrderRepository orderRepository)
+        public OrderController(IFoodRepository foodRepository, IPassengerRepository passengerRepository, IOrderRepository orderRepository)
         {
             _foodRepository = foodRepository;
             _passengerRepository = passengerRepository;
-            _orderHistoryRepository = orderHistoryRepository;
             _orderRepository = orderRepository;
         }
 
@@ -74,45 +72,57 @@ namespace FlightApp.Backend.Controllers
                 };
 
                 order.AddOrderLine(newOrderLine);
-
-                OrderHistory orderHistory = new OrderHistory(newOrderLine)
-                {
-                    OrderId = order.OrderId,
-                    PassengerId = passenger.UserId
-                };
-
-                _orderHistoryRepository.Add(orderHistory);
             }
  
             passenger.Orders.Add(order);
 
-            _orderHistoryRepository.SaveChanges();
             _passengerRepository.SaveChanges();
 
             return Ok(order);
         }
 
-        [HttpPost("orderHistory/{flightId}/{passengerSeat}")]
-        public ActionResult<List<OrderHistory>> GetOrderHistory(string flightId, string passengerSeat)
+        [HttpGet("passengers/{passengerId}/orderHistory")]
+        public ActionResult<List<OrderDTO>> GetOrderHistory(int passengerId)
         {
-            Passenger passenger = _passengerRepository.GetByFlightIdAndSeatNumber(flightId, passengerSeat);
+            List<OrderDTO> allOrderDTOs = new List<OrderDTO>();
+            Passenger passenger = _passengerRepository.GetById(passengerId);
 
             if (passenger == null)
             {
                 return NotFound("User not found");
             }
 
-            return Ok(_orderHistoryRepository.GetUserOrderHistory(passenger.UserId).ToList());
+            var orders = _orderRepository.RetrieveAllOrdersByUserId(passenger.UserId).ToList();
+
+            if(orders == null)
+            {
+                return NotFound("Orders not found");
+            }
+
+            foreach (Order order in orders)
+            {
+                OrderDTO orderDTO = new OrderDTO(order);
+                allOrderDTOs.Add(orderDTO);
+            }
+
+            return Ok(allOrderDTOs);
         }
 
-        [HttpPost("flightId/passengerSeat/{orderId}completeOrder")]
+        [HttpPost("flightId/passengerSeat/orders/{orderId}/completeOrder")]
         public ActionResult CompleteOrder(int orderId)
         {
-            _orderRepository.RemoveOrderById(orderId);
+            var order = _orderRepository.GetById(orderId);
+
+            if (order == null)
+            {
+                return NotFound("Order not found");
+            }
+
+            order.IsCompleted = true;
 
             _orderRepository.SaveChanges();
 
-            return Ok("Order succesfully removed");
+            return Ok("Order completed");
         }
     }
 }

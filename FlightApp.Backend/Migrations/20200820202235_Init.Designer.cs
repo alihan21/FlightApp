@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlightApp.Backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200815234133_Init")]
+    [Migration("20200820202235_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -115,6 +115,8 @@ namespace FlightApp.Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("IsCompleted");
+
                     b.Property<int?>("PassengerUserId");
 
                     b.HasKey("OrderId");
@@ -122,21 +124,6 @@ namespace FlightApp.Backend.Migrations
                     b.HasIndex("PassengerUserId");
 
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("FlightApp.Backend.Models.Domain.OrderHistory", b =>
-                {
-                    b.Property<int>("OrderId");
-
-                    b.Property<int>("FoodId");
-
-                    b.Property<int>("PassengerId");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("OrderId", "FoodId");
-
-                    b.ToTable("OrderHistories");
                 });
 
             modelBuilder.Entity("FlightApp.Backend.Models.Domain.OrderLine", b =>

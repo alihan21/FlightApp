@@ -51,7 +51,7 @@ namespace FlightApp.Frontend.Pages.PassengerPages
         {
             if (LoggedPassenger != null)
             {
-                Frame.Navigate(typeof(OrderHistory), LoggedPassenger.Id);
+                Frame.Navigate(typeof(OrderHistory), LoggedPassenger);
             }
         }
 

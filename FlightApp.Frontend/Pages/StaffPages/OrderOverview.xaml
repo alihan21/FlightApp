@@ -15,7 +15,7 @@
     </Page.Resources>
 
     <Canvas x:Name="LayoutRoot">
-        <ListBox Height="716" Margin="0,0,0,0" Width="639" ItemsSource="{Binding}" Canvas.Left="4">
+        <ListBox x:Name="lbOrders" Height="716" Margin="0,0,0,0" Width="639" ItemsSource="{Binding}" Canvas.Left="4">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="local:OrderViewModel">
                     <StackPanel Orientation="Vertical">
@@ -28,7 +28,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <ListView Height="715" Width="632" Canvas.Left="643" Canvas.Top="3" Margin="0,0,0,0">
-            <TextBlock Text="{Binding OrderLinesString}"/>
+            <TextBlock x:Name="tbOrderLinesString" Text="{Binding OrderLinesString}"/>
+            <Button Content="Complete order" Click="CompleteOrder"/>
         </ListView>
     </Canvas>
 </Page>

@@ -10,10 +10,13 @@ namespace FlightApp.Backend.Models.Domain
 
         public List<OrderLine> OrderLines { get; }
 
+        public bool IsCompleted { get; set; }
+
         #region Constructors
         public Order()
         {
             OrderLines = new List<OrderLine>();
+            IsCompleted = false;
         }
 
         public void AddOrderLine(OrderLine orderLine)

@@ -28,7 +28,8 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
                 .Include(o => o.Passenger)
                 .ThenInclude(p => p.Seat)
                 .Include(o => o.OrderLines)
-                .ThenInclude(ol => ol.Food);
+                .ThenInclude(ol => ol.Food)
+                .Where(o => !o.IsCompleted);
         }
 
         public Order GetById(int orderId)
@@ -52,6 +53,10 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
         {
             return _orders
                 .Include(o => o.OrderLines)
+                .Include(o => o.Passenger)
+                .ThenInclude(p => p.Seat)
+                .Include(o => o.OrderLines)
+                .ThenInclude(ol => ol.Food)
                 .Where(o => o.Passenger.UserId == userId);
         }
 
