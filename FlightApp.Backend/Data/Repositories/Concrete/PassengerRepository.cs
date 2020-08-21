@@ -38,6 +38,7 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
         public Passenger GetById(int passengerId)
         {
             return _passengers
+                .Include(n => n.Notification)
                 .SingleOrDefault(p => p.UserId == passengerId);
         }
 
