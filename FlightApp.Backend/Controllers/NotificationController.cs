@@ -22,6 +22,25 @@ namespace FlightApp.Backend.Controllers
             _passengerRepository = passengerRepository;
         }
 
+
+        [HttpGet("passenger/{passengerId}/notification/")]
+        public ActionResult<Passenger> GetNotification(int passengerId)
+        {
+            var passenger = _passengerRepository.GetById(passengerId);
+
+            if (passenger == null)
+            {
+                return NotFound("Passenger not found");
+            }
+
+            if(passenger.Notification == null)
+            {
+                return NotFound("Passenger does not have a notifcation");
+            }
+
+            return Ok(passenger);
+        }
+
         [HttpPost("flight/{flightId}/passengers/all/notification/add")]
         public ActionResult<Notification> AddNotificationAllPassengers(string flightId, NotificationDTO model)
         {
@@ -69,8 +88,8 @@ namespace FlightApp.Backend.Controllers
             return Ok();
         }
 
-        [HttpDelete("flight/passengers/{passengerId}/notification/delete")]
-        public ActionResult RemoveNotification(int passengerId)
+        [HttpPut("flight/passengers/{passengerId}/notification/delete")]
+        public ActionResult EditNotification(int passengerId)
         {
             var passenger = _passengerRepository.GetById(passengerId);
 
