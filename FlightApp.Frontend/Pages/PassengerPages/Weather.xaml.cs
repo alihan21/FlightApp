@@ -13,7 +13,6 @@ namespace FlightApp.Frontend.Pages.PassengerPages
     /// </summary>
     public sealed partial class Weather : Page
     {
-
         public WeatherViewModel WeatherViewModel { get; set; }
 
         public Weather()
@@ -26,10 +25,10 @@ namespace FlightApp.Frontend.Pages.PassengerPages
 
             base.OnNavigatedTo(e);
             WeatherViewModel = new WeatherViewModel();
-            initiliaze((int)e.Parameter);
+            Initiliaze((int)e.Parameter);
         }
 
-        private async void initiliaze(int passengerId)
+        private async void Initiliaze(int passengerId)
         {
             await WeatherViewModel.loadDataAsync(passengerId);
             myWeatherInfo.ItemsSource = WeatherViewModel.myWeather;
