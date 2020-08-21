@@ -118,6 +118,8 @@ namespace FlightApp.Backend.Controllers
         {
             var user = _userRepository.GetBySeatNumber(flightId, seatNumber);
 
+ 
+
             if (user == null)
             {
                 return NotFound();
