@@ -37,7 +37,7 @@ namespace FlightApp.Frontend.ViewModels
                 Encoding.UTF8, "application/json"));
         }
 
-        public async void AddNotificianToPassengerAsync(int passengerId)
+        public async void AddNotificationToPassengerAsync(int passengerId)
         {
             HttpClient httpClient = new HttpClient();
 

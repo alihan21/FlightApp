@@ -170,17 +170,14 @@
     <Compile Include="Pages\PassengerPages\Weather.xaml.cs">
       <DependentUpon>Weather.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StaffPages\Advertise.xaml.cs">
-      <DependentUpon>Advertise.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\StaffPages\CustomNotification.xaml.cs">
-      <DependentUpon>CustomNotification.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\StaffPages\MainPageStaff.xaml.cs">
       <DependentUpon>MainPageStaff.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StaffPages\MovePassenger.xaml.cs">
       <DependentUpon>MovePassenger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StaffPages\Notification.xaml.cs">
+      <DependentUpon>Notification.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StaffPages\OrderOverview.xaml.cs">
       <DependentUpon>OrderOverview.xaml</DependentUpon>
@@ -276,19 +273,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\StaffPages\Advertise.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\StaffPages\CustomNotification.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\StaffPages\MainPageStaff.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\StaffPages\MovePassenger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StaffPages\Notification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -39,19 +39,11 @@ namespace FlightApp.Frontend.Pages.StaffPages
             NavigateToPage(typeof(OrderOverview));
         }
 
-        private void NavigateToCustomNotification(object sender, RoutedEventArgs e)
+        private void NavigateToNotification(object sender, RoutedEventArgs e)
         {
             if (LoggedStaff != null)
             {
-                Frame.Navigate(typeof(CustomNotification), LoggedStaff);
-            }
-        }
-
-        private void NavigateToAdvertise(object sender, RoutedEventArgs e)
-        {
-            if (LoggedStaff != null)
-            {
-                Frame.Navigate(typeof(Advertise), LoggedStaff);
+                Frame.Navigate(typeof(Notification), LoggedStaff);
             }
         }
 

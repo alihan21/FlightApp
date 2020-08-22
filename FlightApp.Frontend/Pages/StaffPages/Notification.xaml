@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="FlightApp.Frontend.Pages.StaffPages.Notification"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FlightApp.Frontend.Pages.StaffPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Canvas>
+        <TextBlock Text="Notificatie" FontSize="48" HorizontalAlignment="Stretch" Canvas.Left="496" Canvas.Top="34" VerticalAlignment="Stretch"/>
+        <ComboBox x:Name="cbNotificationType" HorizontalAlignment="Left" Canvas.Left="242" Canvas.Top="339" VerticalAlignment="Top" SelectedIndex="0">
+            <ComboBoxItem Content="Advertise"/>
+            <ComboBoxItem Content="Custom Notification"/>
+        </ComboBox>
+        <TextBlock Text="Message" Canvas.Left="438" Canvas.Top="342"/>
+        <TextBox x:Name="tbMessage" Canvas.Left="501" Canvas.Top="336"/>
+        <CheckBox x:Name="cbIsAllPassengersSelected" Content="Alle passagiers" HorizontalAlignment="Left" Canvas.Left="645" Canvas.Top="332" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbPassengers" ItemsSource="{x:Bind AllPassengersViewModel.Passengers}" SelectedItem="{x:Bind AllPassengersViewModel.SelectedPassenger}" DisplayMemberPath="Name" SelectionChanged="SelectPassenger" HorizontalAlignment="Left" Canvas.Left="788" Canvas.Top="333" VerticalAlignment="Top"/>
+        <Button Content="Adverteer" x:Name="btnAdvertise" Click="BeginAdvertise" HorizontalAlignment="Left" Canvas.Left="558" Canvas.Top="462" VerticalAlignment="Top"/>
+        <TextBlock Canvas.Left="242" Canvas.Top="307" Text="Type notificatie" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <TextBlock Canvas.Left="705" Canvas.Top="303" Text="Kies passagier(s)" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    </Canvas>
+</Page>
