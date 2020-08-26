@@ -8,8 +8,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Canvas x:Name="LayoutRoot">
-        <ListBox ItemsSource="{Binding}" Height="717" Canvas.Left="2" Canvas.Top="1" Width="640" Margin="0,0,0,0">
+    <Grid Style="{StaticResource GridSplitView}" x:Name="LayoutRoot">
+
+        <ListBox Grid.Column="0" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="viewModels:EntertainmentViewModel">
                     <StackPanel Orientation="Vertical">
@@ -18,11 +19,11 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListView Height="716" Canvas.Left="644" Canvas.Top="1" Width="633" Margin="0,0,0,0">
+        <ListView Style="{StaticResource DetailsViewStyle}" Grid.Column="1">
             <TextBlock Text="{Binding Plot}"/>
             <TextBlock Text="{Binding Released}"/>
             <TextBlock Text="{Binding Actors}"/>
-            <Image Source="{Binding Poster}" />
+            <Image Source="{Binding Poster}" Margin="0,0,0,0" />
         </ListView>
-    </Canvas>
+    </Grid>
 </Page>

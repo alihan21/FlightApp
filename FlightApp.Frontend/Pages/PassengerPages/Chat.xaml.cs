@@ -23,15 +23,15 @@ namespace FlightApp.Frontend.Pages.PassengerPages
         {
             PassengerViewModel = (PassengerViewModel)e.Parameter;
             ChatViewModel = new ChatViewModel(PassengerViewModel.Id);
-            MyMessages.ItemsSource = ChatViewModel.Messages;
+            lvMyMessages.ItemsSource = ChatViewModel.Messages;
         }
 
-        private async void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void SendMessage(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var message = new Message(PassengerViewModel.Id, PassengerViewModel.Name, Input.Text);
-            await ChatViewModel.AddMessageAsync(PassengerViewModel.Id, Input.Text);
+            var message = new Message(PassengerViewModel.Id, PassengerViewModel.Name, tbInput.Text);
+            await ChatViewModel.AddMessageAsync(PassengerViewModel.Id, tbInput.Text);
             ChatViewModel.Messages.Add(message);
-            Input.Text = "";
+            tbInput.Text = "";
         }
     }
 }
