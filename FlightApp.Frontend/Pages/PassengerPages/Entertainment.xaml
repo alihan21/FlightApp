@@ -9,7 +9,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Style="{StaticResource GridSplitView}" x:Name="LayoutRoot">
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <ListBox Grid.Column="0" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="viewModels:EntertainmentViewModel">
