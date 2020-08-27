@@ -36,13 +36,13 @@ namespace FlightApp.Frontend.Pages
                 var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/User/staff/login/{loginCode}"));
                 var loggedInStaff = JsonConvert.DeserializeObject<Staff>(json);
 
-                StaffViewModel staffViewModel = new StaffViewModel(loggedInStaff)
-                {
-                    FlightId = tbFlightId.Text
-                };
-
                 if (loggedInStaff != null)
                 {
+                    StaffViewModel staffViewModel = new StaffViewModel(loggedInStaff)
+                    {
+                        FlightId = tbFlightId.Text
+                    };
+
                     Frame.Navigate(typeof(MainPageStaff), staffViewModel);
                 }
             }

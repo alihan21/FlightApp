@@ -9,19 +9,27 @@
     xmlns:viewModels="using:FlightApp.Frontend.ViewModels"
   mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-  <Page.Resources>
-    <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
-  </Page.Resources>
+    <Page.Resources>
+        <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
+    </Page.Resources>
 
-  <Canvas>
-    <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Flight information" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-    <StackPanel Canvas.Left="333" Canvas.Top="258" HorizontalAlignment="Stretch" Height="203" VerticalAlignment="Stretch" Width="588">
-      <TextBlock Text="{x:Bind Path=FlightViewModel.Origin, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Origin: '}"/>
-      <TextBlock Text="{x:Bind Path=FlightViewModel.Destination, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Destination: '}"/>
-      <TextBlock Text="{x:Bind Path=FlightViewModel.Duration, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Duration: '}"/>
-      <TextBlock Text="{x:Bind Path=FlightViewModel.PlaneMaxSeats, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Max seats on this plane: '}"/>
-      <TextBlock Text="{x:Bind Path=FlightViewModel.PlaneName, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Name of plane: '}"/>
-      <TextBlock Text="{x:Bind Path=FlightViewModel.TimeOfDepart, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Time and date: '}"/>
-    </StackPanel>
-  </Canvas>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="Flight information" TextWrapping="Wrap" FontSize="24"/>
+        <TextBlock Grid.Row="1" Text="{x:Bind Path=FlightViewModel.Origin, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Origin: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Text="{x:Bind Path=FlightViewModel.Destination, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Destination: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Text="{x:Bind Path=FlightViewModel.Duration, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Duration: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.PlaneMaxSeats, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Max seats on this plane: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.PlaneName, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Name of plane: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.TimeOfDepart, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Time and date: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
 </Page>

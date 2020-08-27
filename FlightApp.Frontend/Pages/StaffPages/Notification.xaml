@@ -8,18 +8,36 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Canvas>
-        <TextBlock Text="Notificatie" FontSize="48" HorizontalAlignment="Stretch" Canvas.Left="496" Canvas.Top="34" VerticalAlignment="Stretch"/>
-        <ComboBox x:Name="cbNotificationType" HorizontalAlignment="Left" Canvas.Left="242" Canvas.Top="339" VerticalAlignment="Top" SelectedIndex="0">
-            <ComboBoxItem Content="Advertise"/>
-            <ComboBoxItem Content="Custom Notification"/>
-        </ComboBox>
-        <TextBlock Text="Message" Canvas.Left="438" Canvas.Top="342"/>
-        <TextBox x:Name="tbMessage" Canvas.Left="501" Canvas.Top="336"/>
-        <CheckBox x:Name="cbIsAllPassengersSelected" Content="Alle passagiers" HorizontalAlignment="Left" Canvas.Left="645" Canvas.Top="332" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbPassengers" ItemsSource="{x:Bind AllPassengersViewModel.Passengers}" SelectedItem="{x:Bind AllPassengersViewModel.SelectedPassenger}" DisplayMemberPath="Name" SelectionChanged="SelectPassenger" HorizontalAlignment="Left" Canvas.Left="788" Canvas.Top="333" VerticalAlignment="Top"/>
-        <Button Content="Adverteer" x:Name="btnAdvertise" Click="BeginAdvertise" HorizontalAlignment="Left" Canvas.Left="558" Canvas.Top="462" VerticalAlignment="Top"/>
-        <TextBlock Canvas.Left="242" Canvas.Top="307" Text="Type notificatie" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-        <TextBlock Canvas.Left="705" Canvas.Top="303" Text="Kies passagier(s)" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-    </Canvas>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="3" Text="Notificatie" FontSize="48" HorizontalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Type notificatie:" TextWrapping="Wrap"/>
+            <ComboBox x:Name="cbNotificationType" SelectedIndex="0">
+                <ComboBoxItem Content="Advertise"/>
+                <ComboBoxItem Content="Custom Notification"/>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Boodschap:"/>
+            <TextBox x:Name="tbMessage"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Kies passagier(s):" TextWrapping="Wrap"/>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox x:Name="cbIsAllPassengersSelected" Content="Alle passagiers" Margin="0,0,16,0"/>
+                <ComboBox x:Name="cbPassengers" ItemsSource="{x:Bind AllPassengersViewModel.Passengers}" SelectedItem="{x:Bind AllPassengersViewModel.SelectedPassenger}" DisplayMemberPath="Name" SelectionChanged="SelectPassenger"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Grid.Row="2" Grid.ColumnSpan="3" Content="Adverteer" x:Name="btnAdvertise" Click="BeginAdvertise" HorizontalAlignment="Center"/>
+    </Grid>
 </Page>

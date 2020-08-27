@@ -14,14 +14,18 @@
         <converters:StringConverter x:Key="StringConverter"/>
     </Page.Resources>
 
-    <Canvas x:Name="LayoutRoot">
-        <ListView x:Name="MyOrderHistory" ItemsSource="{Binding}">
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListView Grid.Column="0" x:Name="MyOrderHistory" ItemsSource="{Binding}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <StackPanel Orientation="Vertical">
                             <Image Height="50" Width="50" Source="/Assets/order_icon.png"/>
-                            <TextBlock Width="200" Text="{Binding Passenger.Name, Converter={StaticResource StringConverter}, ConverterParameter='Name of passenger: '}"/>
+                            <TextBlock Text="{Binding Passenger.Name, Converter={StaticResource StringConverter}, ConverterParameter='Name of passenger: '}"/>
                             <TextBlock Text="{Binding Passenger.Seat.SeatNumber, Converter={StaticResource StringConverter}, ConverterParameter='Seatnumber: '}"/>
                             <TextBlock Text="{Binding Total, Converter={StaticResource StringConverter}, ConverterParameter='Amount to pay: € '}"/>
                         </StackPanel>
@@ -29,9 +33,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView Height="715" Width="632" Canvas.Left="643" Canvas.Top="3" Margin="0,0,0,0">
+        <ListView Grid.Column="1">
             <TextBlock x:Name="tbOrderLinesString" Text="{Binding OrderLinesString}"/>
         </ListView>
-    </Canvas>
-
+    </Grid>
 </Page>

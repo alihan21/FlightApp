@@ -24,6 +24,7 @@ namespace FlightApp.Frontend.Pages.StaffPages
             base.OnNavigatedTo(e);
 
             LoggedStaff = (StaffViewModel)e.Parameter;
+            tbStaffName.Text = "Welkom, " + LoggedStaff.Name;
         }
 
         private void NavigateToMovePassenger(object sender, RoutedEventArgs e)
@@ -36,7 +37,7 @@ namespace FlightApp.Frontend.Pages.StaffPages
 
         private void NavigateToOrderOverview(object sender, RoutedEventArgs e)
         {
-            NavigateToPage(typeof(OrderOverview));
+            Frame.Navigate(typeof(OrderOverview));
         }
 
         private void NavigateToNotification(object sender, RoutedEventArgs e)
@@ -45,11 +46,6 @@ namespace FlightApp.Frontend.Pages.StaffPages
             {
                 Frame.Navigate(typeof(Notification), LoggedStaff);
             }
-        }
-
-        private void NavigateToPage(Type type)
-        {
-            Frame.Navigate(type);
         }
     }
 }

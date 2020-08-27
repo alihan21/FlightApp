@@ -15,13 +15,23 @@
     <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
   </Page.Resources>
 
-  <Canvas>
-    <TextBlock x:Name="tbPassengerName" Canvas.Left="265" Canvas.Top="61" Text="{Binding Name, Converter={StaticResource StringConverter}, ConverterParameter='Welcome, '}" TextWrapping="Wrap" FontSize="72" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Normal" FontStyle="Normal"/>
-    <Button x:Name="btnNavigateToFlightInfo" Content="Vluchtinformatie" HorizontalAlignment="Left" Canvas.Left="213" Canvas.Top="331" VerticalAlignment="Top" Height="71" Width="330" FontSize="36" Click="NavigateToFlightInfo"/>
-    <Button x:Name="btnNavigateToOrderFood" Content="Eten bestellen" HorizontalAlignment="Center" Canvas.Left="637" Canvas.Top="331" VerticalAlignment="Center" Height="71" Width="330" FontSize="36" Click="NavigateToOrderFood"/>
-    <Button x:Name="btnNavigateToOrderHistory" Content="Bestelgeschiedenis" HorizontalAlignment="Left" Canvas.Left="1025" Canvas.Top="339" VerticalAlignment="Top" Height="71" Width="330" FontSize="36" Click="NavigateToOrderHistory"/>
-    <Button x:Name="btnNavigateToEntertainment" Content="Entertainment" HorizontalAlignment="Left" Canvas.Left="203" Canvas.Top="553" VerticalAlignment="Top" Height="71" Width="330" FontSize="36" Click="NavigateToEntertainment"/>
-    <Button x:Name="btnNavigateToWeather" Content="Weer raadplegen" HorizontalAlignment="Center" Canvas.Left="609" Canvas.Top="553" VerticalAlignment="Top" Height="71" Width="330" FontSize="36" Margin="0,0,0,0" Click="NavigateToWeather"/>
-    <Button x:Name="btnNavigateToChat" Content="Chatten" HorizontalAlignment="Left" Canvas.Left="1023" Canvas.Top="565" VerticalAlignment="Top" Height="71" Width="330" FontSize="36" Click="NavigateToChat"/>
-  </Canvas>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="3" x:Name="tbPassengerName" Text="{Binding Name, Converter={StaticResource StringConverter}, ConverterParameter='Welkom, '}" TextWrapping="Wrap" FontSize="72" HorizontalAlignment="Center"/>
+        <Button Grid.Row="1" x:Name="btnNavigateToFlightInfo" Content="Vluchtinformatie" FontSize="36" Click="NavigateToFlightInfo" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="btnNavigateToOrderFood" Content="Eten bestellen" FontSize="36" Click="NavigateToOrderFood" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Grid.Row="1" Grid.Column="2" x:Name="btnNavigateToOrderHistory" Content="Bestelgeschiedenis" FontSize="36" Click="NavigateToOrderHistory" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Grid.Row="2" x:Name="btnNavigateToEntertainment" Content="Entertainment" FontSize="36" Click="NavigateToEntertainment" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Grid.Row="2" Grid.Column="1" x:Name="btnNavigateToWeather" Content="Weer raadplegen" FontSize="36" Click="NavigateToWeather" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Grid.Row="2" Grid.Column="2" x:Name="btnNavigateToChat" Content="Chatten" FontSize="36" Click="NavigateToChat" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
 </Page>

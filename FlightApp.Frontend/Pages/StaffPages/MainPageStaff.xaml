@@ -15,10 +15,20 @@
         <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
     </Page.Resources>
 
-    <Canvas>
-        <TextBlock x:Name="tbStaffName" Canvas.Left="265" Canvas.Top="61" Text="{Binding Name, Converter={StaticResource StringConverter}, ConverterParameter='Welcome, '}" TextWrapping="Wrap" FontSize="72" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Normal" FontStyle="Normal"/>
-        <Button x:Name="btnNavigateToMovePassenger" Content="Verplaats passagier" HorizontalAlignment="Left" Canvas.Left="267" Canvas.Top="331" VerticalAlignment="Center" Height="71" Width="330" FontSize="36" Click="NavigateToMovePassenger"/>
-        <Button x:Name="btnNavigateToOrderOverview" Content="Overzicht van bestellingen" HorizontalAlignment="Left" Canvas.Left="796" Canvas.Top="338" VerticalAlignment="Top" Height="71" Width="457" FontSize="36" Click="NavigateToOrderOverview"/>
-        <Button x:Name="btnNavigateToNotification" Content="Notificatie" HorizontalAlignment="Left" Canvas.Left="254" Canvas.Top="521" VerticalAlignment="Top" Height="71" Width="330" FontSize="36" Click="NavigateToNotification"/>
-    </Canvas>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.ColumnSpan="2" x:Name="tbStaffName" Text="{Binding Name, Converter={StaticResource StringConverter}, ConverterParameter='Welcome, '}" TextWrapping="Wrap" FontSize="72" HorizontalAlignment="Center"/>
+        <Button Grid.Row="1" x:Name="btnNavigateToMovePassenger" Content="Verplaats passagier" FontSize="36" Click="NavigateToMovePassenger" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="btnNavigateToOrderOverview" Content="Overzicht van bestellingen" FontSize="36" Click="NavigateToOrderOverview" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Grid.Row="2" x:Name="btnNavigateToNotification" Content="Notificatie" FontSize="36" Click="NavigateToNotification" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
 </Page>
