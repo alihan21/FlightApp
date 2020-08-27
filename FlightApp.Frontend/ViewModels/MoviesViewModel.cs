@@ -7,7 +7,7 @@ using System.Net.Http;
 
 namespace FlightApp.Frontend.ViewModels
 {
-    public class MoviesViewModel : BindableBase
+    public class MoviesViewModel
     {
         public ObservableCollection<EntertainmentViewModel> Movies { get; set; }
 
