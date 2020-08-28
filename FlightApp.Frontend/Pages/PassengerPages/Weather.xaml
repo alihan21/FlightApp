@@ -12,6 +12,7 @@
 
     <Page.Resources>
         <converters:StringConverter x:Key="StringConverter"/>
+        <converters:KelvinToCelsiusConverter x:Key="KelvinToCelsiusConverter"/>
     </Page.Resources>
 
     <Grid>
@@ -31,9 +32,9 @@
                     <Grid>
                         <StackPanel>
                             <TextBlock Text="{Binding Sys.Country, Converter={StaticResource StringConverter}, ConverterParameter='Country: '}"/>
-                            <TextBlock Text="{Binding Main.Temp, Converter={StaticResource StringConverter}, ConverterParameter='Temperature: '}"/>
-                            <TextBlock Text="{Binding Main.Temp_min, Converter={StaticResource StringConverter}, ConverterParameter='Minimum temperature: '}"/>
-                            <TextBlock Text="{Binding Main.Temp_max, Converter={StaticResource StringConverter}, ConverterParameter='Maximum temperature: '}"/>
+                            <TextBlock Text="{Binding Main.Temp, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Temperature: '}"/>
+                            <TextBlock Text="{Binding Main.Temp_min, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Minimum temperature: '}"/>
+                            <TextBlock Text="{Binding Main.Temp_max, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Maximum temperature: '}"/>
                             <TextBlock Text="{Binding Main.Pressure, Converter={StaticResource StringConverter}, ConverterParameter='Pressure: '}"/>
                             <TextBlock Text="{Binding Main.Humidity, Converter={StaticResource StringConverter}, ConverterParameter='Humidity: '}"/>
                             <TextBlock Text="{Binding Wind.Speed, Converter={StaticResource StringConverter}, ConverterParameter='Wind speed (in km/h): '}"/>
