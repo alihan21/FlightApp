@@ -33,22 +33,46 @@ namespace FlightApp.Frontend.Pages
                 int loginCode = Int16.Parse(password);
 
                 HttpClient client = new HttpClient();
-                var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/User/staff/login/{loginCode}"));
-                var loggedInStaff = JsonConvert.DeserializeObject<Staff>(json);
+                var json = await client.GetAsync(new Uri($"http://localhost:60177/api/User/staff/login/{loginCode}"));
 
-                if (loggedInStaff != null)
+                if (json.IsSuccessStatusCode)
                 {
+                    var loggedInStaff = JsonConvert.DeserializeObject<Staff>(json.Content.ReadAsStringAsync().Result);
+
                     StaffViewModel staffViewModel = new StaffViewModel(loggedInStaff)
                     {
                         FlightId = tbFlightId.Text
                     };
 
-                    Frame.Navigate(typeof(MainPageStaff), staffViewModel);
+                    if (loggedInStaff != null)
+                    {
+                        Frame.Navigate(typeof(MainPageStaff), staffViewModel);
+                    }
+                }
+                else
+                {
+                    ContentDialog myNotification = new ContentDialog
+                    {
+                        Title = "Warning",
+                        Content = "Username or password is incorrect. Please fill in a valid login",
+                        CloseButtonText = "Okay"
+
+                    };
+
+                    ContentDialogResult result = await myNotification.ShowAsync();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                ContentDialog myWarning = new ContentDialog
+                {
+                    Title = "Warning",
+                    Content = "Password must be numeric values",
+                    CloseButtonText = "Okay"
+
+                };
+                ContentDialogResult result = await myWarning.ShowAsync();
+
             }
         }
     }

@@ -24,8 +24,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:Food">
                         <StackPanel Orientation="Horizontal">
-                            <Image Height="50" Width="50" Source="/Assets/underConstructionImage.jpg"/>
-                            <TextBlock Text="{x:Bind Name}" FontWeight="Bold"/>
+                          <Image Source="{x:Bind Source}"></Image>
+                          <TextBlock Text="{x:Bind Name}" FontWeight="Bold"/>
                             <TextBlock TextWrapping="Wrap" Text="{x:Bind Description}"/>
                             <TextBlock Text="{x:Bind Price, Converter={StaticResource StringConverter}, ConverterParameter='€ '}" HorizontalAlignment="Left"/>
                             <Button x:Name="btnAddToOrder" Margin="1" Click="AddToOrder" Content="Add" HorizontalAlignment="Right"/>
@@ -46,7 +46,7 @@
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="local1:OrderLineViewModel">
                         <StackPanel Orientation="Vertical">
-                            <Image Height="50" Width="50" Source="/Assets/underConstructionImage.jpg"></Image>
+                            <Image Source="{x:Bind Source}"></Image>
                             <TextBlock Text="{x:Bind Food.Name}" FontWeight="Bold"/>
                             <TextBlock TextWrapping="Wrap" Text="{x:Bind Quantity, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Number of times ordered: '}" />
                             <TextBlock Text="{x:Bind Subtotal, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Subtotal: € '}"/>
