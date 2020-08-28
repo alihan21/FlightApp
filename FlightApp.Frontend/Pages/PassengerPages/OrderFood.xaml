@@ -46,7 +46,7 @@
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="local1:OrderLineViewModel">
                         <StackPanel Orientation="Vertical">
-                            <Image Source="{x:Bind Source}"></Image>
+                            <Image Source="{x:Bind Food.Source}" Width="50" Height="50"/>
                             <TextBlock Text="{x:Bind Food.Name}" FontWeight="Bold"/>
                             <TextBlock TextWrapping="Wrap" Text="{x:Bind Quantity, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Number of times ordered: '}" />
                             <TextBlock Text="{x:Bind Subtotal, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Subtotal: € '}"/>

@@ -125,6 +125,7 @@
     <Compile Include="Models\Entertainment.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\Food.cs" />
+    <Compile Include="Models\LocationManager.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Order.cs" />
