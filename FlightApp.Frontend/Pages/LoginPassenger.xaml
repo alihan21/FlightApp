@@ -8,16 +8,29 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Canvas>
-        <Canvas.Background>
+    <Grid>
+        <Grid.Background>
             <ImageBrush ImageSource="/Assets/loginBackgroundImgPassenger.jpg"/>
-        </Canvas.Background>
-        <Button Content="Submit" HorizontalAlignment="Left" Canvas.Left="612" Canvas.Top="406" VerticalAlignment="Top" Foreground="Black" FontSize="36" FontWeight="Bold" Click="Login"/>
-        <TextBlock Canvas.Left="160" Canvas.Top="200" Text="Enter your seatnumber:" TextWrapping="Wrap" Foreground="Black" FontSize="48" FontWeight="Bold" FontFamily="Segoe UI" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <TextBox x:Name="tbPassword" PlaceholderForeground="Black" PlaceholderText="begins with a letter followed by 2 numbers" Canvas.Left="197" Canvas.Top="270" Text="" FontSize="22" SelectionHighlightColor="Black" FontWeight="Bold" Margin="0,0,0,0"/>
-        <TextBlock Canvas.Left="777" Canvas.Top="200" Text="Enter your flightnumber:" TextWrapping="Wrap" Foreground="Black" FontSize="48" FontWeight="Bold" FontFamily="Segoe UI" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <TextBox x:Name="tbFlightId" PlaceholderForeground="Black" PlaceholderText="couple of numbers" Canvas.Left="946" Canvas.Top="272" Text="" FontSize="22" SelectionHighlightColor="Black" FontWeight="Bold" Margin="0,0,0,0"/>
-        <Button x:Name="btnNavigateToStaffmember" Content="Staffmember" HorizontalAlignment="Left" Canvas.Left="1183" Canvas.Top="26" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontStyle="Italic" FocusVisualPrimaryBrush="Black" Click="navigateToStaffmemberPage"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" Text="AliDean Airlines" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="100" Foreground="#FFAB0505" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" Canvas.Left="21" Canvas.Top="9"/>
-    </Canvas>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="4" Text="AliDean Airlines" TextWrapping="Wrap" FontSize="90" Foreground="#FFAB0505" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline"/>
+        <Button Click="navigateToStaffmemberPage" Grid.Column="1" x:Name="btnNavigateToStaffmember" Content="Staffmember" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontStyle="Italic" FocusVisualPrimaryBrush="Black" Margin="0,64,64,0"/>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
+            <TextBlock  Text="Enter your seatnumber:" TextWrapping="Wrap" Foreground="Black" FontSize="48" FontWeight="Bold" FontFamily="Segoe UI" Margin="4"/>
+            <TextBox x:Name="tbPassword" PlaceholderForeground="Black" PlaceholderText="begins with a letter followed by 2 numbers" Text="" FontSize="22" SelectionHighlightColor="Black" FontWeight="Bold" Margin="4" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Stretch"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
+            <TextBlock Text="Enter your flightnumber:" TextWrapping="Wrap" Foreground="Black" FontSize="48" FontWeight="Bold" FontFamily="Segoe UI" Margin="4"/>
+            <TextBox x:Name="tbFlightId" PlaceholderForeground="Black" PlaceholderText="couple of numbers" Text="" FontSize="22" SelectionHighlightColor="Black" FontWeight="Bold" Margin="4"/>
+        </StackPanel>
+        <Button Click="Login" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2" Content="Submit" Foreground="Black" FontSize="36" FontWeight="Bold"/>
+    </Grid>
 </Page>

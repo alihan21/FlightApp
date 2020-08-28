@@ -1,6 +1,7 @@
 using FlightApp.Frontend.Models;
 using FlightApp.Frontend.ViewModels;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -34,8 +35,9 @@ namespace FlightApp.Frontend.Pages.PassengerPages
             }
 
             NotificationViewModel = new NotificationViewModel();
+          
             await GetNotification();
-            if (!NotificationViewModel.isNotificationRead)
+            if (!NotificationViewModel.IsNotificationRead && NotificationViewModel.Notification != null)
             {
                 if (NotificationViewModel.Notification.Type == "CustomNotification")
                 {

@@ -30,26 +30,28 @@ namespace FlightApp.Backend.Controllers
 
         private List<EntertainmentDTO> GetMoviesFromAPI()
         {
-            GenerateMovieNames();
+            GenerateEntertainmentItems();
             List<EntertainmentDTO> movieDTOs = new List<EntertainmentDTO>();
             HttpClient client = new HttpClient();
 
-            foreach(string movieName in MovieNames)
+            foreach(string entertainmentItem in EntertainmentItems)
             {
-                string getMovieQuery = "http://www.omdbapi.com/?t=" + movieName + "&apikey=5c7c5f26";
-                var response = client.GetStringAsync(getMovieQuery);
+                string getEntertainmentQuery = "http://www.omdbapi.com/?t=" + entertainmentItem + "&apikey=5c7c5f26";
+                var response = client.GetStringAsync(getEntertainmentQuery);
 
                 Entertainment movie = JsonConvert.DeserializeObject<Entertainment>(response.Result);
 
                 movieDTOs.Add(new EntertainmentDTO(movie));
             }
 
+            movieDTOs.OrderBy(m => m.Type).ThenBy(m => m.Title);
+
             return movieDTOs;
         }
 
-        private void GenerateMovieNames()
+        private void GenerateEntertainmentItems()
         {
-            MovieNames = new List<string>
+            EntertainmentItems = new List<string>
             {
                 "star+wars",
                 "titanic",
@@ -60,10 +62,30 @@ namespace FlightApp.Backend.Controllers
                 "inception",
                 "taken",
                 "taken+2",
-                "the+last"
+                "the+last",
+                "maroon+5",
+                "waka",
+                "old+town+road",
+                "billie+eilish",
+                "justin+bieber",
+                "XXXTentacion",
+                "post+malone",
+                "wiz+khalifa",
+                "eminem",
+                "kendrick+lamar",
+                "big+bang+theory",
+                "the+100",
+                "naruto",
+                "the+flash",
+                "the+vampire+diaries",
+                "the+originals",
+                "one+punch+man",
+                "hunter+x+hunter",
+                "death+note",
+                "code+geass",
             };
         }
 
-        private List<string> MovieNames { get; set; }
+        private List<string> EntertainmentItems { get; set; }
     }
 }

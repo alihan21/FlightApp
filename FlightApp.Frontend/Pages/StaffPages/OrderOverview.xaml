@@ -14,22 +14,26 @@
         <converters:OrderLinesConverter x:Key="OrderLinesConverter"/>
     </Page.Resources>
 
-    <Canvas x:Name="LayoutRoot">
-        <ListBox x:Name="lbOrders" Height="716" Margin="0,0,0,0" Width="639" ItemsSource="{Binding}" Canvas.Left="4">
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0" x:Name="lbOrders" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="local:OrderViewModel">
                     <StackPanel Orientation="Vertical">
                         <Image Height="50" Width="50" Source="/Assets/order_icon.png"/>
-                        <TextBlock Width="200" Text="{Binding Passenger.Name, Converter={StaticResource StringConverter}, ConverterParameter='Name of passenger: '}"/>
+                        <TextBlock Text="{Binding Passenger.Name, Converter={StaticResource StringConverter}, ConverterParameter='Name of passenger: '}"/>
                         <TextBlock Text="{Binding Passenger.Seat.SeatNumber, Converter={StaticResource StringConverter}, ConverterParameter='Seatnumber: '}"/>
                         <TextBlock Text="{Binding Total, Converter={StaticResource StringConverter}, ConverterParameter='Amount to pay: € '}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListView Height="715" Width="632" Canvas.Left="643" Canvas.Top="3" Margin="0,0,0,0">
+        <ListView Grid.Column="1">
             <TextBlock x:Name="tbOrderLinesString" Text="{Binding OrderLinesString}"/>
             <Button Content="Complete order" Click="CompleteOrder"/>
         </ListView>
-    </Canvas>
+    </Grid>
 </Page>

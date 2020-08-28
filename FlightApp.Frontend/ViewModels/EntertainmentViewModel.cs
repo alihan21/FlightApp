@@ -6,7 +6,7 @@ namespace FlightApp.Frontend.ViewModels
     public class EntertainmentViewModel
     {
         public string Title { get; set; }
-        public int Year { get; set; }
+        public string Year { get; set; }
         public string PG { get; set; }
         public string Released { get; set; }
         public string Runtime { get; set; }

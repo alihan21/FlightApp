@@ -12,15 +12,25 @@
         <local:SeatViewModel x:Key="SeatViewModel"/>
     </Page.Resources>
 
-    <Canvas>
-        <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Move passenger" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-
-        <ComboBox x:Name="cbSeats" ItemsSource="{x:Bind SeatViewModel.Seats}" SelectedItem="{x:Bind SeatViewModel.SelectedSeat}" DisplayMemberPath="SeatNumber" HorizontalAlignment="Left" Canvas.Left="562" Canvas.Top="367" VerticalAlignment="Top" SelectionChanged="SelectSeat"/>
-        <TextBlock Canvas.Left="579" Canvas.Top="343" Text="Available seats:" TextWrapping="Wrap"/>
-        <TextBlock Canvas.Left="278" Canvas.Top="346" Text="Current seat:" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <TextBox x:Name="tbOldSeatNumber" Canvas.Left="274" Canvas.Top="382" PlaceholderText="Fill seatnumber" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button HorizontalAlignment="Left" Canvas.Left="974" Canvas.Top="382" VerticalAlignment="Top">
-            <Button Content="Move passenger to new seat" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Click="ChangePassengerSeat"/>
-        </Button>
-    </Canvas>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" Text="Verplaats passagier" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Current seat:" TextWrapping="Wrap"/>
+            <TextBox x:Name="tbOldSeatNumber" PlaceholderText="Fill seatnumber"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Available seats:" TextWrapping="Wrap"/>
+            <ComboBox x:Name="cbSeats" ItemsSource="{x:Bind SeatViewModel.Seats}" SelectedItem="{x:Bind SeatViewModel.SelectedSeat}" DisplayMemberPath="SeatNumber" SelectionChanged="SelectSeat"/>
+        </StackPanel>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Move passenger to new seat" Click="ChangePassengerSeat" HorizontalAlignment="Center"/>
+    </Grid>
 </Page>

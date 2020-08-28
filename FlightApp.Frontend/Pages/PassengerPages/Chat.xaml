@@ -8,14 +8,18 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Width="500" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <ScrollViewer>
-            <ListView x:Name="MyMessages" Height="500">
+            <ListView x:Name="lvMyMessages" Height="500">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="450" Margin="10,10,10,10">
+                        <StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Passenger.Name}" Margin="0,0,5,0"></TextBlock>
+                                <TextBlock Text="{Binding Passenger.Name}"/>
                             </StackPanel>
                             <TextBlock TextWrapping="Wrap" Text="{Binding Text}" FontWeight="Bold"/>
                         </StackPanel>
@@ -23,14 +27,14 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
-        <Grid Width="500" BorderThickness="0,1,0,0" BorderBrush="Gray">
+        <Grid Grid.Row="1" BorderThickness="0,1,0,0" BorderBrush="Gray" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column ="0" x:Name="Input" />
-            <Button Grid.Column ="1" Click="Button_Click" Height="32">
-            </Button>
+            <TextBox Style="{StaticResource ChatTextBoxStyle}" Grid.Column="0" x:Name="tbInput" PlaceholderText="Enter your message..."/>
+            <Button Style="{StaticResource ChatButtonStyle}" Grid.Column="1" Click="SendMessage" Height="32" Content="Send"/>
+
         </Grid>
-    </StackPanel>
+    </Grid>
 </Page>

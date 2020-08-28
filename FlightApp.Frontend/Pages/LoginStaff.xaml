@@ -8,19 +8,29 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Canvas>
-        <Canvas.Background>
+    <Grid>
+        <Grid.Background>
             <ImageBrush ImageSource="/Assets/loginBackgroundImgStaff.jpg"/>
-        </Canvas.Background>
-        <TextBlock HorizontalAlignment="Left" Margin="74,180,0,0" Text="Enter your password:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Foreground="Black" FontWeight="Bold"/>
-        <TextBox x:Name="tbPassword"  PlaceholderText="password should be 4 symbols" HorizontalAlignment="Left" Margin="134,249,0,0" Text="" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Foreground="Black" FontWeight="Bold" Canvas.Left="658" Canvas.Top="160"><Run FontWeight="Bold" Text="Enter flight id:"/></TextBlock>
-        <TextBox x:Name="tbFlightId"  PlaceholderText="flightId" HorizontalAlignment="Center" Margin="0,0,0,0" Text="" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Canvas.Left="768" Canvas.Top="239"/>
-        <Button Content="Submit" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Click="Login" Canvas.Left="542" Canvas.Top="339"/>
-        <Button x:Name="btnPassenger" Content="Passenger" HorizontalAlignment="Left" Margin="1218,21,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontStyle="Italic" Foreground="White" Click="NavigateToPassengerPage" FocusVisualPrimaryBrush="Snow">
-            <Button.Background>
-                <AcrylicBrush Opacity="0"/>
-            </Button.Background>
-        </Button>
-    </Canvas>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="2" x:Name="btnPassenger" Content="Passenger" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,64,64,0" FontSize="36" FontWeight="Bold" FontStyle="Italic" Foreground="White" Click="NavigateToPassengerPage" FocusVisualPrimaryBrush="Snow"/>
+        <Button Grid.ColumnSpan="3" Grid.Row="2" Content="Submit" HorizontalAlignment="Center" Margin="4" FontSize="36" FontWeight="Bold" Click="Login"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <TextBlock HorizontalAlignment="Left" Margin="4" Text="Enter your password:" TextWrapping="Wrap" FontSize="48" Foreground="Black" FontWeight="Bold"/>
+            <TextBox x:Name="tbPassword"  PlaceholderText="password should be 4 symbols" HorizontalAlignment="Left" Margin="4" FontSize="22" FontWeight="Bold"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Vertical">
+            <TextBlock HorizontalAlignment="Center" Margin="4" TextWrapping="Wrap" FontSize="48" Foreground="Black" FontWeight="Bold" Text="Enter your flight id:"/>
+            <TextBox x:Name="tbFlightId" PlaceholderText="flightId" HorizontalAlignment="Center" Margin="4" FontSize="22" FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
 </Page>
