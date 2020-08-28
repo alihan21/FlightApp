@@ -13,17 +13,17 @@ namespace FlightApp.Frontend.ViewModels
     public class WeatherViewModel : BindableBase
     {
 
-        public ObservableCollection<Root> myWeather { get; set; }
-        public string icon { get; set; }
+        public ObservableCollection<Root> MyWeather { get; set; }
+        public string Icon { get; set; }
 
 
         public WeatherViewModel()
         {
-            myWeather = new ObservableCollection<Root>();
-            icon = "";
+            MyWeather = new ObservableCollection<Root>();
+            Icon = "";
         }
 
-        public async Task loadDataAsync(int passengerId)
+        public async Task LoadDataAsync(int passengerId)
         {
             HttpClient client = new HttpClient();
             var flightJson = await client.GetStringAsync(new Uri($"http://localhost:60177/api/UserFlight/user/{passengerId}"));
@@ -31,8 +31,8 @@ namespace FlightApp.Frontend.ViewModels
             var city = currentUserFlight.Flight.Destination;
             var weatherJson = await client.GetStringAsync(new Uri($"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=cd5d6a75dee7aa930f7fbf96a061a555"));
             var myWeathers = JsonConvert.DeserializeObject<Root>(weatherJson);
-            icon = myWeathers.weather[0].icon;
-            myWeather.Add(myWeathers);
+            Icon = myWeathers.Weather[0].Icon;
+            MyWeather.Add(myWeathers);
         }
     }
 }
