@@ -24,37 +24,39 @@
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:Food">
                         <StackPanel Orientation="Horizontal">
-                            <Image Height="50" Width="50" Source="/Assets/underConstructionImage.jpg"/>
-                            <TextBlock Text="{x:Bind Name}" FontWeight="Bold"/>
+                          <Image Source="{x:Bind Source}"></Image>
+                          <TextBlock Text="{x:Bind Name}" FontWeight="Bold"/>
                             <TextBlock TextWrapping="Wrap" Text="{x:Bind Description}"/>
                             <TextBlock Text="{x:Bind Price, Converter={StaticResource StringConverter}, ConverterParameter='€ '}" HorizontalAlignment="Left"/>
-                            <Button x:Name="btnAddToOrder" Margin="1" Click="AddToOrder">
-                                <TextBlock TextWrapping="Wrap"  TextAlignment="Center" Text="Add"/>
-                            </Button>
-                            <Button x:Name="btnRemoveFromOrder" Margin="1" Click="RemoveFromOrder">
-                                <TextBlock TextWrapping="Wrap"  TextAlignment="Center" Text="Remove"/>
-                            </Button>
+                            <Button x:Name="btnAddToOrder" Margin="1" Click="AddToOrder" Content="Add" HorizontalAlignment="Right"/>
+                            <Button x:Name="btnRemoveFromOrder" Margin="1" Click="RemoveFromOrder" Content="Remove" HorizontalAlignment="Right"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
 
-        <Canvas Grid.Column="1">
-            <ListView ItemsSource="{x:Bind OrderViewModel.OrderLines}">
-                <ListView.ItemTemplate>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <GridView ItemsSource="{x:Bind OrderViewModel.OrderLines}">
+                <GridView.ItemTemplate>
                     <DataTemplate x:DataType="local1:OrderLineViewModel">
                         <StackPanel Orientation="Vertical">
-                            <Image Height="50" Width="50" Source="/Assets/underConstructionImage.jpg"></Image>
+                            <Image Source="{x:Bind Food.Source}" Width="50" Height="50"/>
                             <TextBlock Text="{x:Bind Food.Name}" FontWeight="Bold"/>
                             <TextBlock TextWrapping="Wrap" Text="{x:Bind Quantity, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Number of times ordered: '}" />
                             <TextBlock Text="{x:Bind Subtotal, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Subtotal: € '}"/>
                         </StackPanel>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button Content="Finalize order" HorizontalAlignment="Left" Canvas.Left="324" Canvas.Top="589" VerticalAlignment="Top" Height="116" Width="289" Click="FinalizeOrder"/>
-            <TextBlock x:Name="tbTotal" Text="{Binding Total, Converter={StaticResource StringConverter}, ConverterParameter='Total amount: € '}" FontWeight="ExtraBold" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="58" Canvas.Top="639"/>
-        </Canvas>
+                </GridView.ItemTemplate>
+            </GridView>
+
+            <TextBlock Grid.Row="1" x:Name="tbTotal" Text="{Binding Total, Converter={StaticResource StringConverter}, ConverterParameter='Total amount: € '}" FontWeight="ExtraBold" HorizontalAlignment="Left" Margin="16"/>
+            <Button Grid.Row="1" Content="Finalize order" HorizontalAlignment="Right" Click="FinalizeOrder" Margin="16"/>
+        </Grid>
     </Grid>
 </Page>

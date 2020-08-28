@@ -12,27 +12,27 @@ namespace FlightApp.Frontend.ViewModels
         public string Text { get; set; }
         public string Type { get; set; }
         public Notification Notification { get; set; }
-        public bool IsNotificationRead { get; set; }
+        public bool isNotificationRead { get; set; }
 
 
         public async Task GetNotification(int passengerId)
         {
             HttpClient httpClient = new HttpClient();
+            Passenger passenger;
 
             try
             {
                 var res = await httpClient.GetAsync(new Uri($"http://localhost:60177/api/Notification/passenger/{passengerId}/notification"));
 
+
                 if (res.IsSuccessStatusCode)
                 {
-                    Passenger passenger = JsonConvert.DeserializeObject<Passenger>(res.Content.ReadAsStringAsync().Result);
+                    passenger = JsonConvert.DeserializeObject<Passenger>(res.Content.ReadAsStringAsync().Result);
 
-                    if (passenger.Notification != null)
-                    {
-                        Notification = passenger.Notification;
-                        IsNotificationRead = passenger.IsNotificationRead;
-                    }
+                    Notification = passenger.Notification;
+                    isNotificationRead = passenger.IsNotificationRead;
                 }
+
             }
             finally
             {

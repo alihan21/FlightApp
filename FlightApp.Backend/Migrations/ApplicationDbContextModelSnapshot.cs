@@ -60,6 +60,8 @@ namespace FlightApp.Backend.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("Image");
+
                     b.Property<string>("Name");
 
                     b.Property<decimal>("Price");

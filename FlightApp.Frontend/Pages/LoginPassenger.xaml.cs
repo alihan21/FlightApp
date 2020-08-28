@@ -32,15 +32,44 @@ namespace FlightApp.Frontend.Pages
             if (!string.IsNullOrEmpty(seatNumber) && !string.IsNullOrEmpty(flightId))
             {
                 HttpClient client = new HttpClient();
-                var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/User/flight/{flightId}/seat/{seatNumber}"));
-                var loggedInPassenger = JsonConvert.DeserializeObject<Passenger>(json);
 
-                PassengerViewModel passengerViewModel = new PassengerViewModel(loggedInPassenger, flightId, seatNumber);
-
-                if (loggedInPassenger != null)
+                try
                 {
-                    Frame.Navigate(typeof(MainPagePassenger), passengerViewModel);
+                    var json = await client.GetAsync(new Uri($"http://localhost:60177/api/User/flight/{flightId}/seat/{seatNumber}"));
+
+                    if (json.IsSuccessStatusCode)
+                    {
+                        var loggedInPassenger = JsonConvert.DeserializeObject<Passenger>(json.Content.ReadAsStringAsync().Result);
+
+                        PassengerViewModel passengerViewModel = new PassengerViewModel(loggedInPassenger, flightId, seatNumber);
+
+                        if (loggedInPassenger != null)
+                        {
+                            Frame.Navigate(typeof(MainPagePassenger), passengerViewModel);
+                        }
+
+                    }
+                    else
+                    {
+                        ContentDialog myNotification = new ContentDialog
+                        {
+                            Title = "Warning",
+                            Content = "Username or password is incorrect. Please fill in a valid login",
+                            CloseButtonText = "Okay"
+
+                        };
+
+                        ContentDialogResult result = await myNotification.ShowAsync();
+
+                    }
+
                 }
+                finally
+                {
+                    client.Dispose();
+                }
+
+
             }
         }
     }
