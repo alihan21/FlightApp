@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Converters\KelvinToCelsiusConverter.cs" />
     <Compile Include="Converters\OrderLinesConverter.cs" />
     <Compile Include="Converters\StringConverter.cs" />
     <Compile Include="Models\Entertainment.cs" />

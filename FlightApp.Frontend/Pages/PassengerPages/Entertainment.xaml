@@ -5,9 +5,14 @@
     xmlns:viewModels="using:FlightApp.Frontend.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:FlightApp.Frontend.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
+    </Page.Resources>
+    
     <Grid Style="{StaticResource GridSplitView}" x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -23,10 +28,10 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <ListView Style="{StaticResource DetailsViewStyle}" Grid.Column="1">
-            <TextBlock Text="{Binding Plot}"/>
-            <TextBlock Text="{Binding Released}"/>
-            <TextBlock Text="{Binding Actors}"/>
-            <Image Source="{Binding Poster}" Margin="0,0,0,0" />
+            <TextBlock Text="{Binding Plot, Converter={StaticResource StringConverter}, ConverterParameter='Plot: '}"/>
+            <TextBlock Text="{Binding Released, Converter={StaticResource StringConverter}, ConverterParameter='Released: '}"/>
+            <TextBlock Text="{Binding Actors, Converter={StaticResource StringConverter}, ConverterParameter='Actors: '}"/>
+            <Image Source="{Binding Poster}"/>
         </ListView>
     </Grid>
 </Page>

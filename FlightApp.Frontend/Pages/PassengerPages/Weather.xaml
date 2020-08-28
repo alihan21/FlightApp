@@ -6,35 +6,44 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:converters="using:FlightApp.Frontend.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-  <Canvas>
-    <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Weather" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-    <Image x:Name="myWeatherIcon"  Height="260" Canvas.Left="1073" Canvas.Top="165" Width="385">
-      <Image.FocusVisualPrimaryBrush>
-        <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
-      </Image.FocusVisualPrimaryBrush>
-    </Image>
-    <Grid HorizontalAlignment="Stretch" Height="603" Canvas.Left="150" Canvas.Top="255" VerticalAlignment="Stretch" Width="852">
-      <ListView x:Name="myWeatherInfo">
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <Grid>
-              <StackPanel>
-                <TextBlock Text="{Binding sys.country}"/>
-                <TextBlock Text="{Binding main.temp}"/>
-                <TextBlock Text="{Binding main.temp_min}"/>
-                <TextBlock Text="{Binding main.temp_max}"/>
-                <TextBlock Text="{Binding main.pressure}"/>
-                <TextBlock Text="{Binding main.humidity}"/>
-                <TextBlock Text="{Binding wind.speed}"/>
-              </StackPanel>
-            </Grid>
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </ListView>
+    <Page.Resources>
+        <converters:StringConverter x:Key="StringConverter"/>
+        <converters:KelvinToCelsiusConverter x:Key="KelvinToCelsiusConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="Weather" TextWrapping="Wrap" FontSize="24"/>
+        <ListView Grid.Row="1" x:Name="myWeatherInfo">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Sys.Country, Converter={StaticResource StringConverter}, ConverterParameter='Country: '}"/>
+                            <TextBlock Text="{Binding Main.Temp, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Temperature: '}"/>
+                            <TextBlock Text="{Binding Main.Temp_min, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Minimum temperature: '}"/>
+                            <TextBlock Text="{Binding Main.Temp_max, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Maximum temperature: '}"/>
+                            <TextBlock Text="{Binding Main.Pressure, Converter={StaticResource StringConverter}, ConverterParameter='Pressure: '}"/>
+                            <TextBlock Text="{Binding Main.Humidity, Converter={StaticResource StringConverter}, ConverterParameter='Humidity: '}"/>
+                            <TextBlock Text="{Binding Wind.Speed, Converter={StaticResource StringConverter}, ConverterParameter='Wind speed (in km/h): '}"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Image Grid.Row="2" x:Name="myWeatherIcon" HorizontalAlignment="Left" Width="200" Height="200"/>
+        <maps:MapControl Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" x:Name="MapControl1" Margin="0, 0, 16, 16"/>
     </Grid>
-    <maps:MapControl x:Name="MapControl1" Canvas.Left="1044" Canvas.Top="447" Height="405" Margin="0,0,0,0" Width="417" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-  </Canvas>
 </Page>

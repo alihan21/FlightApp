@@ -31,16 +31,16 @@ namespace FlightApp.Frontend.Pages.PassengerPages
 
             base.OnNavigatedTo(e);
             WeatherViewModel = new WeatherViewModel();
-            initiliaze((int)e.Parameter);
+            Initiliaze((int)e.Parameter);
             ShowPOI();
         }
 
-        private async void initiliaze(int passengerId)
+        private async void Initiliaze(int passengerId)
         {
 
-            await WeatherViewModel.loadDataAsync(passengerId);
-            myWeatherInfo.ItemsSource = WeatherViewModel.myWeather;
-            string icon = WeatherViewModel.icon;
+            await WeatherViewModel.LoadDataAsync(passengerId);
+            myWeatherInfo.ItemsSource = WeatherViewModel.MyWeather;
+            string icon = WeatherViewModel.Icon;
             myWeatherIcon.Source = new BitmapImage(new Uri($"http://openweathermap.org/img/wn/{icon}.png", UriKind.Absolute));
         }
 
@@ -52,7 +52,7 @@ namespace FlightApp.Frontend.Pages.PassengerPages
             Geopoint snPoint = new Geopoint(snPosition);
             MapIcon mapIcon1 = new MapIcon();
             mapIcon1.Location = snPoint;
-            mapIcon1.Title = "Test";
+            mapIcon1.Title = "Current location";
             mapIcon1.ZIndex = 0;
 
             MapControl1.MapElements.Add(mapIcon1);
