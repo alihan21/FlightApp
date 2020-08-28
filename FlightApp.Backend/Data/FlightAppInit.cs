@@ -41,7 +41,7 @@ namespace FlightApp.Backend.Data
 
                 Food nuts = new Food("Nuts", "Mix of peanuts, almonds, pistachios, cashews, walnuts and hazelnuts", "Snack", 1.5m);
                 Food apple = new Food("Apple", "Lovely green apple", "Snack", 0.4m);
-                Food cake = new Food("Vanilla Cheese Cake", "Yummu cheese cake", "Dessert", 1.2m);
+                Food cake = new Food("Vanilla Cheese Cake", "Yummy cheese cake", "Dessert", 1.2m);
                 Food appleJuice = new Food("Apple Juice", "Freshly squeezed apple", "Snack", 0.5m);
                 Food whiskey = new Food("Whiskey", "Whiskey with a glass cola", "Drink", 2.1m);
 
