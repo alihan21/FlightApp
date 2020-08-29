@@ -2,24 +2,32 @@ using System.Collections.Generic;
 
 namespace FlightApp.Backend.Models.Domain
 {
-  public class Order
-  {
-    public int OrderId { get; set; }
-    public List<OrderFood> Orders { get; set; }
-
-    public Order()
+    public class Order
     {
-      Orders = new List<OrderFood>();
-    }
+        public int OrderId { get; set; }
 
-    public void AddOrder(OrderFood order)
-    {
-      Orders.Add(order);
-    }
+        public Passenger Passenger { get; set; }
 
-    public void RemoveOrder(OrderFood order)
-    {
-      Orders.Remove(order);
+        public List<OrderLine> OrderLines { get; }
+
+        public bool IsCompleted { get; set; }
+
+        #region Constructors
+        public Order()
+        {
+            OrderLines = new List<OrderLine>();
+            IsCompleted = false;
+        }
+
+        public void AddOrderLine(OrderLine orderLine)
+        {
+            OrderLines.Add(orderLine);
+        }
+
+        public void RemoveOrderLine(OrderLine orderLine)
+        {
+            OrderLines.Remove(orderLine);
+        }
+        #endregion
     }
-  }
 }

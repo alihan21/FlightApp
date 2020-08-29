@@ -5,15 +5,52 @@
     xmlns:local="using:FlightApp.Frontend.Pages.PassengerPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:converters="using:FlightApp.Frontend.Converters"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    >
 
-    <Canvas>
-        <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Weather" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Image Height="542" Canvas.Left="278" Canvas.Top="306" Width="883" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image.FocusVisualPrimaryBrush>
-                <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
-            </Image.FocusVisualPrimaryBrush>
-        </Image>
-    </Canvas>
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image.jpg"/>
+    </Page.Background>
+    
+    <Page.Resources>
+        <converters:StringConverter x:Key="StringConverter"/>
+        <converters:KelvinToCelsiusConverter x:Key="KelvinToCelsiusConverter"/>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="Weather" Style="{StaticResource PageTitleStyle}"/>
+        <ListView Grid.Row="1" x:Name="myWeatherInfo">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Sys.Country, Converter={StaticResource StringConverter}, ConverterParameter='Country: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Main.Temp, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Temperature: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Main.Temp_min, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Minimum temperature: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Main.Temp_max, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Maximum temperature: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Main.Pressure, Converter={StaticResource StringConverter}, ConverterParameter='Pressure: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Main.Humidity, Converter={StaticResource StringConverter}, ConverterParameter='Humidity: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Wind.Speed, Converter={StaticResource StringConverter}, ConverterParameter='Wind speed (in km/h): '}" Style="{StaticResource TextBlockStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="2" Orientation="Vertical">
+            <TextBlock Text="The weather:"/>
+            <Image  x:Name="myWeatherIcon" HorizontalAlignment="Left" Width="200" Height="200"/>
+        </StackPanel>
+        <maps:MapControl Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" x:Name="MapControl1" Margin="0, 0, 16, 16"/>
+    </Grid>
 </Page>

@@ -1,39 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FlightApp.Backend.Data.Repositories;
+using FlightApp.Backend.Data.Repositories.Interfaces;
 using FlightApp.Backend.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace FlightApp.Backend.Controllers
 {
 
-    [Route("api/[controller]")]
-    [ApiController]
-    public class FlightController : Controller
+  [Route("api/[controller]")]
+  [ApiController]
+  public class FlightController : ControllerBase
+  {
+    private readonly IFlightRepository _flightRepository;
+
+
+    public FlightController(IFlightRepository flightRepository)
     {
-        private readonly IFlightRepository _flightRepository;
-
-
-        public FlightController(FlightRepository context)
-        {
-            _flightRepository = context;
-        }
-
-        [HttpGet]
-        public IEnumerable<Flight> GetFlights()
-        {
-            return _flightRepository.GetAll();
-        }
-
-
-        [HttpGet("{id}")]
-        public ActionResult<Flight> GetFlight(int id)
-        {
-            Flight flight = _flightRepository.GetBy(id);
-            if (flight == null) return NotFound();
-            return flight;
-        }
+      _flightRepository = flightRepository;
     }
+   
+    /// <summary>
+    /// Get all flights for all users
+    /// </summary>
+    [HttpGet]
+    public IEnumerable<Flight> GetFlights()
+    {
+      return _flightRepository.GetAll();
+    }
+
+    
+    /// <summary>
+    /// Get a flight by id
+    /// </summary>
+    /// <param name="id">the id of the flight</param>
+    /// <returns></returns>
+    [HttpGet("{id}")]
+    public ActionResult<Flight> GetFlight(string id)
+    {
+      Flight flight = _flightRepository.GetById(id);
+      if (flight == null)
+      {
+        return NotFound();
+      }
+
+      return Ok(flight);
+    }
+  }
 }

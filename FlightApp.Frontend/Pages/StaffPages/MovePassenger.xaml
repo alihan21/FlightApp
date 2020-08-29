@@ -2,18 +2,38 @@
     x:Class="FlightApp.Frontend.Pages.StaffPages.MovePassenger"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:FlightApp.Frontend.Pages.StaffPages"
+    xmlns:local="using:FlightApp.Frontend.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
-    <Canvas>
-        <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Move passenger" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Image Height="542" Canvas.Left="278" Canvas.Top="306" Width="883" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image.FocusVisualPrimaryBrush>
-                <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
-            </Image.FocusVisualPrimaryBrush>
-        </Image>
-    </Canvas>
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image_staff.jpg"/>
+    </Page.Background>
+    
+    <Page.Resources>
+        <local:SeatViewModel x:Key="SeatViewModel"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" Text="Move passenger" HorizontalAlignment="Center" Style="{StaticResource PageTitleStyle}"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Current seat:" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle}"/>
+            <TextBox x:Name="tbOldSeatNumber" PlaceholderText="Fill seatnumber"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Available seats:" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle}"/>
+            <ComboBox x:Name="cbSeats" ItemsSource="{x:Bind SeatViewModel.Seats}" SelectedItem="{x:Bind SeatViewModel.SelectedSeat}" DisplayMemberPath="SeatNumber" SelectionChanged="SelectSeat"/>
+        </StackPanel>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Move passenger to new seat" Click="ChangePassengerSeat" HorizontalAlignment="Center"/>
+    </Grid>
 </Page>

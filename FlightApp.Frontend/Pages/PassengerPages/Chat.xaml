@@ -5,15 +5,39 @@
     xmlns:local="using:FlightApp.Frontend.Pages.PassengerPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
-    <Canvas>
-        <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Chat" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Image Height="542" Canvas.Left="278" Canvas.Top="306" Width="883" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image.FocusVisualPrimaryBrush>
-                <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
-            </Image.FocusVisualPrimaryBrush>
-        </Image>
-    </Canvas>
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image.jpg"/>
+    </Page.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ScrollViewer>
+            <ListView x:Name="lvMyMessages" Height="500">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Passenger.Name}"/>
+                            </StackPanel>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Text}" FontWeight="Bold"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        <Grid Grid.Row="1" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Style="{StaticResource ChatTextBoxStyle}" Grid.Column="0" x:Name="tbInput" PlaceholderText="Enter your message..."/>
+            <Button Style="{StaticResource ChatButtonStyle}" Grid.Column="1" Click="SendMessage" Height="32" Content="Send"/>
+
+        </Grid>
+    </Grid>
 </Page>

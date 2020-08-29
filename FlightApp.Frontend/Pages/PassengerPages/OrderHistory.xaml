@@ -1,19 +1,48 @@
-﻿<Page
+<Page
     x:Class="FlightApp.Frontend.Pages.PassengerPages.OrderHistory"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:FlightApp.Frontend.Pages.PassengerPages"
+    xmlns:local="using:FlightApp.Frontend.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:models="using:FlightApp.Frontend.Models"
+    xmlns:converters="using:FlightApp.Frontend.Converters"
+    mc:Ignorable="d">
 
-    <Canvas>
-        <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Order history" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Image Height="542" Canvas.Left="278" Canvas.Top="306" Width="883" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image.FocusVisualPrimaryBrush>
-                <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
-            </Image.FocusVisualPrimaryBrush>
-        </Image>
-    </Canvas>
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image.jpg"/>
+    </Page.Background>
+    
+    <Page.Resources>
+        <converters:StringConverter x:Key="StringConverter"/>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Order history" Grid.ColumnSpan="2" Style="{StaticResource PageTitleStyle}"/>
+        <ListView Grid.Row="1" x:Name="MyOrderHistory" ItemsSource="{Binding}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel Orientation="Vertical">
+                            <Image Height="50" Width="50" Source="/Assets/order_icon.png"/>
+                            <TextBlock Text="{Binding Passenger.Name, Converter={StaticResource StringConverter}, ConverterParameter='Name of passenger: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Passenger.Seat.SeatNumber, Converter={StaticResource StringConverter}, ConverterParameter='Seatnumber: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Total, Converter={StaticResource StringConverter}, ConverterParameter='Amount to pay: '}" Style="{StaticResource TextBlockStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView Grid.Column="1" Grid.Row="1">
+            <TextBlock x:Name="tbOrderLinesString" Text="{Binding OrderLinesString}" Style="{StaticResource TextBlockStyle}"/>
+        </ListView>
+    </Grid>
 </Page>

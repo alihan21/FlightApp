@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace FlightApp.Backend.Models.Domain
@@ -8,6 +9,7 @@ namespace FlightApp.Backend.Models.Domain
     public int MaxSeats { get; set; }
     public string Name { get; set; }
     public List<Seat> Seats { get; set; }
+    [JsonIgnore]
     public List<Flight> PlaneFlights { get; set; }
 
     public Plane(string name, int maxSeats)

@@ -119,6 +119,32 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Converters\KelvinToCelsiusConverter.cs" />
+    <Compile Include="Converters\OrderLinesConverter.cs" />
+    <Compile Include="Converters\StringConverter.cs" />
+    <Compile Include="Models\Entertainment.cs" />
+    <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\Food.cs" />
+    <Compile Include="Models\LocationManager.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderLine.cs" />
+    <Compile Include="Models\Passenger.cs" />
+    <Compile Include="Models\Plane.cs" />
+    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Seat.cs" />
+    <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserFlight.cs" />
+    <Compile Include="Models\Weather\Cloud.cs" />
+    <Compile Include="Models\Weather\Coord.cs" />
+    <Compile Include="Models\Weather\Main.cs" />
+    <Compile Include="Models\Weather\Root.cs" />
+    <Compile Include="Models\Weather\Sys.cs" />
+    <Compile Include="Models\Weather\Weather.cs" />
+    <Compile Include="Models\Weather\Wind.cs" />
     <Compile Include="Pages\LoginPassenger.xaml.cs">
       <DependentUpon>LoginPassenger.xaml</DependentUpon>
     </Compile>
@@ -146,22 +172,35 @@
     <Compile Include="Pages\PassengerPages\Weather.xaml.cs">
       <DependentUpon>Weather.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StaffPages\Advertise.xaml.cs">
-      <DependentUpon>Advertise.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\StaffPages\CustomNotification.xaml.cs">
-      <DependentUpon>CustomNotification.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\StaffPages\MainPageStaff.xaml.cs">
       <DependentUpon>MainPageStaff.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StaffPages\MovePassenger.xaml.cs">
       <DependentUpon>MovePassenger.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\StaffPages\Notification.xaml.cs">
+      <DependentUpon>Notification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\StaffPages\OrderOverview.xaml.cs">
       <DependentUpon>OrderOverview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AllOrdersViewModel.cs" />
+    <Compile Include="ViewModels\AllPassengersViewModel.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
+    <Compile Include="ViewModels\EntertainmentViewModel.cs" />
+    <Compile Include="ViewModels\FlightViewModel.cs" />
+    <Compile Include="ViewModels\FoodViewModel.cs" />
+    <Compile Include="ViewModels\MoviesViewModel.cs" />
+    <Compile Include="ViewModels\NotificationViewModel.cs" />
+    <Compile Include="ViewModels\OrderFoodViewModel.cs" />
+    <Compile Include="ViewModels\OrderLineViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\PassengerViewModel.cs" />
+    <Compile Include="ViewModels\SeatViewModel.cs" />
+    <Compile Include="ViewModels\StaffViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\WeatherViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -170,8 +209,14 @@
     <None Include="FlightApp.Frontend_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\background_image.jpg" />
+    <Content Include="Assets\background_image_staff.jpg" />
+    <Content Include="Assets\background_orderOverview.jpg" />
     <Content Include="Assets\loginBackgroundImgPassenger.jpg" />
     <Content Include="Assets\loginBackgroundImgStaff.jpg" />
+    <Content Include="Assets\new_order_logo_small.png" />
+    <Content Include="Assets\order_icon.png" />
+    <Content Include="Assets\test.jpg" />
     <Content Include="Assets\underConstructionImage.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -191,6 +236,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -230,14 +278,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\StaffPages\Advertise.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\StaffPages\CustomNotification.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\StaffPages\MainPageStaff.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -246,7 +286,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\StaffPages\Notification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\StaffPages\OrderOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StylesDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

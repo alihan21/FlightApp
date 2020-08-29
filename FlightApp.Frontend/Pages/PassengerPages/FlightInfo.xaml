@@ -1,19 +1,39 @@
-﻿<Page
+<Page
     x:Class="FlightApp.Frontend.Pages.PassengerPages.FlightInfo"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FlightApp.Frontend.Pages.PassengerPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:converters="using:FlightApp.Frontend.Converters"
+    xmlns:viewModels="using:FlightApp.Frontend.ViewModels"
+  mc:Ignorable="d">
 
-    <Canvas>
-        <TextBlock Canvas.Left="612" Canvas.Top="135" Text="Flight information" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Image Height="542" Canvas.Left="278" Canvas.Top="306" Width="883" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image.FocusVisualPrimaryBrush>
-                <ImageBrush ImageSource="/Assets/underConstructionImage.jpg"/>
-            </Image.FocusVisualPrimaryBrush>
-        </Image>
-    </Canvas>
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image.jpg"/>
+    </Page.Background>
+
+    <Page.Resources>
+        <converters:StringConverter x:Key="StringConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" Text="Flight information" Style="{StaticResource PageTitleStyle}"/>
+        <TextBlock Grid.Row="1" Text="{x:Bind Path=FlightViewModel.Origin, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Origin: '}" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Style="{StaticResource TextBlockStyle}" Text="{x:Bind Path=FlightViewModel.Destination, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Destination: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Style="{StaticResource TextBlockStyle}" Text="{x:Bind Path=FlightViewModel.Duration, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Duration: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Style="{StaticResource TextBlockStyle}" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.PlaneMaxSeats, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Max seats on this plane: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Style="{StaticResource TextBlockStyle}" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.PlaneName, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Name of plane: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Style="{StaticResource TextBlockStyle}" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.TimeOfDepart, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Time and date: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
 </Page>

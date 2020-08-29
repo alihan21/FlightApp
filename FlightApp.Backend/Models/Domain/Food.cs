@@ -1,36 +1,25 @@
-using System.Collections.Generic;
-
 namespace FlightApp.Backend.Models.Domain
 {
-  public class Food
-  {
-    public int FoodId { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public string Type { get; set; }
-    public List<OrderFood> FoodHistory { get; set; }
-
-    public Food(string name, string description, string type)
+    public class Food
     {
-      Name = name;
-      Description = description;
-      Type = type;
-      FoodHistory = new List<OrderFood>();
-    }
+        public int FoodId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Type { get; set; }
+        public decimal Price { get; set; }
+        public string Image { get; set; }
 
-    protected Food()
-    {
-      FoodHistory = new List<OrderFood>();
-    }
 
-    public void AddToHistory(OrderFood order)
-    {
-      FoodHistory.Add(order);
-    }
+        public Food(string name, string description, string type, decimal price)
+        {
+            Name = name;
+            Description = description;
+            Type = type;
+            Price = price;
+        }
 
-    public void RemoveFromHistory(OrderFood order)
-    {
-      FoodHistory.Remove(order);
+        protected Food()
+        {
+        }
     }
-  }
 }
