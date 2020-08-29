@@ -8,8 +8,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:FlightApp.Frontend.Converters"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    >
 
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image.jpg"/>
+    </Page.Background>
+
+    
     <Page.Resources>
         <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
     </Page.Resources>
@@ -26,8 +31,8 @@
                         <StackPanel Orientation="Horizontal">
                           <Image Source="{x:Bind Source}"></Image>
                           <TextBlock Text="{x:Bind Name}" FontWeight="Bold"/>
-                            <TextBlock TextWrapping="Wrap" Text="{x:Bind Description}"/>
-                            <TextBlock Text="{x:Bind Price, Converter={StaticResource StringConverter}, ConverterParameter='€ '}" HorizontalAlignment="Left"/>
+                            <TextBlock TextWrapping="Wrap" Text="{x:Bind Description}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{x:Bind Price, Converter={StaticResource StringConverter}, ConverterParameter='€ '}" HorizontalAlignment="Left" Style="{StaticResource TextBlockStyle}"/>
                             <Button x:Name="btnAddToOrder" Margin="1" Click="AddToOrder" Content="Add" HorizontalAlignment="Right"/>
                             <Button x:Name="btnRemoveFromOrder" Margin="1" Click="RemoveFromOrder" Content="Remove" HorizontalAlignment="Right"/>
                         </StackPanel>
@@ -55,7 +60,7 @@
                 </GridView.ItemTemplate>
             </GridView>
 
-            <TextBlock Grid.Row="1" x:Name="tbTotal" Text="{Binding Total, Converter={StaticResource StringConverter}, ConverterParameter='Total amount: € '}" FontWeight="ExtraBold" HorizontalAlignment="Left" Margin="16"/>
+            <TextBlock Grid.Row="1" x:Name="tbTotal" Text="{Binding Total, Converter={StaticResource StringConverter}, ConverterParameter='Total amount: € '}" Style="{StaticResource TextBlockStyle}" FontWeight="ExtraBold" HorizontalAlignment="Left" Margin="16"/>
             <Button Grid.Row="1" Content="Finalize order" HorizontalAlignment="Right" Click="FinalizeOrder" Margin="16"/>
         </Grid>
     </Grid>

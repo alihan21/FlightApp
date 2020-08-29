@@ -24,7 +24,7 @@ namespace FlightApp.Frontend.Pages.StaffPages
             base.OnNavigatedTo(e);
 
             LoggedStaff = (StaffViewModel)e.Parameter;
-            tbStaffName.Text = "Welkom, " + LoggedStaff.Name;
+            tbStaffName.DataContext = LoggedStaff;
         }
 
         private void NavigateToMovePassenger(object sender, RoutedEventArgs e)

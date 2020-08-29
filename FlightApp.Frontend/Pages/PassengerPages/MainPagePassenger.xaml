@@ -7,13 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="using:FlightApp.Frontend.ViewModels"
     xmlns:converters="using:FlightApp.Frontend.Converters"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
-  <Page.Resources>
-    <viewModels:PassengerViewModel x:Key="passengerViewModel"></viewModels:PassengerViewModel>
-    <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
-  </Page.Resources>
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image.jpg"/>
+    </Page.Background>
+
+    <Page.Resources>
+        <viewModels:PassengerViewModel x:Key="passengerViewModel"></viewModels:PassengerViewModel>
+        <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -27,11 +30,11 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <TextBlock Grid.ColumnSpan="3" x:Name="tbPassengerName" Text="{Binding Name, Converter={StaticResource StringConverter}, ConverterParameter='Welkom, '}" TextWrapping="Wrap" FontSize="72" HorizontalAlignment="Center"/>
-        <Button Grid.Row="1" x:Name="btnNavigateToFlightInfo" Content="Vluchtinformatie" FontSize="36" Click="NavigateToFlightInfo" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Button Grid.Row="1" Grid.Column="1" x:Name="btnNavigateToOrderFood" Content="Eten bestellen" FontSize="36" Click="NavigateToOrderFood" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Button Grid.Row="1" Grid.Column="2" x:Name="btnNavigateToOrderHistory" Content="Bestelgeschiedenis" FontSize="36" Click="NavigateToOrderHistory" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Button Grid.Row="2" x:Name="btnNavigateToEntertainment" Content="Entertainment" FontSize="36" Click="NavigateToEntertainment" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Button Grid.Row="2" Grid.Column="1" x:Name="btnNavigateToWeather" Content="Weer raadplegen" FontSize="36" Click="NavigateToWeather" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Button Grid.Row="2" Grid.Column="2" x:Name="btnNavigateToChat" Content="Chatten" FontSize="36" Click="NavigateToChat" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Grid.Row="1" x:Name="btnNavigateToFlightInfo" Content="Vluchtinformatie" Click="NavigateToFlightInfo" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="btnNavigateToOrderFood" Content="Eten bestellen" Click="NavigateToOrderFood" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="1" Grid.Column="2" x:Name="btnNavigateToOrderHistory" Content="Bestelgeschiedenis" Click="NavigateToOrderHistory" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="2" x:Name="btnNavigateToEntertainment" Content="Entertainment" Click="NavigateToEntertainment" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="2" Grid.Column="1" x:Name="btnNavigateToWeather" Content="Weer raadplegen" Click="NavigateToWeather" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="2" Grid.Column="2" x:Name="btnNavigateToChat" Content="Chatten" Click="NavigateToChat" Style="{StaticResource MainPageButtonStyle}"/>
     </Grid>
 </Page>

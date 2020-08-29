@@ -7,9 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:FlightApp.Frontend.Models"
     xmlns:converters="using:FlightApp.Frontend.Converters"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image.jpg"/>
+    </Page.Background>
+    
     <Page.Resources>
         <converters:StringConverter x:Key="StringConverter"/>
     </Page.Resources>
@@ -25,16 +28,16 @@
                     <Grid>
                         <StackPanel Orientation="Vertical">
                             <Image Height="50" Width="50" Source="/Assets/order_icon.png"/>
-                            <TextBlock Text="{Binding Passenger.Name, Converter={StaticResource StringConverter}, ConverterParameter='Name of passenger: '}"/>
-                            <TextBlock Text="{Binding Passenger.Seat.SeatNumber, Converter={StaticResource StringConverter}, ConverterParameter='Seatnumber: '}"/>
-                            <TextBlock Text="{Binding Total, Converter={StaticResource StringConverter}, ConverterParameter='Amount to pay: € '}"/>
+                            <TextBlock Text="{Binding Passenger.Name, Converter={StaticResource StringConverter}, ConverterParameter='Name of passenger: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Passenger.Seat.SeatNumber, Converter={StaticResource StringConverter}, ConverterParameter='Seatnumber: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Total, Converter={StaticResource StringConverter}, ConverterParameter='Amount to pay: € '}" Style="{StaticResource TextBlockStyle}"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <ListView Grid.Column="1">
-            <TextBlock x:Name="tbOrderLinesString" Text="{Binding OrderLinesString}"/>
+            <TextBlock x:Name="tbOrderLinesString" Text="{Binding OrderLinesString}" Style="{StaticResource TextBlockStyle}"/>
         </ListView>
     </Grid>
 </Page>

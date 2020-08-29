@@ -5,8 +5,11 @@
     xmlns:local="using:FlightApp.Frontend.Pages.PassengerPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
+
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image.jpg"/>
+    </Page.Background>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -27,9 +30,9 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
-        <Grid Grid.Row="1" BorderThickness="0,1,0,0" BorderBrush="Gray" VerticalAlignment="Bottom">
+        <Grid Grid.Row="1" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBox Style="{StaticResource ChatTextBoxStyle}" Grid.Column="0" x:Name="tbInput" PlaceholderText="Enter your message..."/>

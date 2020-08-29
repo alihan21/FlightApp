@@ -209,6 +209,8 @@
     <None Include="FlightApp.Frontend_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\background_image.jpg" />
+    <Content Include="Assets\background_image_staff.jpg" />
     <Content Include="Assets\loginBackgroundImgPassenger.jpg" />
     <Content Include="Assets\loginBackgroundImgStaff.jpg" />
     <Content Include="Assets\new_order_logo_small.png" />

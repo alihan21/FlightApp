@@ -5,9 +5,12 @@
     xmlns:local="using:FlightApp.Frontend.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image_staff.jpg"/>
+    </Page.Background>
+    
     <Page.Resources>
         <local:SeatViewModel x:Key="SeatViewModel"/>
     </Page.Resources>
@@ -22,13 +25,13 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="2" Text="Verplaats passagier" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Center"/>
+        <TextBlock Grid.ColumnSpan="2" Text="Verplaats passagier" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Center" Style="{StaticResource TextBlockStyle}"/>
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Current seat:" TextWrapping="Wrap"/>
+            <TextBlock Text="Current seat:" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle}"/>
             <TextBox x:Name="tbOldSeatNumber" PlaceholderText="Fill seatnumber"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Available seats:" TextWrapping="Wrap"/>
+            <TextBlock Text="Available seats:" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle}"/>
             <ComboBox x:Name="cbSeats" ItemsSource="{x:Bind SeatViewModel.Seats}" SelectedItem="{x:Bind SeatViewModel.SelectedSeat}" DisplayMemberPath="SeatNumber" SelectionChanged="SelectSeat"/>
         </StackPanel>
         <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Move passenger to new seat" Click="ChangePassengerSeat" HorizontalAlignment="Center"/>
