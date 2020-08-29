@@ -30,21 +30,21 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="textBlock" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="4" Text="AliDean Airlines" TextWrapping="Wrap" FontSize="90" Foreground="#FFAB0505" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" RenderTransformOrigin="0.5,0.5">
+        <TextBlock x:Name="textBlock" Text="AliDean Airlines" Style="{StaticResource AliDeanAirlinesTextBlock}" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <CompositeTransform/>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <Button Click="navigateToStaffmemberPage" Grid.Column="1" x:Name="btnNavigateToStaffmember" Content="Staffmember" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontStyle="Italic" FocusVisualPrimaryBrush="Black" Margin="0,64,64,0"/>
-        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
-            <TextBlock  Text="Enter your seatnumber:" Style="{StaticResource LoginPassengerTextBlockStyle}"/>
-            <TextBox x:Name="tbPassword" PlaceholderText="begins with a letter followed by 2 numbers" Grid.RowSpan="2" Style="{StaticResource LoginPassengerTextBoxStyle}"/>
+        <Button Click="NavigateToStaffmemberPage" Grid.Column="1" x:Name="btnNavigateToStaffmember" Content="Staffmember" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontStyle="Italic" FocusVisualPrimaryBrush="Black" Margin="0,64,64,0"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <TextBlock  Text="Enter your seatnumber:" Style="{StaticResource LoginTextBlockStyle}"/>
+            <TextBox x:Name="tbPassword" PlaceholderText="begins with a letter followed by 2 numbers" Grid.RowSpan="2" Style="{StaticResource LoginTextBoxStyle}"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
-            <TextBlock Text="Enter your flightnumber:" Style="{StaticResource LoginPassengerTextBlockStyle}"/>
-            <TextBox x:Name="tbFlightId" PlaceholderText="couple of numbers" Style="{StaticResource LoginPassengerTextBoxStyle}"/>
+            <TextBlock Text="Enter your flightnumber:" Style="{StaticResource LoginTextBlockStyle}"/>
+            <TextBox x:Name="tbFlightId" PlaceholderText="combination of two letters and four numbers" Style="{StaticResource LoginTextBoxStyle}"/>
         </StackPanel>
-        <Button x:Name="button" Click="Login" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2" Content="Submit" Foreground="Black" FontSize="36" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="btnLogin" Click="Login" Grid.Row="2" Grid.ColumnSpan="2" Content="Submit" Foreground="Black" Style="{StaticResource LoginButtonStyle}" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <CompositeTransform/>
             </Button.RenderTransform>

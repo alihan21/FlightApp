@@ -6,16 +6,42 @@
     <Style x:Key="GridSplitView" TargetType="Grid">
         <Setter Property="Grid.Column" Value="2"/>
     </Style>
+
+    <Style x:Key="LoginButtonStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="AliDeanAirlinesTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="4"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontSize" Value="90"/>
+        <Setter Property="Foreground" Value="#FFAB0505"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="TextDecorations" Value="Underline"/>
+    </Style>
     
-    <Style x:Key="LoginPassengerTextBlockStyle" TargetType="TextBlock">
+    <Style x:Key="PageTitleStyle" TargetType="TextBlock">
+        <Setter Property="Margin" Value="2,2,2,2"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="26"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    
+    <Style x:Key="LoginTextBlockStyle" TargetType="TextBlock">
         <Setter Property="Margin" Value="4"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontSize" Value="48"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
-    <Style x:Key="LoginPassengerTextBoxStyle" TargetType="TextBox">
+    <Style x:Key="LoginTextBoxStyle" TargetType="TextBox">
         <Setter Property="Margin" Value="4"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="SelectionHighlightColor" Value="Black"/>

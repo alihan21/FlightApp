@@ -58,6 +58,7 @@ namespace FlightApp.Frontend.Pages.StaffPages
 
                 tbMessage.Text = "";
                 cbPassengers.SelectedIndex = -1;
+                cbIsAllPassengersSelected.IsChecked = false;
             }
         }
 

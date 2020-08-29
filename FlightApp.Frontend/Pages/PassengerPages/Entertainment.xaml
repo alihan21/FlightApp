@@ -31,9 +31,16 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <ListView Style="{StaticResource DetailsViewStyle}" Grid.Column="1">
-            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Plot, Converter={StaticResource StringConverter}, ConverterParameter='Plot: '}"/>
             <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Released, Converter={StaticResource StringConverter}, ConverterParameter='Released: '}"/>
             <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Actors, Converter={StaticResource StringConverter}, ConverterParameter='Actors: '}"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" TextWrapping="Wrap" Text="{Binding Plot, Converter={StaticResource StringConverter}, ConverterParameter='Plot: '}"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Runtime, Converter={StaticResource StringConverter}, ConverterParameter='Runtime: '}"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Genre, Converter={StaticResource StringConverter}, ConverterParameter='Genre: '}"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Director, Converter={StaticResource StringConverter}, ConverterParameter='Director: '}"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Writer, Converter={StaticResource StringConverter}, ConverterParameter='Writer: '}"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Language, Converter={StaticResource StringConverter}, ConverterParameter='Language: '}"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Country, Converter={StaticResource StringConverter}, ConverterParameter='Country: '}"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Awards, Converter={StaticResource StringConverter}, ConverterParameter='Awards: '}"/>
             <Image Source="{Binding Poster}"/>
         </ListView>
     </Grid>

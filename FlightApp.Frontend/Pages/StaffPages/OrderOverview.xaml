@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Page.Background>
-        <ImageBrush ImageSource="/Assets/background_image_staff.jpg"/>
+        <ImageBrush ImageSource="/Assets/background_orderOverview.jpg"/>
     </Page.Background>
     
     <Page.Resources>
@@ -22,7 +22,12 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" x:Name="lbOrders" ItemsSource="{Binding}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" Text="Order overview" Style="{StaticResource PageTitleStyle}"/>
+        <ListBox Grid.Row="1" x:Name="lbOrders" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="local:OrderViewModel">
                     <StackPanel Orientation="Vertical">
@@ -34,7 +39,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListView Grid.Column="1">
+        <ListView Grid.Column="1" Grid.Row="1">
             <TextBlock x:Name="tbOrderLinesString" Text="{Binding OrderLinesString}" Style="{StaticResource TextBlockStyle}"/>
             <Button Content="Complete order" Click="CompleteOrder"/>
         </ListView>

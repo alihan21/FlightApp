@@ -22,25 +22,25 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="3" Text="Notificatie" FontSize="48" HorizontalAlignment="Center" Style="{StaticResource TextBlockStyle}"/>
+        <TextBlock Grid.ColumnSpan="3" Text="Notification" Style="{StaticResource PageTitleStyle}"/>
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Type notificatie:" TextWrapping="Wrap"/>
+            <TextBlock Text="Type notification:" TextWrapping="Wrap"/>
             <ComboBox x:Name="cbNotificationType" SelectedIndex="0">
                 <ComboBoxItem Content="Advertise"/>
                 <ComboBoxItem Content="Custom Notification"/>
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Boodschap:" Style="{StaticResource TextBlockStyle}"/>
+            <TextBlock Text="Message:" Style="{StaticResource TextBlockStyle}"/>
             <TextBox x:Name="tbMessage"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Kies passagier(s):" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle}"/>
+            <TextBlock Text="Choose passenger(s):" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle}"/>
             <StackPanel Orientation="Horizontal">
-                <CheckBox x:Name="cbIsAllPassengersSelected" Content="Alle passagiers" Margin="0,0,16,0"/>
+                <CheckBox x:Name="cbIsAllPassengersSelected" Content="All passengers" Margin="0,0,16,0"/>
                 <ComboBox x:Name="cbPassengers" ItemsSource="{x:Bind AllPassengersViewModel.Passengers}" SelectedItem="{x:Bind AllPassengersViewModel.SelectedPassenger}" DisplayMemberPath="Name" SelectionChanged="SelectPassenger"/>
             </StackPanel>
         </StackPanel>
-        <Button Grid.Row="2" Grid.ColumnSpan="3" Content="Adverteer" x:Name="btnAdvertise" Click="BeginAdvertise" HorizontalAlignment="Center"/>
+        <Button Grid.Row="2" Grid.ColumnSpan="3" Content="Notify" Margin="16" x:Name="btnAdvertise" Click="BeginAdvertise" HorizontalAlignment="Center"/>
     </Grid>
 </Page>

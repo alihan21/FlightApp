@@ -20,7 +20,7 @@ namespace FlightApp.Frontend.Pages
             LoginStoryboard.Begin();
         }
 
-        private void navigateToStaffmemberPage(object sender, RoutedEventArgs e)
+        private void NavigateToStaffmemberPage(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(LoginStaff));
         }
