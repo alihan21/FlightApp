@@ -25,7 +25,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="2" Text="Verplaats passagier" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Center" Style="{StaticResource TextBlockStyle}"/>
+        <TextBlock Grid.ColumnSpan="2" Text="Move passenger" HorizontalAlignment="Center" Style="{StaticResource PageTitleStyle}"/>
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Current seat:" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle}"/>
             <TextBox x:Name="tbOldSeatNumber" PlaceholderText="Fill seatnumber"/>

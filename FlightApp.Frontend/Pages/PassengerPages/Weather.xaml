@@ -29,7 +29,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="Weather" TextWrapping="Wrap" FontSize="24" Style="{StaticResource TextBlockStyle}"/>
+        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="Weather" Style="{StaticResource PageTitleStyle}"/>
         <ListView Grid.Row="1" x:Name="myWeatherInfo">
             <ListView.ItemTemplate>
                 <DataTemplate>

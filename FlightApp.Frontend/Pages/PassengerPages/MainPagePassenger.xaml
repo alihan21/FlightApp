@@ -29,12 +29,12 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="3" x:Name="tbPassengerName" Text="{Binding Name, Converter={StaticResource StringConverter}, ConverterParameter='Welkom, '}" TextWrapping="Wrap" FontSize="72" HorizontalAlignment="Center"/>
-        <Button Grid.Row="1" x:Name="btnNavigateToFlightInfo" Content="Vluchtinformatie" Click="NavigateToFlightInfo" Style="{StaticResource MainPageButtonStyle}"/>
-        <Button Grid.Row="1" Grid.Column="1" x:Name="btnNavigateToOrderFood" Content="Eten bestellen" Click="NavigateToOrderFood" Style="{StaticResource MainPageButtonStyle}"/>
-        <Button Grid.Row="1" Grid.Column="2" x:Name="btnNavigateToOrderHistory" Content="Bestelgeschiedenis" Click="NavigateToOrderHistory" Style="{StaticResource MainPageButtonStyle}"/>
+        <TextBlock Grid.ColumnSpan="3" x:Name="tbPassengerName" Text="{Binding Name, Converter={StaticResource StringConverter}, ConverterParameter='Welcome, '}" TextWrapping="Wrap" FontSize="72" HorizontalAlignment="Center"/>
+        <Button Grid.Row="1" x:Name="btnNavigateToFlightInfo" Content="Flight information" Click="NavigateToFlightInfo" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="btnNavigateToOrderFood" Content="Order food" Click="NavigateToOrderFood" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="1" Grid.Column="2" x:Name="btnNavigateToOrderHistory" Content="Order history" Click="NavigateToOrderHistory" Style="{StaticResource MainPageButtonStyle}"/>
         <Button Grid.Row="2" x:Name="btnNavigateToEntertainment" Content="Entertainment" Click="NavigateToEntertainment" Style="{StaticResource MainPageButtonStyle}"/>
-        <Button Grid.Row="2" Grid.Column="1" x:Name="btnNavigateToWeather" Content="Weer raadplegen" Click="NavigateToWeather" Style="{StaticResource MainPageButtonStyle}"/>
-        <Button Grid.Row="2" Grid.Column="2" x:Name="btnNavigateToChat" Content="Chatten" Click="NavigateToChat" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="2" Grid.Column="1" x:Name="btnNavigateToWeather" Content="Weather" Click="NavigateToWeather" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="2" Grid.Column="2" x:Name="btnNavigateToChat" Content="Chat" Click="NavigateToChat" Style="{StaticResource MainPageButtonStyle}"/>
     </Grid>
 </Page>

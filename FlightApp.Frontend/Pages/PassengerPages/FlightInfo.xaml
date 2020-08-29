@@ -14,7 +14,7 @@
     </Page.Background>
 
     <Page.Resources>
-        <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
+        <converters:StringConverter x:Key="StringConverter"/>
     </Page.Resources>
 
     <Grid>
@@ -28,7 +28,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="Flight information" TextWrapping="Wrap" FontSize="24" Style="{StaticResource TextBlockStyle}"/>
+        <TextBlock Grid.ColumnSpan="2" Text="Flight information" Style="{StaticResource PageTitleStyle}"/>
         <TextBlock Grid.Row="1" Text="{x:Bind Path=FlightViewModel.Origin, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Origin: '}" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="2" Style="{StaticResource TextBlockStyle}" Text="{x:Bind Path=FlightViewModel.Destination, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Destination: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="3" Style="{StaticResource TextBlockStyle}" Text="{x:Bind Path=FlightViewModel.Duration, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Duration: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>

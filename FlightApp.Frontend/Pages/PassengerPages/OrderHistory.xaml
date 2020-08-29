@@ -22,7 +22,12 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" x:Name="MyOrderHistory" ItemsSource="{Binding}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Order history" Grid.ColumnSpan="2" Style="{StaticResource PageTitleStyle}"/>
+        <ListView Grid.Row="1" x:Name="MyOrderHistory" ItemsSource="{Binding}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -30,13 +35,13 @@
                             <Image Height="50" Width="50" Source="/Assets/order_icon.png"/>
                             <TextBlock Text="{Binding Passenger.Name, Converter={StaticResource StringConverter}, ConverterParameter='Name of passenger: '}" Style="{StaticResource TextBlockStyle}"/>
                             <TextBlock Text="{Binding Passenger.Seat.SeatNumber, Converter={StaticResource StringConverter}, ConverterParameter='Seatnumber: '}" Style="{StaticResource TextBlockStyle}"/>
-                            <TextBlock Text="{Binding Total, Converter={StaticResource StringConverter}, ConverterParameter='Amount to pay: € '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Total, Converter={StaticResource StringConverter}, ConverterParameter='Amount to pay: '}" Style="{StaticResource TextBlockStyle}"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView Grid.Column="1">
+        <ListView Grid.Column="1" Grid.Row="1">
             <TextBlock x:Name="tbOrderLinesString" Text="{Binding OrderLinesString}" Style="{StaticResource TextBlockStyle}"/>
         </ListView>
     </Grid>

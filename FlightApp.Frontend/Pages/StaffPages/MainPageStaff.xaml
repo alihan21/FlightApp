@@ -30,8 +30,8 @@
         </Grid.RowDefinitions>
         
         <TextBlock Grid.ColumnSpan="2" x:Name="tbStaffName" Text="{Binding Name, Converter={StaticResource StringConverter}, ConverterParameter='Welcome, '}" TextWrapping="Wrap" FontSize="72" HorizontalAlignment="Center"/>
-        <Button Grid.Row="1" x:Name="btnNavigateToMovePassenger" Content="Verplaats passagier" Click="NavigateToMovePassenger" Style="{StaticResource MainPageButtonStyle}"/>
-        <Button Grid.Row="1" Grid.Column="1" x:Name="btnNavigateToOrderOverview" Content="Overzicht van bestellingen" Click="NavigateToOrderOverview" Style="{StaticResource MainPageButtonStyle}"/>
-        <Button Grid.Row="2" x:Name="btnNavigateToNotification" Content="Notificatie" Click="NavigateToNotification" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="1" x:Name="btnNavigateToMovePassenger" Content="Move passenger" Click="NavigateToMovePassenger" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="btnNavigateToOrderOverview" Content="Orders overiveiw" Click="NavigateToOrderOverview" Style="{StaticResource MainPageButtonStyle}"/>
+        <Button Grid.Row="2" x:Name="btnNavigateToNotification" Content="Notification" Click="NavigateToNotification" Style="{StaticResource MainPageButtonStyle}"/>
     </Grid>
 </Page>
