@@ -1,23 +1,22 @@
 # FlightApp
 This flight app is made by Dean and Alihan
-## TODOs
+## Requirements
 
-### User
-- [X] Flight Information (ETA, origin, destination, etc.)
-- [X] Order a snack
-- [X] consult order history
-- [x] watch a movie / series & more
-- [X] weather forecast
-- [x] Chat with your travel group (only visible for the group)
+Local SQL Server (Management Studio)
 
-### Crew
-- [X] Move a passenger
-- [X] Overview of the order (mark them as handled)
-- [X] custom notifications (to all passenger or specific)
-- [X] Advertise to passengers (free cola with first meal, etc.)
+Visual Studio 2017 (With an emulator installed)
 
-### Alihan Fevziev
-- [ ] Refactoring open issues
+### Initiliaze project
 
-### Dean Van Damme
-- [ ] Refactoring open issues
+This project is best run with Visual Studio 2017
+
+### Backend project
+
+1) Once unzipped make sure the devConnection in appsettings.json is set to your local SQL server
+2) in the StartUp.cs file, uncomment the last line flightAppInit.Init(); to seed your local database
+3) When the application has runned once, you can put this back into comment to speed up the startup process.
+
+
+### Frontend project
+
+1) In the Package.appxmanifest navigate to the Capabilities and make sure the Location capability is checked.
