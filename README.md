@@ -20,3 +20,4 @@ This project is best run with Visual Studio 2017
 ### Frontend project
 
 1) In the Package.appxmanifest navigate to the Capabilities and make sure the Location capability is checked.
+2) Deploy the frontend application 
