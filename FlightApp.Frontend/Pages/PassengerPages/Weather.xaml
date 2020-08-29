@@ -8,13 +8,17 @@
     xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
     xmlns:converters="using:FlightApp.Frontend.Converters"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    >
 
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image.jpg"/>
+    </Page.Background>
+    
     <Page.Resources>
         <converters:StringConverter x:Key="StringConverter"/>
         <converters:KelvinToCelsiusConverter x:Key="KelvinToCelsiusConverter"/>
     </Page.Resources>
-
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -25,25 +29,28 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="Weather" TextWrapping="Wrap" FontSize="24"/>
+        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="Weather" TextWrapping="Wrap" FontSize="24" Style="{StaticResource TextBlockStyle}"/>
         <ListView Grid.Row="1" x:Name="myWeatherInfo">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <StackPanel>
-                            <TextBlock Text="{Binding Sys.Country, Converter={StaticResource StringConverter}, ConverterParameter='Country: '}"/>
-                            <TextBlock Text="{Binding Main.Temp, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Temperature: '}"/>
-                            <TextBlock Text="{Binding Main.Temp_min, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Minimum temperature: '}"/>
-                            <TextBlock Text="{Binding Main.Temp_max, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Maximum temperature: '}"/>
-                            <TextBlock Text="{Binding Main.Pressure, Converter={StaticResource StringConverter}, ConverterParameter='Pressure: '}"/>
-                            <TextBlock Text="{Binding Main.Humidity, Converter={StaticResource StringConverter}, ConverterParameter='Humidity: '}"/>
-                            <TextBlock Text="{Binding Wind.Speed, Converter={StaticResource StringConverter}, ConverterParameter='Wind speed (in km/h): '}"/>
+                            <TextBlock Text="{Binding Sys.Country, Converter={StaticResource StringConverter}, ConverterParameter='Country: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Main.Temp, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Temperature: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Main.Temp_min, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Minimum temperature: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Main.Temp_max, Converter={StaticResource KelvinToCelsiusConverter}, ConverterParameter='Maximum temperature: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Main.Pressure, Converter={StaticResource StringConverter}, ConverterParameter='Pressure: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Main.Humidity, Converter={StaticResource StringConverter}, ConverterParameter='Humidity: '}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Wind.Speed, Converter={StaticResource StringConverter}, ConverterParameter='Wind speed (in km/h): '}" Style="{StaticResource TextBlockStyle}"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Image Grid.Row="2" x:Name="myWeatherIcon" HorizontalAlignment="Left" Width="200" Height="200"/>
+        <StackPanel Grid.Row="2" Orientation="Vertical">
+            <TextBlock Text="The weather:"/>
+            <Image  x:Name="myWeatherIcon" HorizontalAlignment="Left" Width="200" Height="200"/>
+        </StackPanel>
         <maps:MapControl Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" x:Name="MapControl1" Margin="0, 0, 16, 16"/>
     </Grid>
 </Page>

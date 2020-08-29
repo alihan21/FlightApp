@@ -7,8 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:FlightApp.Frontend.Converters"
     xmlns:viewModels="using:FlightApp.Frontend.ViewModels"
-  mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+  mc:Ignorable="d">
+
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image.jpg"/>
+    </Page.Background>
+
     <Page.Resources>
         <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
     </Page.Resources>
@@ -24,12 +28,12 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="Flight information" TextWrapping="Wrap" FontSize="24"/>
-        <TextBlock Grid.Row="1" Text="{x:Bind Path=FlightViewModel.Origin, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Origin: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="2" Text="{x:Bind Path=FlightViewModel.Destination, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Destination: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="3" Text="{x:Bind Path=FlightViewModel.Duration, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Duration: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.PlaneMaxSeats, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Max seats on this plane: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.PlaneName, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Name of plane: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.TimeOfDepart, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Time and date: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="Flight information" TextWrapping="Wrap" FontSize="24" Style="{StaticResource TextBlockStyle}"/>
+        <TextBlock Grid.Row="1" Text="{x:Bind Path=FlightViewModel.Origin, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Origin: '}" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Style="{StaticResource TextBlockStyle}" Text="{x:Bind Path=FlightViewModel.Destination, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Destination: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Style="{StaticResource TextBlockStyle}" Text="{x:Bind Path=FlightViewModel.Duration, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Duration: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Style="{StaticResource TextBlockStyle}" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.PlaneMaxSeats, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Max seats on this plane: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Style="{StaticResource TextBlockStyle}" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.PlaneName, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Name of plane: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Style="{StaticResource TextBlockStyle}" Grid.Column="1" Text="{x:Bind Path=FlightViewModel.TimeOfDepart, Mode=OneWay, Converter={StaticResource StringConverter}, ConverterParameter='Time and date: '}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Page>

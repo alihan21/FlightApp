@@ -17,6 +17,7 @@ namespace FlightApp.Frontend.Pages
         public LoginPassenger()
         {
             this.InitializeComponent();
+            LoginStoryboard.Begin();
         }
 
         private void navigateToStaffmemberPage(object sender, RoutedEventArgs e)

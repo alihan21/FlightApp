@@ -5,8 +5,11 @@
     xmlns:local="using:FlightApp.Frontend.Pages.StaffPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
+
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image_staff.jpg"/>
+    </Page.Background>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,7 +22,7 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="3" Text="Notificatie" FontSize="48" HorizontalAlignment="Center"/>
+        <TextBlock Grid.ColumnSpan="3" Text="Notificatie" FontSize="48" HorizontalAlignment="Center" Style="{StaticResource TextBlockStyle}"/>
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Type notificatie:" TextWrapping="Wrap"/>
             <ComboBox x:Name="cbNotificationType" SelectedIndex="0">
@@ -28,11 +31,11 @@
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Boodschap:"/>
+            <TextBlock Text="Boodschap:" Style="{StaticResource TextBlockStyle}"/>
             <TextBox x:Name="tbMessage"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Kies passagier(s):" TextWrapping="Wrap"/>
+            <TextBlock Text="Kies passagier(s):" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle}"/>
             <StackPanel Orientation="Horizontal">
                 <CheckBox x:Name="cbIsAllPassengersSelected" Content="Alle passagiers" Margin="0,0,16,0"/>
                 <ComboBox x:Name="cbPassengers" ItemsSource="{x:Bind AllPassengersViewModel.Passengers}" SelectedItem="{x:Bind AllPassengersViewModel.SelectedPassenger}" DisplayMemberPath="Name" SelectionChanged="SelectPassenger"/>

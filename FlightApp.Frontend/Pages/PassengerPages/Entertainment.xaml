@@ -6,9 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:FlightApp.Frontend.Converters"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/background_image.jpg"/>
+    </Page.Background>
+    
     <Page.Resources>
         <converters:StringConverter x:Key="StringConverter"></converters:StringConverter>
     </Page.Resources>
@@ -28,9 +31,9 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <ListView Style="{StaticResource DetailsViewStyle}" Grid.Column="1">
-            <TextBlock Text="{Binding Plot, Converter={StaticResource StringConverter}, ConverterParameter='Plot: '}"/>
-            <TextBlock Text="{Binding Released, Converter={StaticResource StringConverter}, ConverterParameter='Released: '}"/>
-            <TextBlock Text="{Binding Actors, Converter={StaticResource StringConverter}, ConverterParameter='Actors: '}"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Plot, Converter={StaticResource StringConverter}, ConverterParameter='Plot: '}"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Released, Converter={StaticResource StringConverter}, ConverterParameter='Released: '}"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Actors, Converter={StaticResource StringConverter}, ConverterParameter='Actors: '}"/>
             <Image Source="{Binding Poster}"/>
         </ListView>
     </Grid>
