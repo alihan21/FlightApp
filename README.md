@@ -21,3 +21,17 @@ This project is best run with Visual Studio 2017
 
 1) In the Package.appxmanifest navigate to the Capabilities and make sure the Location capability is checked.
 2) Deploy the frontend application 
+
+
+## Login Credentials
+
+| Name    | LoginCode (S) - Seatnumber (P)    | Flightnumber                        | Role                               |
+| :---     | :---     | :---                          | :---                                |
+| Dean | 5678 | AT1000 | Staff |
+| Alihan | 1234 | BG0800 | staff |
+| Liam | 02A | AT1000 | Passenger |
+| Lucas | 04A | AT1000 | Passenger - Traveling together with Jules |
+| Jules | 06A | AT1000 | Passenger - Traveling together with Lucas |
+| Adam | 05B | BG0800 | Passenger |
+
+
