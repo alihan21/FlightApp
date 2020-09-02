@@ -1,6 +1,7 @@
 ﻿using FlightApp.Frontend.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Navigation;
 
 namespace FlightApp.Frontend.Pages.StaffPages
 {
@@ -11,10 +12,19 @@ namespace FlightApp.Frontend.Pages.StaffPages
     {
         public AllOrdersViewModel AllOrdersViewModel { get; set; }
 
+        public StaffViewModel LoggedStaff { get; set; }
+
         public OrderOverview()
         {
-            AllOrdersViewModel = new AllOrdersViewModel();
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            LoggedStaff = (StaffViewModel)e.Parameter;
+            AllOrdersViewModel = new AllOrdersViewModel(LoggedStaff.FlightId);
             LayoutRoot.DataContext = new CollectionViewSource { Source = AllOrdersViewModel.OrdersViewModel };
         }
 

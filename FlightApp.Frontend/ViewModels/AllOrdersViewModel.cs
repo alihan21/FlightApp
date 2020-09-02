@@ -14,16 +14,16 @@ namespace FlightApp.Frontend.ViewModels
     {
         public ObservableCollection<OrderViewModel> OrdersViewModel { get; set; }
 
-        public AllOrdersViewModel()
+        public AllOrdersViewModel(string flightId)
         {
             OrdersViewModel = new ObservableCollection<OrderViewModel>();
-            GetAllOrders();
+            GetAllOrders(flightId);
         }
 
-        private async void GetAllOrders()
+        private async void GetAllOrders(string flightId)
         {
             HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(new Uri("http://localhost:60177/api/Order"));
+            var json = await client.GetStringAsync(new Uri($"http://localhost:60177/api/Order/flights/{flightId}/orders/all"));
             var allOrders = JsonConvert.DeserializeObject<List<Order>>(json);
 
             foreach(Order order in allOrders)

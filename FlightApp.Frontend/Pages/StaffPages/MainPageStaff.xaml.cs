@@ -37,7 +37,10 @@ namespace FlightApp.Frontend.Pages.StaffPages
 
         private void NavigateToOrderOverview(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(OrderOverview));
+            if (LoggedStaff != null)
+            {
+                Frame.Navigate(typeof(OrderOverview), LoggedStaff);
+            }
         }
 
         private void NavigateToNotification(object sender, RoutedEventArgs e)

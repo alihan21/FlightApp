@@ -27,6 +27,8 @@ namespace FlightApp.Backend.Data.Repositories.Concrete
             return _orders
                 .Include(o => o.Passenger)
                 .ThenInclude(p => p.Seat)
+                .Include(o => o.Passenger)
+                .ThenInclude(p => p.UserFlights)
                 .Include(o => o.OrderLines)
                 .ThenInclude(ol => ol.Food)
                 .Where(o => !o.IsCompleted);

@@ -37,6 +37,37 @@ namespace FlightApp.Backend.Controllers
             return allOrderDTOs;
         }
 
+        [HttpGet("flights/{flightId}/orders/all")]
+        public ActionResult<List<OrderDTO>> GetAllByFlightId(string flightId)
+        {
+            List<OrderDTO> allOrderDTOs = new List<OrderDTO>();
+            var allOrders = _orderRepository.GetAll().ToList();
+
+            foreach(Order o in allOrders)
+            {
+                var passenger = o.Passenger;
+
+                if(passenger == null)
+                {
+                    return NotFound("Passenger not found");
+                }
+
+                var currentFlight = passenger.UserFlights.Last();
+
+                if (currentFlight == null)
+                {
+                    return NotFound("Flight not found");
+                }
+
+                if(currentFlight.FlightId == flightId)
+                {
+                    allOrderDTOs.Add(new OrderDTO(o));
+                }
+            }
+
+            return allOrderDTOs;
+        }
+
         [HttpPost("{flightId}/{passengerSeat}/placeOrder")]
         public ActionResult<Order> PlaceOrder(string flightId, string passengerSeat, List<OrderLineDTO> orderLineDTOs)
         {
